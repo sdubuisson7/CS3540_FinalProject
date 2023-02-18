@@ -7,8 +7,10 @@ public class SwordAttack : MonoBehaviour
 {
     public GameObject tip; // Reference to the empty GameObject located at the tip of the sword
     public Image dot; //Reference to the UI Image at the center of the screen
-    public Color enemyDotColor = Color.red; //Reference to the color that the dot will change when aiming at an enemy
+    public Color enemyDotColorNear = Color.red; //Reference to the color that the dot will change when aiming at an enemy
+    public Color enemyDotColorFar = Color.yellow; //Reference to the color that the dot will change when aiming at an enemy
     public float swordRange = 1.5f; // Reference to the range at which the sword can cause damage to enemies
+    public float colorSpeed = 8;//Reference to the speed the dot color changes
     GameObject player; // The player game object
     Color neutralDotColor; //The neutral color of the Dot
     bool attacked; // Has the player attacked?
@@ -54,7 +56,7 @@ public class SwordAttack : MonoBehaviour
                 if (distance <= swordRange)
                 {
                     //Kill/Damage Enemy
-                    Destroy(hit.collider.gameObject);
+                    Destroy(hit.transform.parent.transform.parent.gameObject);
                 }
             }
         }
@@ -75,7 +77,17 @@ public class SwordAttack : MonoBehaviour
             //Check to see if Raycast hit an enemy
             if (hit.collider.gameObject.CompareTag("Enemy"))
             {
-                dot.color = Color.Lerp(dot.color, enemyDotColor, Time.deltaTime * 10); // If raycast is looking at an enemy change the dot color
+                float distance = Vector3.Distance(player.transform.position, hit.transform.position);//The distance between the enemy and the player
+                //Check to see if the enemy is within close range
+                if (distance <= swordRange)
+                {
+                    dot.color = Color.Lerp(dot.color, enemyDotColorNear, Time.deltaTime * colorSpeed); // If raycast is looking at a nearby enemy change the dot color
+                }
+                else
+                {
+                    dot.color = Color.Lerp(dot.color, enemyDotColorFar, Time.deltaTime * colorSpeed); // If raycast is looking at a far enemy change the dot color
+                }
+                
 
             }
             else
