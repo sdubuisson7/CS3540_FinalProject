@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571336, b: 0.3069219, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 1157493}
   - component: {fileID: 1157492}
   - component: {fileID: 1157497}
+  - component: {fileID: 1157498}
   m_Layer: 0
   m_Name: Player(ButterKnight)
   m_TagString: Player
@@ -260,6 +261,19 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1157498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1157491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faeb216afb8144fde8a6b35ab6df93b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
 --- !u!1 &239909640
 GameObject:
   m_ObjectHideFlags: 0
@@ -980,7 +994,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f15597dfae4b9ea4c848946da68eb153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 1761583696661772097, guid: 6e834197b9b760949976983ef7a77ca3, type: 3}
+  enemyPrefab: {fileID: 7260805518179371179, guid: 1aec2eadcd4e84c118470556d3139fc1, type: 3}
   spawnRange: {x: 30, y: 3.3, z: 30}
   initialSpawnInterval: 5
   spawnIntervalDecreaseRate: 0.1
@@ -1588,7 +1602,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1582665841}
-  m_LocalRotation: {x: 0.34235466, y: -0.046936993, z: 0.017126812, w: 0.93824136}
+  m_LocalRotation: {x: 0.34235466, y: -0.04693697, z: 0.017126812, w: 0.93824136}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1925,10 +1939,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tip: {fileID: 908329357}
   dot: {fileID: 239909642}
-  enemyDotColorNear: {r: 1, g: 0, b: 0, a: 1}
-  enemyDotColorFar: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  swordRange: 7
-  colorSpeed: 8
+  enemyDotColor: {r: 1, g: 0, b: 0, a: 1}
+  swordRange: 5
 --- !u!95 &270858087927403504
 Animator:
   serializedVersion: 5
