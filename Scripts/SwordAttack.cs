@@ -56,7 +56,7 @@ public class SwordAttack : MonoBehaviour
                 if (distance <= swordRange)
                 {
                     //Kill/Damage Enemy
-                    Destroy(hit.transform.parent.transform.parent.gameObject);
+                    Destroy(hit.collider.gameObject);
                 }
             }
         }

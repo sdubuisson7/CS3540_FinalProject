@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571336, b: 0.3069219, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -374,7 +374,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 288196995}
   m_LocalRotation: {x: -0, y: -0.118157126, z: -0, w: 0.99299496}
-  m_LocalPosition: {x: -0.62, y: 1.32, z: -1.41}
+  m_LocalPosition: {x: -0.89, y: 1.39, z: -1.59}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -395,7 +395,7 @@ GameObject:
   - component: {fileID: 484128478}
   m_Layer: 0
   m_Name: FrontGlass
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -908,7 +908,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.14638498, y: -0.0715832, z: 0.010621272, w: 0.98657715}
+  m_LocalRotation: {x: 0.1432836, y: -0.10631285, z: 0.0154832015, w: 0.9838332}
   m_LocalPosition: {x: -2.9, y: 6.027, z: -8.26}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -998,7 +998,7 @@ MonoBehaviour:
   spawnRange: {x: 30, y: 3.3, z: 30}
   initialSpawnInterval: 5
   spawnIntervalDecreaseRate: 0.1
-  minSpawnInterval: 0.5
+  minSpawnInterval: 1
 --- !u!4 &1113023085
 Transform:
   m_ObjectHideFlags: 0
@@ -1210,7 +1210,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1250934649}
-  m_LocalRotation: {x: 0.30329865, y: -0.047604516, z: 0.015172975, w: 0.95158476}
+  m_LocalRotation: {x: 0.30329868, y: -0.047604516, z: 0.015172975, w: 0.95158476}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1288,7 +1288,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1327533357}
-  m_LocalRotation: {x: 0.32286218, y: -0.047281407, z: 0.01615167, w: 0.9451263}
+  m_LocalRotation: {x: 0.32286218, y: -0.047281425, z: 0.01615167, w: 0.9451263}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1602,7 +1602,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1582665841}
-  m_LocalRotation: {x: 0.34235466, y: -0.04693697, z: 0.017126812, w: 0.93824136}
+  m_LocalRotation: {x: 0.34235469, y: -0.04693698, z: 0.01712681, w: 0.9382414}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1939,8 +1939,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tip: {fileID: 908329357}
   dot: {fileID: 239909642}
-  enemyDotColor: {r: 1, g: 0, b: 0, a: 1}
+  enemyDotColorNear: {r: 1, g: 0, b: 0, a: 1}
+  enemyDotColorFar: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   swordRange: 5
+  colorSpeed: 8
 --- !u!95 &270858087927403504
 Animator:
   serializedVersion: 5
@@ -1954,7 +1956,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 704b0433cf542474dacee2ef1149ac51, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 

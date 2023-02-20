@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBehaviorChase : MonoBehaviour
+public class EnemyBehavior : MonoBehaviour
 {
     public float speed = 4; // Reference to the movement speed of the enemy
     public int damage = 20;
@@ -22,7 +22,7 @@ public class EnemyBehaviorChase : MonoBehaviour
         transform.LookAt(player.transform);
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position, Time.deltaTime * speed);
     }
-
+    
     private void OnTriggerEnter(Collider other)
     {
         //Check if Enemy collided with Player
