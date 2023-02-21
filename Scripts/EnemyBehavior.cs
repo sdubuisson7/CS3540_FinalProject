@@ -23,7 +23,7 @@ public class EnemyBehaviorChase : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position, Time.deltaTime * speed);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnColliderEnter(Collider other)
     {
         //Check if Enemy collided with Player
         if (other.CompareTag("Player"))
