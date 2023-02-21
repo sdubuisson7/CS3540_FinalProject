@@ -13,6 +13,11 @@ public class SwordAttack : MonoBehaviour
     Color neutralDotColor; //The neutral color of the Dot
     bool attacked; // Has the player attacked?
     TrailRenderer trail; //The TrailRenderer at the tip of the sword
+    private string[] ingredients;
+    public Image ingredient1;
+    public Image ingredient2;
+    public Image ingredient3;
+    private float speedBoost;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +27,11 @@ public class SwordAttack : MonoBehaviour
         trail.enabled = false; // disable the trail renderer
         neutralDotColor = dot.color; // assign the dot's neutral color
         player = GameObject.FindGameObjectWithTag("Player"); //get a reference to the player
-
+        ingredients = new string[3];
+        ingredient1.color = Color.gray;
+        ingredient2.color = Color.gray;
+        ingredient3.color = Color.gray;
+        speedBoost = 10.0f;
     }
 
     // Update is called once per frame
@@ -33,7 +42,38 @@ public class SwordAttack : MonoBehaviour
         {
             Attack(); // Run the Attack method
         }
-        
+        if (ingredients[0] == "Sweet")
+        {
+            ingredient1.color = Color.magenta;
+        }
+        if (ingredients[1] == "Sweet")
+        {
+            ingredient2.color = Color.magenta;
+        }
+        if (ingredients[2] == "Sweet")
+        {
+            ingredient3.color = Color.magenta;
+        }
+        if (ingredients[2] != null)
+        {
+            if (speedBoost > 0.0f)
+            {
+                player.GetComponent<PlayerMovement>().moveSpeed = 12;
+                speedBoost -= Time.deltaTime;
+                Debug.Log("Sugar Cube created! Speed Boost for 10 seconds");
+            }
+            else
+            {
+                player.GetComponent<PlayerMovement>().moveSpeed = 10;
+                ingredients[0] = null;
+                ingredients[1] = null;
+                ingredients[2] = null;
+                ingredient1.color = Color.gray;
+                ingredient2.color = Color.gray;
+                ingredient3.color = Color.gray;
+                speedBoost = 10.0f;
+            }
+        }
 
     }
 
@@ -55,6 +95,14 @@ public class SwordAttack : MonoBehaviour
                 {
                     //Kill/Damage Enemy
                     LevelManager.enemiesKilled++;
+                    for (int i = 0; i < 3; i++)
+                    {
+                        if (ingredients[i] == null)
+                        {
+                            ingredients[i] = hit.collider.gameObject.GetComponent<EnemyBehavior>().foodGroup();
+                            i = 2;
+                        }
+                    }
                     Destroy(hit.collider.gameObject);
                 }
             }
