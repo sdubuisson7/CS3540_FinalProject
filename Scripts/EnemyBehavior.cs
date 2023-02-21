@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBehaviorChase : MonoBehaviour
+public class EnemyBehavior : MonoBehaviour
 {
     public float speed = 4; // Reference to the movement speed of the enemy
     public int damage = 20;
