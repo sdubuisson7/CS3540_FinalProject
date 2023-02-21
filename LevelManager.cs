@@ -29,9 +29,8 @@ public class LevelManager : MonoBehaviour
         else
         {
             enemiesLeft.text = "Congrats! You win";
-        }
-        Destroy(spawner);
-
+            Destroy(spawner);
+        }   
     }
 
     void setEnemiesLeft()

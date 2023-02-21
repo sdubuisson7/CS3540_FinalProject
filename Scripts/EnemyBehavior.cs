@@ -33,4 +33,16 @@ public class EnemyBehavior : MonoBehaviour
             Debug.Log("PlayerHit");
         }
     }
+
+    public string foodGroup()
+    {
+        if (gameObject.name == "CinnamonRoller(Clone)")
+        {
+            return "Sweet";
+        }
+        else
+        {
+            return gameObject.name;
+        }
+    }
 }
