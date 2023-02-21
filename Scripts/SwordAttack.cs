@@ -54,6 +54,7 @@ public class SwordAttack : MonoBehaviour
                 if (distance <= swordRange)
                 {
                     //Kill/Damage Enemy
+                    LevelManager.enemiesKilled++;
                     Destroy(hit.collider.gameObject);
                 }
             }

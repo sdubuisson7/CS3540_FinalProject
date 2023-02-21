@@ -25,10 +25,7 @@ public class PlayerHealth : MonoBehaviour {
             currentHealth = 0;
             // PLAYER DIES
         }
-        else
-        {
-            healthSlider.value = currentHealth;
-        }
+        healthSlider.value = currentHealth;
     }
 
     public void Heal(int amount) {
