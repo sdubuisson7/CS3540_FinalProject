@@ -1,14 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour {
     public int maxHealth = 100;
     int currentHealth;
+    public Slider healthSlider;
 
     // Start is called before the first frame update
     void Start() {
         currentHealth = maxHealth;
+        healthSlider.value = currentHealth;
     }
 
     // Update is called once per frame
@@ -22,6 +25,7 @@ public class PlayerHealth : MonoBehaviour {
             currentHealth = 0;
             // PLAYER DIES
         }
+        healthSlider.value = currentHealth;
     }
 
     public void Heal(int amount) {
@@ -29,6 +33,7 @@ public class PlayerHealth : MonoBehaviour {
         if (currentHealth > maxHealth) {
             currentHealth = maxHealth;
         }
+        healthSlider.value = currentHealth;
     }
 
     public int getHealth() {
