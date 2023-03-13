@@ -27,7 +27,7 @@ public class EnemyBehavior : MonoBehaviour
     
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Collisioon");
+        
         if (collision.gameObject.CompareTag("Player"))
         {
             var playerHealth = collision.gameObject.GetComponent<PlayerHealth>();

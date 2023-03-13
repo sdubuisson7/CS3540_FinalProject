@@ -162,7 +162,7 @@ public class SwordAttack : MonoBehaviour
         attacked = true; // attacked is set to true
         Animator anim = playerAnimator.GetComponent<Animator>(); //Sets animator int to 2
         anim.SetInteger("animInt", 2);
-        yield return new WaitForSeconds(anim.GetCurrentAnimatorClipInfo(0).Length); //Wait for 0.6 seconds
+        yield return new WaitForSeconds(anim.GetCurrentAnimatorClipInfo(0).Length - 0.05f); //Wait for animation to be over
         attacked = false; // set attacked back to false
         trail.enabled = false; // disabled the trail renderer at the tip of the sword
         playerAnimator.GetComponent<Animator>().SetInteger("animInt", 0); //Resets animator

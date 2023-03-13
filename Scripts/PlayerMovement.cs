@@ -28,6 +28,9 @@ public class PlayerMovement : MonoBehaviour
         //Get input
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
+        playerAnimator.SetFloat("moveHorizontal", moveHorizontal);
+        playerAnimator.SetFloat("moveVertical", moveVertical);
+
         //Create normalized vector of input and multiply it by the move speed
         input = (transform.right * moveHorizontal + transform.forward * moveVertical).normalized; // normalized to prevent faster diagonal movement
         input *= moveSpeed;
@@ -38,22 +41,11 @@ public class PlayerMovement : MonoBehaviour
             int animInt = 0;
             if (!SwordAttack.attacked)
             {
-                if (Input.GetKey(KeyCode.W))
+                if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
                 {
-                    animInt = 1; // Running Forward animation On
+                    animInt = 1;
                 }
-                else if (Input.GetKey(KeyCode.S))
-                {
-                    animInt = -1;//Running Backward animation On
-                }
-                else if (Input.GetKey(KeyCode.A))
-                {
-                    animInt = -2;//A Strafe animation On
-                }
-                else if (Input.GetKey(KeyCode.D))
-                {
-                    animInt = -3;//D Strafe animation On
-                }
+                
 
                 if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D))
                 {
@@ -62,42 +54,6 @@ public class PlayerMovement : MonoBehaviour
                 playerAnimator.SetInteger("animInt", animInt);
             }
             
-            /* if (Input.GetKey(KeyCode.W))
-             {
-                 playerAnimator.SetInteger("animInt", 1); // Running Forward animation On
-             }
-             if (Input.GetKey(KeyCode.S))
-             {
-                 playerAnimator.SetInteger("animInt", -1);//Running Backward animation On
-             }
-             if (Input.GetKey(KeyCode.A))
-             {
-                 playerAnimator.SetInteger("animInt", -2);//A Strafe animation On
-             }
-             if (Input.GetKey(KeyCode.D))
-             {
-                 playerAnimator.SetInteger("animInt", -3);//D Strafe animation On
-             }
-             if (Input.GetKeyUp(KeyCode.W))
-             {
-                 playerAnimator.SetInteger("animInt", 0);// Running Forward animation Off
-
-             }
-             if (Input.GetKeyUp(KeyCode.S))
-             {
-                 playerAnimator.SetInteger("animInt", 0);//Running Backward animation Off
-
-             }
-             if (Input.GetKeyUp(KeyCode.A))
-             {
-                 playerAnimator.SetInteger("animInt", 0);// A Strafe animation Off
-
-             }
-             if (Input.GetKeyUp(KeyCode.D))
-             {
-                 playerAnimator.SetInteger("animInt", 0);//D Strafe animation Off
-
-             }*/
 
             moveDirection = input;
             //Checks to see if jump button was pressed
@@ -120,8 +76,14 @@ public class PlayerMovement : MonoBehaviour
             input.y = moveDirection.y; 
             moveDirection = Vector3.Lerp(moveDirection, input, airControl * Time.deltaTime);
         }
+
         moveDirection.y -= gravity * Time.deltaTime; // applies gravtiy to vector
-        controller.Move(moveDirection * Time.deltaTime); // Moves the controller over time
+        if (!SwordAttack.attacked)
+        {
+            controller.Move(moveDirection * Time.deltaTime); // Moves the controller over time
+        }
+        
+        
     }
 
     IEnumerator JumpAnimation()
