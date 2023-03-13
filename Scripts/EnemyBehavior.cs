@@ -23,14 +23,16 @@ public class EnemyBehavior : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position, Time.deltaTime * speed);
     }
 
-    private void OnCollisionEnter(Collision other)
+    
+    
+    private void OnCollisionEnter(Collision collision)
     {
-        //Check if Enemy collided with Player
-        if (other.gameObject.CompareTag("Player"))
+        
+        if (collision.gameObject.CompareTag("Player"))
         {
-            var playerHealth = other.gameObject.GetComponent<PlayerHealth>();
+            var playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
             playerHealth.Hit(damage);
-            Debug.Log("PlayerHit");
+            Debug.Log("Player Hit");
         }
     }
 
