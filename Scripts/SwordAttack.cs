@@ -20,6 +20,10 @@ public class SwordAttack : MonoBehaviour
     public Image ingredient1;
     public Image ingredient2;
     public Image ingredient3;
+    private Image[] ingredientImages;
+
+    // sword swing audio
+    public AudioClip swordSFX;
 
     public Transform attackPoint;
 
@@ -30,15 +34,17 @@ public class SwordAttack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        ingredientImages = new Image[3]{ingredient1, ingredient2, ingredient3};
         attacked = false; //Set attacked to false
         trail = tip.GetComponent<TrailRenderer>(); //get reference to trail component
         trail.enabled = false; // disable the trail renderer
         neutralDotColor = dot.color; // assign the dot's neutral color
         player = GameObject.FindGameObjectWithTag("Player"); //get a reference to the player
         ingredients = new string[3];
-        ingredient1.color = Color.gray;
-        ingredient2.color = Color.gray;
-        ingredient3.color = Color.gray;
+        for (int i = 0; i < ingredientImages.Length; i++) {
+            ingredientImages[i].color = Color.gray;
+        }
+        
         speedBoost = 10.0f;
         playerAnimator = GameObject.FindGameObjectWithTag("PlayerAnimator");
     }
@@ -51,19 +57,29 @@ public class SwordAttack : MonoBehaviour
         {
             Attack(); // Run the Attack method
         }
-        if (ingredients[0] == "Sweet")
+
+
+        for (int i = 0; i < ingredients.Length; i++) 
         {
-            ingredient1.color = Color.magenta;
+            if (ingredients[i] != null) 
+            {
+                switch (ingredients[i]) 
+                {
+                    case "Sweet":
+                        ingredientImages[i].color = Color.magenta;
+                        break;
+                    case "Veggie":
+                        ingredientImages[i].color = Color.green;
+                        break;
+                    default:
+                        break;
+                } 
+                
+            }
         }
-        if (ingredients[1] == "Sweet")
-        {
-            ingredient2.color = Color.magenta;
-        }
-        if (ingredients[2] == "Sweet")
-        {
-            ingredient3.color = Color.magenta;
-        }
-        if (ingredients[2] != null)
+        
+        // If we've filled the ingredients list
+        if (ingredients[ingredients.Length - 1] != null)
         {
             if (speedBoost > 0.0f)
             {
@@ -74,12 +90,11 @@ public class SwordAttack : MonoBehaviour
             else
             {
                 player.GetComponent<PlayerMovement>().moveSpeed = 10;
-                ingredients[0] = null;
-                ingredients[1] = null;
-                ingredients[2] = null;
-                ingredient1.color = Color.gray;
-                ingredient2.color = Color.gray;
-                ingredient3.color = Color.gray;
+                for(int i = 0; i < ingredients.Length; i++) {
+                    ingredients[i] = null;
+                    ingredientImages[i].color = Color.gray;
+                }
+                
                 speedBoost = 10.0f;
             }
         }
@@ -90,9 +105,17 @@ public class SwordAttack : MonoBehaviour
     {
         trail.enabled = true; // enables the trail renderer at the tip of the sword
         attacked = true; // attacked is set to true
-        Animator anim = playerAnimator.GetComponent<Animator>(); //Sets animator int to 2
+
+        //Sets animator int to 2
+        Animator anim = playerAnimator.GetComponent<Animator>(); 
         anim.SetInteger("animInt", 2);
+        
+        AudioSource.PlayClipAtPoint(swordSFX, transform.position);
+
         Invoke("AttackAnimation", anim.GetCurrentAnimatorClipInfo(0).Length - 0.05f);
+
+        
+
         Collider[] hits = Physics.OverlapSphere(attackPoint.position, attackRange);
 
         foreach(Collider hit in hits)
@@ -100,14 +123,15 @@ public class SwordAttack : MonoBehaviour
             if (hit.CompareTag("Enemy"))
             {
                 LevelManager.enemiesKilled++;
-                for (int i = 0; i < 3; i++)
+                for (int i = 0; i < ingredients.Length; i++)
                 {
                     if (ingredients[i] == null)
                     {
                         ingredients[i] = hit.gameObject.GetComponent<EnemyBehavior>().foodGroup();
-                        i = 2;
+                        break;
                     }
                 }
+
                 Destroy(hit.gameObject);
             }
         }
