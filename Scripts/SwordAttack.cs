@@ -13,6 +13,19 @@ public class SwordAttack : MonoBehaviour
     Color neutralDotColor; //The neutral color of the Dot
     bool attacked; // Has the player attacked?
     TrailRenderer trail; //The TrailRenderer at the tip of the sword
+<<<<<<< Updated upstream
+=======
+    private FoodGroup[] ingredients;
+    public Image ingredient1;
+    public Image ingredient2;
+    public Image ingredient3;
+
+    public Transform attackPoint;
+
+    private float speedBoost;
+    GameObject playerAnimator;
+
+>>>>>>> Stashed changes
 
     // Start is called before the first frame update
     void Start()
@@ -53,8 +66,16 @@ public class SwordAttack : MonoBehaviour
                 //Check to see if the enemy is within range to get hit by sword
                 if (distance <= swordRange)
                 {
+<<<<<<< Updated upstream
                     //Kill/Damage Enemy
                     Destroy(hit.collider.gameObject);
+=======
+                    if (ingredients[i] == null)
+                    {
+                        ingredients[i] = hit.gameObject.GetComponent<EnemyBehaviour>().foodGroup();
+                        i = 2;
+                    }
+>>>>>>> Stashed changes
                 }
             }
         }

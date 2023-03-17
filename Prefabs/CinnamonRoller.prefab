@@ -93,7 +93,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7260805517755832603}
-  - component: {fileID: 7260805517755832602}
   m_Layer: 0
   m_Name: RotatePortion
   m_TagString: Untagged
@@ -122,22 +121,6 @@ Transform:
   m_Father: {fileID: 7260805518179371178}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7260805517755832602
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7260805517755832604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bdaf63f27c41841338c2780d5bbaf114, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 360
-  xAxis: 1
-  yAxis: 0
-  zAxis: 0
 --- !u!1 &7260805517942221673
 GameObject:
   m_ObjectHideFlags: 0
@@ -12071,7 +12054,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7260805518179371178}
-  - component: {fileID: 7260805518179371177}
   - component: {fileID: 7260805518179371176}
   m_Layer: 0
   m_Name: CinnamonRoller
@@ -12097,6 +12079,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< Updated upstream
 --- !u!114 &7260805518179371177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12110,6 +12093,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
+=======
+>>>>>>> Stashed changes
 --- !u!135 &7260805518179371176
 SphereCollider:
   m_ObjectHideFlags: 0
