@@ -2,6 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum FoodGroup {
+    Sweet,
+    Veggie,
+    Meat, 
+    Starch,
+    Spice,
+    Dairy
+}
+
 public abstract class EnemyBehaviour : MonoBehaviour {
     protected GameObject player; // Referene to the player so that the enemy can follow the player.
 
