@@ -38,21 +38,17 @@ public class PlayerMovement : MonoBehaviour
         //Checks to see if the player is grounded
         if (controller.isGrounded)
         {
-            int animInt = 0;
-            if (!SwordAttack.attacked)
-            {
-                if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+            //if (!SwordAttack.attacked)
+            //{
+                if(moveHorizontal != 0  || moveVertical != 0)
                 {
-                    animInt = 1;
+                    playerAnimator.SetBool("IsMoving", true);
                 }
-                
-
-                if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D))
+                else if(moveHorizontal == 0 || moveVertical == 0)
                 {
-                    animInt = 0;// Running Forward/Backward/Strafe animation Off
+                    playerAnimator.SetBool("IsMoving", false);
                 }
-                playerAnimator.SetInteger("animInt", animInt);
-            }
+            //}
             
 
             moveDirection = input;
@@ -61,7 +57,10 @@ public class PlayerMovement : MonoBehaviour
             {
                 //sets Jump height to y component of move direction vector
                 moveDirection.y = Mathf.Sqrt(2 * jumpHeight * gravity);
-                StartCoroutine(JumpAnimation());
+                playerAnimator.SetInteger("animInt", 3);
+                jumped = true;
+                Invoke("JumpAnimation", playerAnimator.GetCurrentAnimatorClipInfo(0).Length - 0.25f);
+                //StartCoroutine(JumpAnimation());
                 
             }
             else
@@ -77,20 +76,22 @@ public class PlayerMovement : MonoBehaviour
             moveDirection = Vector3.Lerp(moveDirection, input, airControl * Time.deltaTime);
         }
 
-        moveDirection.y -= gravity * Time.deltaTime; // applies gravtiy to vector
-        if (!SwordAttack.attacked)
+        if (SwordAttack.attacked)
         {
-            controller.Move(moveDirection * Time.deltaTime); // Moves the controller over time
+            //moveDirection.x = 0;
+            //moveDirection.z = 0;
         }
         
+       moveDirection.y -= gravity * Time.deltaTime; // applies gravtiy to vector
+       controller.Move(moveDirection * Time.deltaTime); // Moves the controller over time
         
     }
 
-    IEnumerator JumpAnimation()
+    void JumpAnimation()
     {
-        playerAnimator.SetInteger("animInt", 3);
-        jumped = true;
-        yield return new WaitForSeconds(playerAnimator.GetCurrentAnimatorClipInfo(0).Length - 0.1f);
+        //playerAnimator.SetInteger("animInt", 3);
+        //jumped = true;
+        //yield return new WaitForSeconds(playerAnimator.GetCurrentAnimatorClipInfo(0).Length - 0.25f);
         playerAnimator.SetInteger("animInt", 0);
         jumped = false;
     }
