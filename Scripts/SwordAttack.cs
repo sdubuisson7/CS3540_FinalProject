@@ -88,7 +88,11 @@ public class SwordAttack : MonoBehaviour
 
     void Attack()
     {
-        StartCoroutine(AttackAnimation()); //Start the AttackAnimation coroutine
+        trail.enabled = true; // enables the trail renderer at the tip of the sword
+        attacked = true; // attacked is set to true
+        Animator anim = playerAnimator.GetComponent<Animator>(); //Sets animator int to 2
+        anim.SetInteger("animInt", 2);
+        Invoke("AttackAnimation", anim.GetCurrentAnimatorClipInfo(0).Length - 0.05f);
         Collider[] hits = Physics.OverlapSphere(attackPoint.position, attackRange);
 
         foreach(Collider hit in hits)
@@ -109,6 +113,7 @@ public class SwordAttack : MonoBehaviour
         }
     }
 
+    //To Visualize the attack point in the inspector
     private void OnDrawGizmosSelected()
     {
         if (attackPoint == null)
@@ -155,14 +160,8 @@ public class SwordAttack : MonoBehaviour
 
 
     
-    IEnumerator AttackAnimation()
-    {
-        
-        trail.enabled = true; // enables the trail renderer at the tip of the sword
-        attacked = true; // attacked is set to true
-        Animator anim = playerAnimator.GetComponent<Animator>(); //Sets animator int to 2
-        anim.SetInteger("animInt", 2);
-        yield return new WaitForSeconds(anim.GetCurrentAnimatorClipInfo(0).Length - 0.05f); //Wait for animation to be over
+    void AttackAnimation()
+    {        
         attacked = false; // set attacked back to false
         trail.enabled = false; // disabled the trail renderer at the tip of the sword
         playerAnimator.GetComponent<Animator>().SetInteger("animInt", 0); //Resets animator
