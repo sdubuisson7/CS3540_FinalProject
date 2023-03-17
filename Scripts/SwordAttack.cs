@@ -1,4 +1,5 @@
 using System.Collections;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,14 +10,27 @@ public class SwordAttack : MonoBehaviour
     public Color enemyDotColorNear = Color.red; //Reference to the color that the dot will change when aiming at an enemy
     public Color enemyDotColorFar = Color.yellow; //Reference to the color that the dot will change when aiming at an enemy
     public float colorRange = 3f; // Reference to the range at which the sword can cause damage to enemies
-    public float colorSpeed = 8;//Reference to the speed the dot color changes
+    public float colorSpeed = 8; //Reference to the speed the dot color changes
     public float attackRange;
     public static bool attacked; // Has the player attacked?
     GameObject player; // The player game object
     Color neutralDotColor; //The neutral color of the Dot
     
+    public enum FoodGroups {
+        None,
+        Sweet,
+        Veggie,
+        Meat,
+        Starch,
+        Spice,
+        Dairy
+    }
+
+    // TODO: can switch to enum later once we figure out recipe names
+    public string currentRecipe;
+
     TrailRenderer trail; //The TrailRenderer at the tip of the sword
-    private string[] ingredients;
+    private FoodGroups[] ingredientsList;
     public Image ingredient1;
     public Image ingredient2;
     public Image ingredient3;
@@ -27,25 +41,31 @@ public class SwordAttack : MonoBehaviour
 
     public Transform attackPoint;
 
-    private float speedBoost;
+    private float speedBoostTimer;
     GameObject playerAnimator;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        // no recipe set
+        currentRecipe = null;
         ingredientImages = new Image[3]{ingredient1, ingredient2, ingredient3};
-        attacked = false; //Set attacked to false
-        trail = tip.GetComponent<TrailRenderer>(); //get reference to trail component
-        trail.enabled = false; // disable the trail renderer
-        neutralDotColor = dot.color; // assign the dot's neutral color
-        player = GameObject.FindGameObjectWithTag("Player"); //get a reference to the player
-        ingredients = new string[3];
+        attacked = false; 
+        // get reference to trail component
+        trail = tip.GetComponent<TrailRenderer>(); 
+        // disable the trail renderer
+        trail.enabled = false; 
+        // assign the dot's neutral color
+        neutralDotColor = dot.color; 
+        player = GameObject.FindGameObjectWithTag("Player");
+        ingredientsList = new FoodGroups[3]{FoodGroups.None, FoodGroups.None, FoodGroups.None};
+
         for (int i = 0; i < ingredientImages.Length; i++) {
             ingredientImages[i].color = Color.gray;
         }
         
-        speedBoost = 10.0f;
+        speedBoostTimer = 10.0f;
         playerAnimator = GameObject.FindGameObjectWithTag("PlayerAnimator");
     }
 
@@ -55,48 +75,17 @@ public class SwordAttack : MonoBehaviour
         //Check to see if the player pressed the fire 1 button and has not attacked
         if (Input.GetButtonDown("Fire1") && !attacked)
         {
-            Attack(); // Run the Attack method
+            Attack(); 
         }
 
+        // Update the recipe loadout in the UI
+        UpdateRecipeLoadout();
 
-        for (int i = 0; i < ingredients.Length; i++) 
+        // If we've filled the ingredientsList, apply the power up
+        if (ingredientsList[ingredientsList.Length - 1] != FoodGroups.None)
         {
-            if (ingredients[i] != null) 
-            {
-                switch (ingredients[i]) 
-                {
-                    case "Sweet":
-                        ingredientImages[i].color = Color.magenta;
-                        break;
-                    case "Veggie":
-                        ingredientImages[i].color = Color.green;
-                        break;
-                    default:
-                        break;
-                } 
-                
-            }
-        }
-        
-        // If we've filled the ingredients list
-        if (ingredients[ingredients.Length - 1] != null)
-        {
-            if (speedBoost > 0.0f)
-            {
-                player.GetComponent<PlayerMovement>().moveSpeed = 12;
-                speedBoost -= Time.deltaTime;
-                Debug.Log("Sugar Cube created! Speed Boost for 10 seconds");
-            }
-            else
-            {
-                player.GetComponent<PlayerMovement>().moveSpeed = 10;
-                for(int i = 0; i < ingredients.Length; i++) {
-                    ingredients[i] = null;
-                    ingredientImages[i].color = Color.gray;
-                }
-                
-                speedBoost = 10.0f;
-            }
+            UpdateCurrentRecipe();
+            ApplyPowerup();
         }
 
     }
@@ -106,15 +95,15 @@ public class SwordAttack : MonoBehaviour
         trail.enabled = true; // enables the trail renderer at the tip of the sword
         attacked = true; // attacked is set to true
 
-        //Sets animator int to 2
+        // Sets animator int to 2
         Animator anim = playerAnimator.GetComponent<Animator>(); 
         anim.SetInteger("animInt", 2);
         
         AudioSource.PlayClipAtPoint(swordSFX, transform.position);
 
-        Invoke("AttackAnimation", anim.GetCurrentAnimatorClipInfo(0).Length - 0.05f);
+        // go back to neutral position
+        Invoke("ResetAnimation", anim.GetCurrentAnimatorClipInfo(0).Length - 0.05f);
 
-        
 
         Collider[] hits = Physics.OverlapSphere(attackPoint.position, attackRange);
 
@@ -123,11 +112,14 @@ public class SwordAttack : MonoBehaviour
             if (hit.CompareTag("Enemy"))
             {
                 LevelManager.enemiesKilled++;
-                for (int i = 0; i < ingredients.Length; i++)
+
+                // Update the food name in the ingredientsList array
+                for (int i = 0; i < ingredientsList.Length; i++)
                 {
-                    if (ingredients[i] == null)
+                    if (ingredientsList[i] == FoodGroups.None)
                     {
-                        ingredients[i] = hit.gameObject.GetComponent<EnemyBehavior>().foodGroup();
+                        string group = hit.gameObject.GetComponent<EnemyBehavior>().foodGroup();
+                        ingredientsList[i] = (FoodGroups) Enum.Parse(typeof(FoodGroups), group);
                         break;
                     }
                 }
@@ -140,18 +132,20 @@ public class SwordAttack : MonoBehaviour
     //To Visualize the attack point in the inspector
     private void OnDrawGizmosSelected()
     {
-        if (attackPoint == null)
+        if (attackPoint == null) {
             return;
+        }
 
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 
     void FixedUpdate()
     {
-        dotUpdate();//Runs the DotUpdate method
+        // Update the dot reticle at screen center
+        DotUpdate();
     }
 
-    void dotUpdate()
+    void DotUpdate()
     {
         RaycastHit hit;
 
@@ -172,7 +166,6 @@ public class SwordAttack : MonoBehaviour
                     dot.color = Color.Lerp(dot.color, enemyDotColorFar, Time.deltaTime * colorSpeed); // If raycast is looking at a far enemy change the dot color
                 }
                 
-
             }
             else
             {
@@ -184,10 +177,118 @@ public class SwordAttack : MonoBehaviour
 
 
     
-    void AttackAnimation()
+    void ResetAnimation()
     {        
         attacked = false; // set attacked back to false
         trail.enabled = false; // disabled the trail renderer at the tip of the sword
         playerAnimator.GetComponent<Animator>().SetInteger("animInt", 0); //Resets animator
+    }
+
+
+    void UpdateRecipeLoadout() 
+    {
+        for (int i = 0; i < ingredientsList.Length; i++) 
+        {
+            if (ingredientsList[i] != FoodGroups.None) 
+            {
+                switch (ingredientsList[i]) 
+                {
+                    case FoodGroups.Sweet:
+                        ingredientImages[i].color = Color.magenta;
+                        break;
+                    case FoodGroups.Veggie:
+                        ingredientImages[i].color = Color.green;
+                        break;
+                    case FoodGroups.Meat:
+                        ingredientImages[i].color = new Color(1.0f, 0.6f, 0.0f, 1f);
+                        break;
+                    case FoodGroups.Starch:
+                        ingredientImages[i].color = Color.yellow;
+                        break;
+                    case FoodGroups.Spice:
+                        ingredientImages[i].color = Color.red;
+                        break;
+                    case FoodGroups.Dairy:
+                        ingredientImages[i].color = Color.white;
+                        break;
+                    default:
+                        break;
+                } 
+                
+            }
+        }
+    }
+
+    void ApplyPowerup() 
+    {
+
+        switch (currentRecipe) {
+            case "Sugar Cube":
+                ApplySugarRush();
+                break;
+            default:
+                // We didn't make a recipe
+
+                // TODO: Add some kind of noise here
+
+                // Reset our recipe loadout
+                ResetRecipeLoadout();
+                break;
+            
+        }
+        
+    }
+
+    void ApplySugarRush() {
+        if (speedBoostTimer > 0.0f)
+        {
+            player.GetComponent<PlayerMovement>().moveSpeed = 12;
+            speedBoostTimer -= Time.deltaTime;
+            Debug.Log("Sugar Cube created! Speed Boost for 10 seconds");
+        }
+        else
+        {
+            // reset the effects of the power up
+            ResetPowerUp();
+
+            // Reset our recipe loadout
+            ResetRecipeLoadout();
+            
+        }
+    }
+
+    // return the recipe that 
+    void UpdateCurrentRecipe() 
+    {
+        
+        if (Array.TrueForAll(ingredientsList, element => element == FoodGroups.Sweet)) {
+            currentRecipe = "Sugar Cube";
+        }
+        // TODO: More cases, based on recipe specs
+        
+    }
+
+    void ResetRecipeLoadout() 
+    {
+        for(int i = 0; i < ingredientsList.Length; i++) 
+        {
+            ingredientsList[i] = FoodGroups.None;
+            ingredientImages[i].color = Color.gray;
+        }
+    }
+
+    void ResetPowerUp() {
+
+        switch (currentRecipe) {
+            case "Sugar Cube":
+                player.GetComponent<PlayerMovement>().moveSpeed = 10;
+                speedBoostTimer = 10.0f;
+                break;
+            default:
+                break;
+        }
+
+        currentRecipe = null;
+
     }
 }
