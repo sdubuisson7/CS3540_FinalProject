@@ -1,41 +1,61 @@
 using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SwordAttack : MonoBehaviour
-{
-    public GameObject tip; // Reference to the empty GameObject located at the tip of the sword
+public class SwordAttack : MonoBehaviour {
+    public GameObject tip; // Reference to the GameObject located at the tip of the sword
     public Image dot; //Reference to the UI Image at the center of the screen
-    public Color enemyDotColor = Color.red; //Reference to the color that the dot will change when aiming at an enemy
-    public float swordRange = 1.5f; // Reference to the range at which the sword can cause damage to enemies
+    public Color enemyDotColorNear = Color.red; //Reference to the color that the dot will change when aiming at an enemy
+    public Color enemyDotColorFar = Color.yellow; //Reference to the color that the dot will change when aiming at an enemy
+    public float colorRange = 3f; // Reference to the range at which the sword can cause damage to enemies
+    public float colorSpeed = 8; //Reference to the speed the dot color changes
+    public float attackRange;
+    public static bool attacked; // Has the player attacked?
     GameObject player; // The player game object
     Color neutralDotColor; //The neutral color of the Dot
-    bool attacked; // Has the player attacked?
+
+    // TODO: can switch to enum later once we figure out recipe names
+    public string currentRecipe;
+
     TrailRenderer trail; //The TrailRenderer at the tip of the sword
-<<<<<<< Updated upstream
-=======
-    private FoodGroup[] ingredients;
+    private FoodGroups[] ingredientsList;
     public Image ingredient1;
     public Image ingredient2;
     public Image ingredient3;
+    private Image[] ingredientImages;
+
+    // sword swing audio
+    public AudioClip swordSFX;
 
     public Transform attackPoint;
 
-    private float speedBoost;
+    private float speedBoostTimer;
     GameObject playerAnimator;
 
->>>>>>> Stashed changes
 
     // Start is called before the first frame update
     void Start()
     {
-        attacked = false; //Set attacked to false
-        trail = tip.GetComponent<TrailRenderer>(); //get reference to trail component
-        trail.enabled = false; // disable the trail renderer
-        neutralDotColor = dot.color; // assign the dot's neutral color
-        player = GameObject.FindGameObjectWithTag("Player"); //get a reference to the player
+        // no recipe set
+        currentRecipe = null;
+        ingredientImages = new Image[3]{ingredient1, ingredient2, ingredient3};
+        attacked = false; 
+        // get reference to trail component
+        trail = tip.GetComponent<TrailRenderer>(); 
+        // disable the trail renderer
+        trail.enabled = false; 
+        // assign the dot's neutral color
+        neutralDotColor = dot.color; 
+        player = GameObject.FindGameObjectWithTag("Player");
+        ingredientsList = new FoodGroups[3]{FoodGroups.None, FoodGroups.None, FoodGroups.None};
 
+        for (int i = 0; i < ingredientImages.Length; i++) {
+            ingredientImages[i].color = Color.gray;
+        }
+        
+        speedBoostTimer = 10.0f;
+        playerAnimator = GameObject.FindGameObjectWithTag("PlayerAnimator");
     }
 
     // Update is called once per frame
@@ -44,60 +64,92 @@ public class SwordAttack : MonoBehaviour
         //Check to see if the player pressed the fire 1 button and has not attacked
         if (Input.GetButtonDown("Fire1") && !attacked)
         {
-            Attack(); // Run the Attack method
+            Attack(); 
         }
-        
+
+        // Update the recipe loadout in the UI
+        UpdateRecipeLoadout();
+
+        // If we've filled the ingredientsList, apply the power up
+        if (ingredientsList[ingredientsList.Length - 1] != FoodGroups.None)
+        {
+            UpdateCurrentRecipe();
+            ApplyPowerup();
+        }
 
     }
 
     void Attack()
     {
-        StartCoroutine(AttackAnimation()); //Start the AttackAnimation coroutine
-        RaycastHit hit;
+        trail.enabled = true; // enables the trail renderer at the tip of the sword
+        attacked = true; // attacked is set to true
 
-        //Check to see if Raycast hit a collider
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, Mathf.Infinity))
-        {
-            //Check to see if hit collider is an enemy
-            if (hit.collider.gameObject.CompareTag("Enemy"))
-            {
-                
-                float distance = Vector3.Distance(player.transform.position, hit.transform.position);//The distance between the enemy and the player
-                //Check to see if the enemy is within range to get hit by sword
-                if (distance <= swordRange)
-                {
-<<<<<<< Updated upstream
-                    //Kill/Damage Enemy
-                    Destroy(hit.collider.gameObject);
-=======
-                    if (ingredients[i] == null)
-                    {
-                        ingredients[i] = hit.gameObject.GetComponent<EnemyBehaviour>().foodGroup();
-                        i = 2;
+        // Sets animator int to 2
+        Animator anim = playerAnimator.GetComponent<Animator>(); 
+        anim.SetInteger("animInt", 2);
+        
+        AudioSource.PlayClipAtPoint(swordSFX, transform.position);
+
+        // go back to neutral position
+        Invoke("ResetAnimation", anim.GetCurrentAnimatorClipInfo(0).Length - 0.05f);
+
+
+        Collider[] hits = Physics.OverlapSphere(attackPoint.position, attackRange);
+
+        foreach(Collider hit in hits) {
+            if (hit.CompareTag("Enemy")) {
+                LevelManager.enemiesKilled++;
+
+                // Update the food name in the ingredientsList array
+                for (int i = 0; i < ingredientsList.Length; i++) {
+                    if (ingredientsList[i] == FoodGroups.None) {
+                        ingredientsList[i] = hit.gameObject.GetComponent<EnemyBehavior>().foodGroup();
+                        break;
                     }
->>>>>>> Stashed changes
                 }
+
+                Destroy(hit.gameObject);
             }
         }
     }
 
-    void FixedUpdate()
+    //To Visualize the attack point in the inspector
+    private void OnDrawGizmosSelected()
     {
-        dotUpdate();//Runs the DotUpdate method
+        if (attackPoint == null) {
+            return;
+        }
+
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 
-    void dotUpdate()
+    void FixedUpdate()
+    {
+        // Update the dot reticle at screen center
+        DotUpdate();
+    }
+
+    void DotUpdate()
     {
         RaycastHit hit;
 
         //Check to see if Raycast hit a collider
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, Mathf.Infinity))
+        if (Physics.Raycast(player.transform.position, player.transform.forward, out hit, Mathf.Infinity))
         {
             //Check to see if Raycast hit an enemy
             if (hit.collider.gameObject.CompareTag("Enemy"))
             {
-                dot.color = Color.Lerp(dot.color, enemyDotColor, Time.deltaTime * 10); // If raycast is looking at an enemy change the dot color
-
+                float distance = Vector3.Distance(player.transform.position, hit.transform.position);//The distance between the enemy and the player
+                //Check to see if the enemy is within close range
+                if (distance <= colorRange)
+                {
+                    dot.color = Color.Lerp(dot.color, enemyDotColorNear, Time.deltaTime * colorSpeed); // If raycast is looking at a nearby enemy change the dot color
+                }
+                else
+                {
+                    dot.color = Color.Lerp(dot.color, enemyDotColorFar, Time.deltaTime * colorSpeed); // If raycast is looking at a far enemy change the dot color
+                }
+                
             }
             else
             {
@@ -109,15 +161,118 @@ public class SwordAttack : MonoBehaviour
 
 
     
-    IEnumerator AttackAnimation()
-    {
-        
-        trail.enabled = true; // enables the trail renderer at the tip of the sword
-        attacked = true; // attacked is set to true
-        GetComponent<Animator>().SetTrigger("Attack"); // sets attack trigger to run the sword attack animation
-
-        yield return new WaitForSeconds(0.6f); //Wait for 0.6 seconds
+    void ResetAnimation()
+    {        
         attacked = false; // set attacked back to false
         trail.enabled = false; // disabled the trail renderer at the tip of the sword
+        playerAnimator.GetComponent<Animator>().SetInteger("animInt", 0); //Resets animator
+    }
+
+
+    void UpdateRecipeLoadout() 
+    {
+        for (int i = 0; i < ingredientsList.Length; i++) 
+        {
+            if (ingredientsList[i] != FoodGroups.None) 
+            {
+                switch (ingredientsList[i]) 
+                {
+                    case FoodGroups.Sweet:
+                        ingredientImages[i].color = Color.magenta;
+                        break;
+                    case FoodGroups.Veggie:
+                        ingredientImages[i].color = Color.green;
+                        break;
+                    case FoodGroups.Meat:
+                        ingredientImages[i].color = new Color(1.0f, 0.6f, 0.0f, 1f);
+                        break;
+                    case FoodGroups.Starch:
+                        ingredientImages[i].color = Color.yellow;
+                        break;
+                    case FoodGroups.Spice:
+                        ingredientImages[i].color = Color.red;
+                        break;
+                    case FoodGroups.Dairy:
+                        ingredientImages[i].color = Color.white;
+                        break;
+                    default:
+                        break;
+                } 
+                
+            }
+        }
+    }
+
+    void ApplyPowerup() 
+    {
+
+        switch (currentRecipe) {
+            case "Sugar Cube":
+                ApplySugarRush();
+                break;
+            default:
+                // We didn't make a recipe
+
+                // TODO: Add some kind of noise here
+
+                // Reset our recipe loadout
+                ResetRecipeLoadout();
+                break;
+            
+        }
+        
+    }
+
+    void ApplySugarRush() {
+        if (speedBoostTimer > 0.0f)
+        {
+            player.GetComponent<PlayerMovement>().moveSpeed = 12;
+            speedBoostTimer -= Time.deltaTime;
+            Debug.Log("Sugar Cube created! Speed Boost for 10 seconds");
+        }
+        else
+        {
+            // reset the effects of the power up
+            ResetPowerUp();
+
+            // Reset our recipe loadout
+            ResetRecipeLoadout();
+            
+        }
+    }
+
+    // return the recipe that 
+    void UpdateCurrentRecipe() 
+    {
+        
+        if (Array.TrueForAll(ingredientsList, element => element == FoodGroups.Sweet)) {
+            currentRecipe = "Sugar Cube";
+        }
+        // TODO: More cases, based on recipe specs
+        
+    }
+
+    void ResetRecipeLoadout() 
+    {
+        for(int i = 0; i < ingredientsList.Length; i++) 
+        {
+            ingredientsList[i] = FoodGroups.None;
+            ingredientImages[i].color = Color.gray;
+        }
+    }
+
+    void ResetPowerUp() {
+
+        switch (currentRecipe) {
+            case "Sugar Cube":
+                player.GetComponent<PlayerMovement>().moveSpeed = 10;
+                speedBoostTimer = 10.0f;
+                break;
+            default:
+                break;
+        }
+
+        currentRecipe = null;
+
     }
 }
