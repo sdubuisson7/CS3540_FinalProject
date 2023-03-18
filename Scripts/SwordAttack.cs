@@ -102,7 +102,15 @@ public class SwordAttack : MonoBehaviour
         AudioSource.PlayClipAtPoint(swordSFX, transform.position);
 
         // go back to neutral position
-        Invoke("ResetAnimation", anim.GetCurrentAnimatorClipInfo(0).Length - 0.05f);
+        if (player.GetComponent<PlayerMovement>().isMoving)
+        {
+            Invoke("ResetAnimation", 0.9f);
+        }
+        else
+        {
+            Invoke("ResetAnimation", 0.95f);
+        }
+        
 
 
         Collider[] hits = Physics.OverlapSphere(attackPoint.position, attackRange);
