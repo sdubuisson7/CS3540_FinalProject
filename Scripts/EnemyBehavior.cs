@@ -8,6 +8,7 @@ public class EnemyBehavior : MonoBehaviour
     public int damage = 20;
     GameObject player; // Referene to the player so that the enemy can follow the player.
 
+    
     // Start is called before the first frame update
     void Start()
     {
