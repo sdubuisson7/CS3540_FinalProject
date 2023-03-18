@@ -11,6 +11,7 @@ public class SwordAttack : MonoBehaviour
     public Color enemyDotColorFar = Color.yellow; //Reference to the color that the dot will change when aiming at an enemy
     public float colorRange = 3f; // Reference to the range at which the sword can cause damage to enemies
     public float colorSpeed = 8; //Reference to the speed the dot color changes
+    
     public float attackRange;
     public static bool attacked; // Has the player attacked?
     GameObject player; // The player game object
@@ -38,6 +39,13 @@ public class SwordAttack : MonoBehaviour
 
     // sword swing audio
     public AudioClip swordSFX;
+    // Recipe FX audio
+    public AudioClip eatSFX;
+    // powerup SFX
+    public AudioClip powerupSFX;
+
+    // for powerup sFX
+    bool powerupPlayed;
 
     public Transform attackPoint;
 
@@ -50,6 +58,7 @@ public class SwordAttack : MonoBehaviour
     {
         // no recipe set
         currentRecipe = null;
+        powerupPlayed = false;
         ingredientImages = new Image[3]{ingredient1, ingredient2, ingredient3};
         attacked = false; 
         // get reference to trail component
@@ -85,7 +94,15 @@ public class SwordAttack : MonoBehaviour
         if (ingredientsList[ingredientsList.Length - 1] != FoodGroups.None)
         {
             UpdateCurrentRecipe();
-            ApplyPowerup();
+            if (currentRecipe != null) {
+                // TODO: Add some kind of noise here
+                // Reset our recipe loadout
+                ApplyPowerup();
+            }
+            else {
+                ResetRecipeLoadout();
+
+            }
         }
 
     }
@@ -110,8 +127,6 @@ public class SwordAttack : MonoBehaviour
         {
             Invoke("ResetAnimation", 0.95f);
         }
-        
-
 
         Collider[] hits = Physics.OverlapSphere(attackPoint.position, attackRange);
 
@@ -181,9 +196,6 @@ public class SwordAttack : MonoBehaviour
             }
         }
     }
-
-
-
     
     void ResetAnimation()
     {        
@@ -229,6 +241,12 @@ public class SwordAttack : MonoBehaviour
 
     void ApplyPowerup() 
     {
+        if (!powerupPlayed) 
+        {
+            AudioSource.PlayClipAtPoint(eatSFX, transform.position);
+            AudioSource.PlayClipAtPoint(powerupSFX, transform.position);
+            powerupPlayed = true;
+        }
 
         switch (currentRecipe) {
             case "Sugar Cube":
@@ -236,11 +254,6 @@ public class SwordAttack : MonoBehaviour
                 break;
             default:
                 // We didn't make a recipe
-
-                // TODO: Add some kind of noise here
-
-                // Reset our recipe loadout
-                ResetRecipeLoadout();
                 break;
             
         }
@@ -248,9 +261,10 @@ public class SwordAttack : MonoBehaviour
     }
 
     void ApplySugarRush() {
+        
         if (speedBoostTimer > 0.0f)
         {
-            player.GetComponent<PlayerMovement>().moveSpeed = 12;
+            player.GetComponent<PlayerMovement>().moveSpeed = 20;
             speedBoostTimer -= Time.deltaTime;
             Debug.Log("Sugar Cube created! Speed Boost for 10 seconds");
         }
@@ -272,6 +286,7 @@ public class SwordAttack : MonoBehaviour
         if (Array.TrueForAll(ingredientsList, element => element == FoodGroups.Sweet)) {
             currentRecipe = "Sugar Cube";
         }
+        
         // TODO: More cases, based on recipe specs
         
     }
@@ -286,6 +301,7 @@ public class SwordAttack : MonoBehaviour
     }
 
     void ResetPowerUp() {
+        powerupPlayed = false;
 
         switch (currentRecipe) {
             case "Sugar Cube":
