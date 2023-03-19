@@ -35,8 +35,7 @@ public class SwordAttack : MonoBehaviour {
 
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         // no recipe set
         currentRecipe = null;
         ingredientImages = new Image[3]{ingredient1, ingredient2, ingredient3};
@@ -79,8 +78,7 @@ public class SwordAttack : MonoBehaviour {
 
     }
 
-    void Attack()
-    {
+    void Attack() {
         trail.enabled = true; // enables the trail renderer at the tip of the sword
         attacked = true; // attacked is set to true
 

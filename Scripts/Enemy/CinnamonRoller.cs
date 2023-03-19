@@ -18,15 +18,14 @@ public class CinnamonRoller : EnemyBehavior {
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position, Time.deltaTime * speed);
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
+    void OnCollisionEnter(Collision c) {
         //Check if Enemy collided with Player
-        if (other.CompareTag("Player"))
-        {
+        if (c.gameObject.CompareTag("Player")) {
             player.GetComponent<PlayerHealth>().Hit(damage);
             Debug.Log("PlayerHit");
         }
     }
+
     public override FoodGroups foodGroup() {
         return FoodGroups.Sweet;
     }
