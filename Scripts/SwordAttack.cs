@@ -92,49 +92,53 @@ public class SwordAttack : MonoBehaviour
 
     void Attack()
     {
-        trail.enabled = true; // enables the trail renderer at the tip of the sword
-        attacked = true; // attacked is set to true
-
-        // Sets animator int to 2
-        Animator anim = playerAnimator.GetComponent<Animator>(); 
-        anim.SetInteger("animInt", 2);
-        
-        AudioSource.PlayClipAtPoint(swordSFX, transform.position);
-
-        // go back to neutral position
-        if (player.GetComponent<PlayerMovement>().isMoving)
+        if(!LevelManager.isGameOver)
         {
-            Invoke("ResetAnimation", 0.9f);
-        }
-        else
-        {
-            Invoke("ResetAnimation", 0.95f);
-        }
-        
+            trail.enabled = true; // enables the trail renderer at the tip of the sword
+            attacked = true; // attacked is set to true
 
+            // Sets animator int to 2
+            Animator anim = playerAnimator.GetComponent<Animator>();
+            anim.SetInteger("animInt", 2);
 
-        Collider[] hits = Physics.OverlapSphere(attackPoint.position, attackRange);
+            AudioSource.PlayClipAtPoint(swordSFX, transform.position);
 
-        foreach(Collider hit in hits)
-        {
-            if (hit.CompareTag("Enemy"))
+            // go back to neutral position
+            if (player.GetComponent<PlayerMovement>().isMoving)
             {
-                LevelManager.enemiesKilled++;
+                Invoke("ResetAnimation", 0.9f);
+            }
+            else
+            {
+                Invoke("ResetAnimation", 0.95f);
+            }
 
-                // Update the food name in the ingredientsList array
-                for (int i = 0; i < ingredientsList.Length; i++)
+
+
+            Collider[] hits = Physics.OverlapSphere(attackPoint.position, attackRange);
+
+            foreach (Collider hit in hits)
+            {
+                if (hit.CompareTag("Enemy"))
                 {
-                    if (ingredientsList[i] == FoodGroups.None)
-                    {
-                        string group = hit.gameObject.GetComponent<EnemyBehavior>().foodGroup();
-                        ingredientsList[i] = (FoodGroups) Enum.Parse(typeof(FoodGroups), group);
-                        break;
-                    }
-                }
+                    LevelManager.enemiesKilled++;
 
-                Destroy(hit.gameObject);
+                    // Update the food name in the ingredientsList array
+                    for (int i = 0; i < ingredientsList.Length; i++)
+                    {
+                        if (ingredientsList[i] == FoodGroups.None)
+                        {
+                            string group = hit.gameObject.GetComponent<EnemyBehavior>().foodGroup();
+                            ingredientsList[i] = (FoodGroups)Enum.Parse(typeof(FoodGroups), group);
+                            break;
+                        }
+                    }
+
+                    Destroy(hit.gameObject);
+                }
             }
         }
+        
     }
 
     //To Visualize the attack point in the inspector
@@ -271,6 +275,10 @@ public class SwordAttack : MonoBehaviour
         
         if (Array.TrueForAll(ingredientsList, element => element == FoodGroups.Sweet)) {
             currentRecipe = "Sugar Cube";
+        }
+        else if (Array.TrueForAll(ingredientsList, element => element == FoodGroups.Meat))
+        {
+            currentRecipe = "Meat Skewer";
         }
         // TODO: More cases, based on recipe specs
         

@@ -23,7 +23,7 @@ public class PlayerHealth : MonoBehaviour {
         currentHealth -= damage;
         if (currentHealth <= 0) {
             currentHealth = 0;
-            // PLAYER DIES
+            FindObjectOfType<LevelManager>().LevelLost();
         }
         healthSlider.value = currentHealth;
     }
