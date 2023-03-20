@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CinnamonRoller : EnemyBehavior {
     public float speed = 4; // Reference to the movement speed of the enemy
-    public int damage = 20;
+    public int damage = 10;
 
     // Start is called before the first frame update
     public override void EnemyStart() {
@@ -18,15 +18,14 @@ public class CinnamonRoller : EnemyBehavior {
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position, Time.deltaTime * speed);
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
+    void OnCollisionEnter(Collision c) {
         //Check if Enemy collided with Player
-        if (other.CompareTag("Player"))
-        {
+        if (c.gameObject.CompareTag("Player")) {
             player.GetComponent<PlayerHealth>().Hit(damage);
             Debug.Log("PlayerHit");
         }
     }
+
     public override FoodGroups foodGroup() {
         return FoodGroups.Sweet;
     }
