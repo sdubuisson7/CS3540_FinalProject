@@ -28,7 +28,7 @@ public class SwordAttack : MonoBehaviour
     }
 
     // TODO: can switch to enum later once we figure out recipe names
-    public string currentRecipe;
+    private string currentRecipe;
 
     TrailRenderer trail; //The TrailRenderer at the tip of the sword
     private FoodGroups[] ingredientsList;
@@ -36,6 +36,8 @@ public class SwordAttack : MonoBehaviour
     public Image ingredient2;
     public Image ingredient3;
     private Image[] ingredientImages;
+    // Used to show what recipe we have
+    public Text recipeEffectsText;
 
     // sword swing audio
     public AudioClip swordSFX;
@@ -51,6 +53,7 @@ public class SwordAttack : MonoBehaviour
     public Transform attackPoint;
 
     private float speedBoostTimer;
+    private float attackBoostTimer;
     GameObject playerAnimator;
 
 
@@ -76,6 +79,7 @@ public class SwordAttack : MonoBehaviour
         }
         
         speedBoostTimer = 10.0f;
+        attackBoostTimer = 10.0f;
         playerAnimator = GameObject.FindGameObjectWithTag("PlayerAnimator");
     }
 
@@ -255,6 +259,9 @@ public class SwordAttack : MonoBehaviour
             case "Sugar Cube":
                 ApplySugarRush();
                 break;
+            case "Meat Skewer":
+                ApplyProteinPunch();
+                break;
             default:
                 // We didn't make a recipe
                 break;
@@ -263,13 +270,41 @@ public class SwordAttack : MonoBehaviour
         
     }
 
+    void ApplyProteinPunch() {
+        if (speedBoostTimer > 0.0f)
+        {
+            Debug.Log("Meat Skewer created! Attack Boost for 10 seconds");
+            attackBoostTimer -= Time.deltaTime;
+
+            // TODO: Attack Boost for player
+
+            recipeEffectsText.text = "Recipe: Meat Skewer\nEffect: Protein Punch\nTime: " + attackBoostTimer.ToString("f2");
+        }
+        else
+        {
+            // reset the effects of the power up
+            ResetPowerUp();
+
+            // Reset our recipe loadout
+            ResetRecipeLoadout();
+            
+        }
+
+        
+    }
+
+
+
     void ApplySugarRush() {
         
         if (speedBoostTimer > 0.0f)
         {
+
             player.GetComponent<PlayerMovement>().moveSpeed = 20;
             speedBoostTimer -= Time.deltaTime;
             Debug.Log("Sugar Cube created! Speed Boost for 10 seconds");
+            recipeEffectsText.text = "Recipe: Sugar Cube\nEffect: Sugar Rush\nTime: " + speedBoostTimer.ToString("f2");
+
         }
         else
         {
@@ -289,13 +324,16 @@ public class SwordAttack : MonoBehaviour
         if (Array.TrueForAll(ingredientsList, element => element == FoodGroups.Sweet)) {
             currentRecipe = "Sugar Cube";
         }
+        if (Array.TrueForAll(ingredientsList, element => element == FoodGroups.Meat)) {
+            currentRecipe = "Meat Skewer";
+        }
         
         // TODO: More cases, based on recipe specs
-        
     }
 
     void ResetRecipeLoadout() 
     {
+        recipeEffectsText.text = "Recipe: -";
         for(int i = 0; i < ingredientsList.Length; i++) 
         {
             ingredientsList[i] = FoodGroups.None;
@@ -309,6 +347,10 @@ public class SwordAttack : MonoBehaviour
         switch (currentRecipe) {
             case "Sugar Cube":
                 player.GetComponent<PlayerMovement>().moveSpeed = 10;
+                speedBoostTimer = 10.0f;
+                break;
+            case "Meat Skewer":
+                // TODO: Attack stuff
                 speedBoostTimer = 10.0f;
                 break;
             default:
