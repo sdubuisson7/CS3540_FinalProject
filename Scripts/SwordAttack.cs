@@ -3,9 +3,8 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SwordAttack : MonoBehaviour
-{
-    public GameObject tip; // Reference to the empty GameObject located at the tip of the sword
+public class SwordAttack : MonoBehaviour {
+    public GameObject tip; // Reference to the GameObject located at the tip of the sword
     public Image dot; //Reference to the UI Image at the center of the screen
     public Color enemyDotColorNear = Color.red; //Reference to the color that the dot will change when aiming at an enemy
     public Color enemyDotColorFar = Color.yellow; //Reference to the color that the dot will change when aiming at an enemy
@@ -15,16 +14,6 @@ public class SwordAttack : MonoBehaviour
     public static bool attacked; // Has the player attacked?
     GameObject player; // The player game object
     Color neutralDotColor; //The neutral color of the Dot
-    
-    public enum FoodGroups {
-        None,
-        Sweet,
-        Veggie,
-        Meat,
-        Starch,
-        Spice,
-        Dairy
-    }
 
     // TODO: can switch to enum later once we figure out recipe names
     public string currentRecipe;
@@ -102,32 +91,19 @@ public class SwordAttack : MonoBehaviour
         AudioSource.PlayClipAtPoint(swordSFX, transform.position);
 
         // go back to neutral position
-        if (player.GetComponent<PlayerMovement>().isMoving)
-        {
-            Invoke("ResetAnimation", 0.9f);
-        }
-        else
-        {
-            Invoke("ResetAnimation", 0.95f);
-        }
-        
+        Invoke("ResetAnimation", anim.GetCurrentAnimatorClipInfo(0).Length - 0.05f);
 
 
         Collider[] hits = Physics.OverlapSphere(attackPoint.position, attackRange);
 
-        foreach(Collider hit in hits)
-        {
-            if (hit.CompareTag("Enemy"))
-            {
+        foreach(Collider hit in hits) {
+            if (hit.CompareTag("Enemy")) {
                 LevelManager.enemiesKilled++;
 
                 // Update the food name in the ingredientsList array
-                for (int i = 0; i < ingredientsList.Length; i++)
-                {
-                    if (ingredientsList[i] == FoodGroups.None)
-                    {
-                        string group = hit.gameObject.GetComponent<EnemyBehavior>().foodGroup();
-                        ingredientsList[i] = (FoodGroups) Enum.Parse(typeof(FoodGroups), group);
+                for (int i = 0; i < ingredientsList.Length; i++) {
+                    if (ingredientsList[i] == FoodGroups.None) {
+                        ingredientsList[i] = hit.gameObject.GetComponent<EnemyBehavior>().foodGroup();
                         break;
                     }
                 }
