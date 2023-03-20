@@ -44,8 +44,9 @@ public class SwordAttack : MonoBehaviour
     // powerup SFX
     public AudioClip powerupSFX;
 
-    // for powerup sFX
+    // for powerup SFX
     bool powerupPlayed;
+    
 
     public Transform attackPoint;
 
@@ -143,6 +144,7 @@ public class SwordAttack : MonoBehaviour
                     {
                         string group = hit.gameObject.GetComponent<EnemyBehavior>().foodGroup();
                         ingredientsList[i] = (FoodGroups) Enum.Parse(typeof(FoodGroups), group);
+                        AudioSource.PlayClipAtPoint(eatSFX, transform.position);
                         break;
                     }
                 }
