@@ -33,17 +33,16 @@ public class Meatbrawler : EnemyBehavior {
         throwingTracker -= Time.deltaTime;
         if (throwingTracker <= 2.0f) {
             throwingArm.transform.rotation = Quaternion.Euler((60.0f * Mathf.Sin(60.0f * (Mathf.PI * (Time.time - 0.83f))) + 60.0f) / 360.0f, 0.0f, 0.0f);
-            if (throwingTracker <= 1.3f && !thrown) {
+            if (throwingTracker <= 0.0f) {
+                throwingTracker = throwingInterval + 2.0f;
+                thrown = false;
+            } else if (throwingTracker <= 1.3f && !thrown) {
                 MeatbrawlerProjectile proj = Instantiate(meatball, transform.position + transform.forward, transform.rotation).GetComponent<MeatbrawlerProjectile>();
                 proj.Activate(damage);
                 thrown = true;
             }
         } else {
             throwingArm.transform.rotation = Quaternion.Euler(0.0f, 1.0f / 6.0f, 0.0f);
-            if (throwingTracker <= 0.0f) {
-                throwingTracker = throwingInterval + 2.0f;
-                thrown = false;
-            }
         }
     }
 
