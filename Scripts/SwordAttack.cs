@@ -116,21 +116,12 @@ public class SwordAttack : MonoBehaviour
     {
         if(!LevelManager.isGameOver)
         {
-<<<<<<< HEAD
             trail.enabled = true; // enables the trail renderer at the tip of the sword
             attacked = true; // attacked is set to true
 
             // Sets animator int to 2
             Animator anim = playerAnimator.GetComponent<Animator>();
             anim.SetInteger("animInt", 2);
-=======
-            Invoke("ResetAnimation", 0.9f);
-        }
-        else
-        {
-            Invoke("ResetAnimation", 0.95f);
-        }
->>>>>>> 8e0b5a6cd00cca8358e534b2831ed36807c1afe0
 
             AudioSource.PlayClipAtPoint(swordSFX, transform.position);
 
@@ -152,18 +143,7 @@ public class SwordAttack : MonoBehaviour
             {
                 if (hit.CompareTag("Enemy"))
                 {
-<<<<<<< HEAD
                     LevelManager.enemiesKilled++;
-=======
-                    if (ingredientsList[i] == FoodGroups.None)
-                    {
-                        string group = hit.gameObject.GetComponent<EnemyBehavior>().foodGroup();
-                        ingredientsList[i] = (FoodGroups) Enum.Parse(typeof(FoodGroups), group);
-                        AudioSource.PlayClipAtPoint(eatSFX, transform.position);
-                        break;
-                    }
-                }
->>>>>>> 8e0b5a6cd00cca8358e534b2831ed36807c1afe0
 
                     // Update the food name in the ingredientsList array
                     for (int i = 0; i < ingredientsList.Length; i++)
@@ -349,18 +329,10 @@ public class SwordAttack : MonoBehaviour
         if (Array.TrueForAll(ingredientsList, element => element == FoodGroups.Sweet)) {
             currentRecipe = "Sugar Cube";
         }
-<<<<<<< HEAD
         else if (Array.TrueForAll(ingredientsList, element => element == FoodGroups.Meat))
         {
             currentRecipe = "Meat Skewer";
         }
-        // TODO: More cases, based on recipe specs
-=======
-        if (Array.TrueForAll(ingredientsList, element => element == FoodGroups.Meat)) {
-            currentRecipe = "Meat Skewer";
-        }
->>>>>>> 8e0b5a6cd00cca8358e534b2831ed36807c1afe0
-        
         // TODO: More cases, based on recipe specs
     }
 
