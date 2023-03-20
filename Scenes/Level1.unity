@@ -38,11 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-<<<<<<< HEAD:Scenes/SampleScene.unity
-  m_IndirectSpecularColor: {r: 0.33744276, g: 0.25539997, b: 0.25526255, a: 1}
-=======
   m_IndirectSpecularColor: {r: 0.7654685, g: 0.66229296, b: 0.64596283, a: 1}
->>>>>>> 8e0b5a6cd00cca8358e534b2831ed36807c1afe0:Scenes/Level1.unity
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -260,10 +256,10 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 220221471}
+  - {fileID: 1009037719}
   - {fileID: 1307718921}
   - {fileID: 1104738331}
   - {fileID: 691965399}
-  - {fileID: 1009037719}
   m_Father: {fileID: 1599300924}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2018,23 +2014,12 @@ Transform:
   m_Father: {fileID: 1157496}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: -13.46, z: 0}
-<<<<<<< HEAD:Scenes/SampleScene.unity
 --- !u!1 &369222136
 GameObject:
-=======
---- !u!1 &347271343 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 161394, guid: dadabfb7666c71040b774315c71951ea, type: 3}
-  m_PrefabInstance: {fileID: 1423482569}
-  m_PrefabAsset: {fileID: 0}
---- !u!54 &347271345
-Rigidbody:
->>>>>>> 8e0b5a6cd00cca8358e534b2831ed36807c1afe0:Scenes/Level1.unity
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD:Scenes/SampleScene.unity
   serializedVersion: 6
   m_Component:
   - component: {fileID: 369222139}
@@ -2060,7 +2045,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0.07450981, g: 0.9607843, b: 0.94509804, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2068,7 +2053,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: aa2a0e17827f17e43a71a705bc7bea92, type: 3}
     m_FontSize: 100
     m_FontStyle: 0
     m_BestFit: 0
@@ -2080,7 +2065,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: GAME OVER
 --- !u!222 &369222138
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2102,25 +2087,13 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1599300924}
-  m_RootOrder: 7
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 906, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
-=======
-  m_GameObject: {fileID: 347271343}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
->>>>>>> 8e0b5a6cd00cca8358e534b2831ed36807c1afe0:Scenes/Level1.unity
 --- !u!850595691 &478129231
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -2321,11 +2294,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD:Scenes/SampleScene.unity
   m_Name: pb_Mesh25652
-=======
-  m_Name: pb_Mesh57612
->>>>>>> 8e0b5a6cd00cca8358e534b2831ed36807c1afe0:Scenes/Level1.unity
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2678,7 +2647,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 32341598}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -3099,11 +3068,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-<<<<<<< HEAD:Scenes/SampleScene.unity
-  m_LocalRotation: {x: 0.086214036, y: -0.043109268, z: 0.0037340377, w: 0.99533653}
-=======
-  m_LocalRotation: {x: 0.086214, y: -0.04310927, z: 0.003734036, w: 0.99533653}
->>>>>>> 8e0b5a6cd00cca8358e534b2831ed36807c1afe0:Scenes/Level1.unity
+  m_LocalRotation: {x: 0.08621399, y: -0.0431092, z: 0.00373403, w: 0.99533653}
   m_LocalPosition: {x: 0.69553113, y: 4.48, z: -9.219404}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3192,7 +3157,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 32341598}
-  m_RootOrder: 4
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
@@ -3274,7 +3239,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 32341598}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -3565,11 +3530,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1250934649}
-<<<<<<< HEAD:Scenes/SampleScene.unity
-  m_LocalRotation: {x: 0.23819254, y: -0.05066212, z: 0.017444808, w: 0.9697389}
-=======
-  m_LocalRotation: {x: 0.23819254, y: -0.05066218, z: 0.017444797, w: 0.9697388}
->>>>>>> 8e0b5a6cd00cca8358e534b2831ed36807c1afe0:Scenes/Level1.unity
+  m_LocalRotation: {x: 0.2381925, y: -0.050662115, z: 0.017444806, w: 0.9697389}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4029,7 +3990,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 32341598}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -4143,11 +4104,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1327533357}
-<<<<<<< HEAD:Scenes/SampleScene.unity
-  m_LocalRotation: {x: 0.27805418, y: -0.049898136, z: 0.019523028, w: 0.95906985}
-=======
-  m_LocalRotation: {x: 0.27805418, y: -0.04989821, z: 0.01952302, w: 0.95906985}
->>>>>>> 8e0b5a6cd00cca8358e534b2831ed36807c1afe0:Scenes/Level1.unity
+  m_LocalRotation: {x: 0.27805415, y: -0.04989811, z: 0.01952303, w: 0.95906985}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4514,11 +4471,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD:Scenes/SampleScene.unity
   m_Name: pb_Mesh25464
-=======
-  m_Name: pb_Mesh57420
->>>>>>> 8e0b5a6cd00cca8358e534b2831ed36807c1afe0:Scenes/Level1.unity
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5793,11 +5746,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1582665841}
-<<<<<<< HEAD:Scenes/SampleScene.unity
-  m_LocalRotation: {x: 0.27805418, y: -0.04989811, z: 0.019523032, w: 0.95906985}
-=======
-  m_LocalRotation: {x: 0.27805418, y: -0.049898196, z: 0.019523023, w: 0.95906985}
->>>>>>> 8e0b5a6cd00cca8358e534b2831ed36807c1afe0:Scenes/Level1.unity
+  m_LocalRotation: {x: 0.27805415, y: -0.049898095, z: 0.01952303, w: 0.95906985}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5902,14 +5851,8 @@ RectTransform:
   - {fileID: 1381082332}
   - {fileID: 1663250170}
   - {fileID: 1475422482}
-<<<<<<< HEAD:Scenes/SampleScene.unity
-  - {fileID: 1307718921}
-  - {fileID: 1104738331}
-  - {fileID: 691965399}
-  - {fileID: 369222139}
-=======
   - {fileID: 32341598}
->>>>>>> 8e0b5a6cd00cca8358e534b2831ed36807c1afe0:Scenes/Level1.unity
+  - {fileID: 369222139}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
