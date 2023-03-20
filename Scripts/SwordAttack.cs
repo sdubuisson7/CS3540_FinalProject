@@ -151,6 +151,7 @@ public class SwordAttack : MonoBehaviour
 
                 Destroy(hit.gameObject);
             }
+            
         }
     }
 
