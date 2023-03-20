@@ -38,7 +38,11 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
+<<<<<<< HEAD:Scenes/SampleScene.unity
+  m_IndirectSpecularColor: {r: 0.33744276, g: 0.25539997, b: 0.25526255, a: 1}
+=======
   m_IndirectSpecularColor: {r: 0.7654685, g: 0.66229296, b: 0.64596283, a: 1}
+>>>>>>> 8e0b5a6cd00cca8358e534b2831ed36807c1afe0:Scenes/Level1.unity
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2014,6 +2018,10 @@ Transform:
   m_Father: {fileID: 1157496}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: -13.46, z: 0}
+<<<<<<< HEAD:Scenes/SampleScene.unity
+--- !u!1 &369222136
+GameObject:
+=======
 --- !u!1 &347271343 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 161394, guid: dadabfb7666c71040b774315c71951ea, type: 3}
@@ -2021,10 +2029,87 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
 --- !u!54 &347271345
 Rigidbody:
+>>>>>>> 8e0b5a6cd00cca8358e534b2831ed36807c1afe0:Scenes/Level1.unity
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD:Scenes/SampleScene.unity
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 369222139}
+  - component: {fileID: 369222138}
+  - component: {fileID: 369222137}
+  m_Layer: 5
+  m_Name: gameText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &369222137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 369222136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 100
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 100
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: New Text
+--- !u!222 &369222138
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 369222136}
+  m_CullTransparentMesh: 1
+--- !u!224 &369222139
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 369222136}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1599300924}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 906, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+=======
   m_GameObject: {fileID: 347271343}
   serializedVersion: 2
   m_Mass: 1
@@ -2035,6 +2120,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+>>>>>>> 8e0b5a6cd00cca8358e534b2831ed36807c1afe0:Scenes/Level1.unity
 --- !u!850595691 &478129231
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -2235,7 +2321,11 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD:Scenes/SampleScene.unity
+  m_Name: pb_Mesh25652
+=======
   m_Name: pb_Mesh57612
+>>>>>>> 8e0b5a6cd00cca8358e534b2831ed36807c1afe0:Scenes/Level1.unity
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3009,7 +3099,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
+<<<<<<< HEAD:Scenes/SampleScene.unity
+  m_LocalRotation: {x: 0.086214036, y: -0.043109268, z: 0.0037340377, w: 0.99533653}
+=======
   m_LocalRotation: {x: 0.086214, y: -0.04310927, z: 0.003734036, w: 0.99533653}
+>>>>>>> 8e0b5a6cd00cca8358e534b2831ed36807c1afe0:Scenes/Level1.unity
   m_LocalPosition: {x: 0.69553113, y: 4.48, z: -9.219404}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3471,7 +3565,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1250934649}
+<<<<<<< HEAD:Scenes/SampleScene.unity
+  m_LocalRotation: {x: 0.23819254, y: -0.05066212, z: 0.017444808, w: 0.9697389}
+=======
   m_LocalRotation: {x: 0.23819254, y: -0.05066218, z: 0.017444797, w: 0.9697388}
+>>>>>>> 8e0b5a6cd00cca8358e534b2831ed36807c1afe0:Scenes/Level1.unity
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4045,7 +4143,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1327533357}
+<<<<<<< HEAD:Scenes/SampleScene.unity
+  m_LocalRotation: {x: 0.27805418, y: -0.049898136, z: 0.019523028, w: 0.95906985}
+=======
   m_LocalRotation: {x: 0.27805418, y: -0.04989821, z: 0.01952302, w: 0.95906985}
+>>>>>>> 8e0b5a6cd00cca8358e534b2831ed36807c1afe0:Scenes/Level1.unity
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4412,7 +4514,11 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD:Scenes/SampleScene.unity
+  m_Name: pb_Mesh25464
+=======
   m_Name: pb_Mesh57420
+>>>>>>> 8e0b5a6cd00cca8358e534b2831ed36807c1afe0:Scenes/Level1.unity
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5687,7 +5793,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1582665841}
+<<<<<<< HEAD:Scenes/SampleScene.unity
+  m_LocalRotation: {x: 0.27805418, y: -0.04989811, z: 0.019523032, w: 0.95906985}
+=======
   m_LocalRotation: {x: 0.27805418, y: -0.049898196, z: 0.019523023, w: 0.95906985}
+>>>>>>> 8e0b5a6cd00cca8358e534b2831ed36807c1afe0:Scenes/Level1.unity
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5792,7 +5902,14 @@ RectTransform:
   - {fileID: 1381082332}
   - {fileID: 1663250170}
   - {fileID: 1475422482}
+<<<<<<< HEAD:Scenes/SampleScene.unity
+  - {fileID: 1307718921}
+  - {fileID: 1104738331}
+  - {fileID: 691965399}
+  - {fileID: 369222139}
+=======
   - {fileID: 32341598}
+>>>>>>> 8e0b5a6cd00cca8358e534b2831ed36807c1afe0:Scenes/Level1.unity
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6912,6 +7029,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemiesToKillToBeatLevel: 10
   enemiesLeft: {fileID: 1475422480}
+  gameText: {fileID: 369222137}
 --- !u!4 &88557215755656332
 Transform:
   m_ObjectHideFlags: 0

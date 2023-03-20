@@ -19,9 +19,16 @@ public class EnemyBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Make enemy look at player and move towards player
-        transform.LookAt(player.transform);
-        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, Time.deltaTime * speed);
+        if (!LevelManager.isGameOver)
+        {
+            //Make enemy look at player and move towards player
+            transform.LookAt(player.transform);
+            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, Time.deltaTime * speed);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     

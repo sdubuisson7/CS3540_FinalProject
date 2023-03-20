@@ -18,8 +18,15 @@ public class CameraControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Calculates the forward vector from the camera and keeps the player looking forward
-        Vector3 lookAt = cameraTarget.position - new Vector3(transform.position.x, cameraTarget.position.y, transform.position.z);
-        player.forward = Vector3.Lerp(player.forward, lookAt.normalized, Time.deltaTime * rotationSpeed);
+        if (!LevelManager.isGameOver)
+        {
+            //Calculates the forward vector from the camera and keeps the player looking forward
+            Vector3 lookAt = cameraTarget.position - new Vector3(transform.position.x, cameraTarget.position.y, transform.position.z);
+            player.forward = Vector3.Lerp(player.forward, lookAt.normalized, Time.deltaTime * rotationSpeed);
+        }
+        else
+        {
+            gameObject.transform.GetChild(0).gameObject.SetActive(false);
+        }
     }
 }
