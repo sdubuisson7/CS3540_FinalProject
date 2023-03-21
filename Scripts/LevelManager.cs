@@ -47,7 +47,7 @@ public class LevelManager : MonoBehaviour
         else if(enemiesToKillToBeatLevel > enemiesKilled)
         {
             reload -= Time.deltaTime;
-            gameText.text = "Game over, restarting in " + reload.ToString("f2");
+            gameText.text = "Game Over\nRestarting in " + reload.ToString("f2");
         }
     }
 
