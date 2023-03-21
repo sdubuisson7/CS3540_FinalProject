@@ -91,6 +91,7 @@ public class PlayerMovement : MonoBehaviour
 
             moveDirection.y -= gravity * Time.deltaTime; // applies gravtiy to vector
             controller.Move(moveDirection * Time.deltaTime); // Moves the controller over time
+
         }
     }
 
@@ -98,6 +99,13 @@ public class PlayerMovement : MonoBehaviour
     {
         playerAnimator.SetInteger("animInt", 0);
         jumped = false;
+    }
+
+    public void wonAnimation()
+    {
+        playerAnimator.SetInteger("animInt", 0);
+        playerAnimator.SetBool("IsMoving", false);
+        playerAnimator.SetBool("Won", true);
     }
 }
 

@@ -109,6 +109,10 @@ public class SwordAttack : MonoBehaviour
 
             }
         }
+        if (LevelManager.isGameOver)
+        {
+            gameObject.SetActive(false);
+        }
 
     }
 
@@ -151,6 +155,7 @@ public class SwordAttack : MonoBehaviour
                         if (ingredientsList[i] == FoodGroups.None)
                         {
                             AudioSource.PlayClipAtPoint(eatSFX, transform.position);
+
                             FoodGroups group = (FoodGroups) hit.gameObject.GetComponent<EnemyBehaviour>().foodGroup();
                             ingredientsList[i] = group;
                             break;

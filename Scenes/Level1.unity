@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.7654685, g: 0.66229296, b: 0.64596283, a: 1}
+  m_IndirectSpecularColor: {r: 0.7654344, g: 0.6624, b: 0.6458706, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1910,7 +1910,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -2294,7 +2294,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh25652
+  m_Name: pb_Mesh168560
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2803,7 +2803,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -2915,6 +2915,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 6bf89474d3fcd4da0b1eac592b80989c, type: 2}
+    - target: {fileID: 8909108595986761573, guid: c5f97a86539e01c4ea9932e5b58a16ca, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5f97a86539e01c4ea9932e5b58a16ca, type: 3}
 --- !u!1001 &954154457
@@ -3313,7 +3317,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f15597dfae4b9ea4c848946da68eb153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 7260805518179371179, guid: 1aec2eadcd4e84c118470556d3139fc1, type: 3}
+  enemyPrefab:
+  - {fileID: 7260805518179371179, guid: 1aec2eadcd4e84c118470556d3139fc1, type: 3}
+  - {fileID: 9209717975304136724, guid: 0dc11ce5dd87bfb48870d35f77fd6271, type: 3}
   spawnRange: {x: 30, y: 3.3, z: 30}
   initialSpawnInterval: 5
   spawnIntervalDecreaseRate: 0.1
@@ -4471,7 +4477,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh25464
+  m_Name: pb_Mesh168340
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6577,7 +6583,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -8022,6 +8028,10 @@ PrefabInstance:
     - target: {fileID: 2658833569154877253, guid: 8464b840f21d5ac48ba597bfbcce2fbf, type: 3}
       propertyPath: m_Name
       value: Sword
+      objectReference: {fileID: 0}
+    - target: {fileID: 2658833569154877253, guid: 8464b840f21d5ac48ba597bfbcce2fbf, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2658833569156825255, guid: 8464b840f21d5ac48ba597bfbcce2fbf, type: 3}
@@ -9944,6 +9954,10 @@ PrefabInstance:
     - target: {fileID: 8909108595531802462, guid: c5f97a86539e01c4ea9932e5b58a16ca, type: 3}
       propertyPath: m_Name
       value: Mug
+      objectReference: {fileID: 0}
+    - target: {fileID: 8909108595986761573, guid: c5f97a86539e01c4ea9932e5b58a16ca, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5f97a86539e01c4ea9932e5b58a16ca, type: 3}
