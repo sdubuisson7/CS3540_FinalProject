@@ -2,11 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBehavior : MonoBehaviour
-{
 public class CinnamonRoller : EnemyBehaviour {
     public float speed = 4; // Reference to the movement speed of the enemy
-    public int damage = 20;
+    public int damage = 1;
 
     
     // Start is called before the first frame update
@@ -29,8 +27,7 @@ public class CinnamonRoller : EnemyBehaviour {
         }
     }
 
-    public override FoodGroup foodGroup() {
-        return FoodGroup.Sweet;
+    public override FoodGroups foodGroup() {
+        return FoodGroups.Sweet;
     }
-}
 }
