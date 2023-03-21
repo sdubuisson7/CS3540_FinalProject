@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class LevelManager : MonoBehaviour
     public Text enemiesLeft;
     public Text gameText;
     public static bool isGameOver = false;
+    float reload = 5.0f;
+
 
     GameObject spawner;
 
@@ -40,7 +43,12 @@ public class LevelManager : MonoBehaviour
                 enemiesLeft.gameObject.SetActive(false);
                 Destroy(spawner);
             }
-        }     
+        }
+        else if(enemiesToKillToBeatLevel > enemiesKilled)
+        {
+            reload -= Time.deltaTime;
+            gameText.text = "Game over, restarting in " + reload.ToString("f2");
+        }
     }
 
     void setEnemiesLeft()
@@ -51,8 +59,14 @@ public class LevelManager : MonoBehaviour
     public void LevelLost()
     {
         isGameOver = true;
-        gameText.text = "GAME OVER, YOU LOSE";
+        gameText.text = "GAME OVER";
         gameText.gameObject.SetActive(true);
         Destroy(spawner);
+        Invoke("ReloadLevel", 5);
+    }
+
+    void ReloadLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
