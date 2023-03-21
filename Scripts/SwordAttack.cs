@@ -146,7 +146,7 @@ public class SwordAttack : MonoBehaviour
                 {
                     if (ingredientsList[i] == FoodGroups.None)
                     {
-                        string group = hit.gameObject.GetComponent<EnemyBehavior>().foodGroup();
+                        string group = hit.gameObject.GetComponent<EnemyBehavior>().foodGroup().ToString();
                         ingredientsList[i] = (FoodGroups) Enum.Parse(typeof(FoodGroups), group);
                         AudioSource.PlayClipAtPoint(eatSFX, transform.position);
                         break;
