@@ -41,6 +41,7 @@ public class LevelManager : MonoBehaviour
                 gameText.text = "Congrats! You win";
                 gameText.gameObject.SetActive(true);
                 enemiesLeft.gameObject.SetActive(false);
+                FindObjectOfType<PlayerMovement>().wonAnimation();
                 Destroy(spawner);
             }
         }

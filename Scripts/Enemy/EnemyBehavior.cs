@@ -24,7 +24,11 @@ public abstract class EnemyBehavior : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        EnemyUpdate();
+        if (!LevelManager.isGameOver)
+        {
+            EnemyUpdate();
+        }
+        
     }
 
     public abstract void EnemyStart();
