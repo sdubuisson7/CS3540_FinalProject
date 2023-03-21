@@ -43,15 +43,6 @@ public class CinnamonRoller : EnemyBehavior {
     {
         inCooldown = false;
     }
-    
-    private void OnCollisionEnter(Collision collision) {
-        if (collision.gameObject.CompareTag("Player")) {
-            var playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
-            playerHealth.Hit(damage);
-            Debug.Log("Player Hit");
-        }
-    }
-
 
     public override FoodGroups foodGroup() {
         return FoodGroups.Sweet;
