@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public GameObject enemyPrefab;  // the enemy prefab to instantiate
+    public GameObject[] enemyPrefab;  // the enemy prefab to instantiate
     public Vector3 spawnRange;      // the range within which to spawn enemies
     public float initialSpawnInterval = 5f;  // the initial time between spawns
     public float spawnIntervalDecreaseRate = 0.1f;  // the rate at which spawn interval decreases over time
@@ -36,8 +36,9 @@ public class EnemySpawner : MonoBehaviour
     void SpawnEnemy()
     {
         //New vector with random X and Z values within predetermined range
-        Vector3 spawnPosition = new Vector3(Random.Range(-spawnRange.x, spawnRange.x), spawnRange.y, Random.Range(-spawnRange.z, spawnRange.z)); 
+        Vector3 spawnPosition = new Vector3(Random.Range(-spawnRange.x, spawnRange.x), spawnRange.y, Random.Range(-spawnRange.z, spawnRange.z));
         //Spawn's enemy at spawnPosition
-        GameObject enemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+        int spawnValue = Random.Range(0, 2);
+        GameObject enemy = Instantiate(enemyPrefab[spawnValue], spawnPosition, Quaternion.identity);
     }
 }

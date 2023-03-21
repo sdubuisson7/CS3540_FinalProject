@@ -1910,7 +1910,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -2294,7 +2294,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh25652
+  m_Name: pb_Mesh168560
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2803,7 +2803,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -2915,6 +2915,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 6bf89474d3fcd4da0b1eac592b80989c, type: 2}
+    - target: {fileID: 8909108595986761573, guid: c5f97a86539e01c4ea9932e5b58a16ca, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5f97a86539e01c4ea9932e5b58a16ca, type: 3}
 --- !u!1001 &954154457
@@ -3313,7 +3317,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f15597dfae4b9ea4c848946da68eb153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 7260805518179371179, guid: 1aec2eadcd4e84c118470556d3139fc1, type: 3}
+  enemyPrefab:
+  - {fileID: 7260805518179371179, guid: 1aec2eadcd4e84c118470556d3139fc1, type: 3}
+  - {fileID: 9209717975304136724, guid: 0dc11ce5dd87bfb48870d35f77fd6271, type: 3}
   spawnRange: {x: 30, y: 3.3, z: 30}
   initialSpawnInterval: 5
   spawnIntervalDecreaseRate: 0.1
@@ -3530,7 +3536,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1250934649}
-  m_LocalRotation: {x: 0.23819254, y: -0.050662115, z: 0.017444808, w: 0.9697389}
+  m_LocalRotation: {x: 0.2381925, y: -0.050662115, z: 0.017444806, w: 0.9697389}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4104,7 +4110,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1327533357}
-  m_LocalRotation: {x: 0.27805418, y: -0.04989811, z: 0.019523032, w: 0.95906985}
+  m_LocalRotation: {x: 0.27805415, y: -0.04989811, z: 0.01952303, w: 0.95906985}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4471,7 +4477,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh25464
+  m_Name: pb_Mesh168340
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5746,7 +5752,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1582665841}
-  m_LocalRotation: {x: 0.27805415, y: -0.049898095, z: 0.019523032, w: 0.95906985}
+  m_LocalRotation: {x: 0.27805415, y: -0.049898095, z: 0.01952303, w: 0.95906985}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6577,7 +6583,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -6970,7 +6976,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb1138b750b05945b99d03a764a0dfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemiesToKillToBeatLevel: 2
+  enemiesToKillToBeatLevel: 10
   enemiesLeft: {fileID: 1475422480}
   gameText: {fileID: 369222137}
 --- !u!4 &88557215755656332
@@ -9948,6 +9954,10 @@ PrefabInstance:
     - target: {fileID: 8909108595531802462, guid: c5f97a86539e01c4ea9932e5b58a16ca, type: 3}
       propertyPath: m_Name
       value: Mug
+      objectReference: {fileID: 0}
+    - target: {fileID: 8909108595986761573, guid: c5f97a86539e01c4ea9932e5b58a16ca, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5f97a86539e01c4ea9932e5b58a16ca, type: 3}
