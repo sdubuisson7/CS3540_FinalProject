@@ -28,68 +28,70 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Get input
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
-        playerAnimator.SetFloat("moveHorizontal", moveHorizontal);
-        playerAnimator.SetFloat("moveVertical", moveVertical);
-
-        //Create normalized vector of input and multiply it by the move speed
-        input = (transform.right * moveHorizontal + transform.forward * moveVertical).normalized; // normalized to prevent faster diagonal movement
-        input *= moveSpeed;
-
-        //Checks to see if the player is grounded
-        if (controller.isGrounded)
+        if (!LevelManager.isGameOver)
         {
-            isMoving = (moveHorizontal != 0 || moveVertical != 0);
-            isNotMoving = (moveHorizontal == 0 || moveVertical == 0);
-            if (isMoving)
-            {
-                playerAnimator.SetBool("IsMoving", true);
-            }
-            else if (isNotMoving)
-            {
-                playerAnimator.SetBool("IsMoving", false);
-            }
+            //Get input
+            float moveHorizontal = Input.GetAxis("Horizontal");
+            float moveVertical = Input.GetAxis("Vertical");
+            playerAnimator.SetFloat("moveHorizontal", moveHorizontal);
+            playerAnimator.SetFloat("moveVertical", moveVertical);
 
-            moveDirection = input;
-            //Checks to see if jump button was pressed
-            if (Input.GetButton("Jump") && !jumped)
+            //Create normalized vector of input and multiply it by the move speed
+            input = (transform.right * moveHorizontal + transform.forward * moveVertical).normalized; // normalized to prevent faster diagonal movement
+            input *= moveSpeed;
+
+            //Checks to see if the player is grounded
+            if (controller.isGrounded)
             {
-                //sets Jump height to y component of move direction vector
-                moveDirection.y = Mathf.Sqrt(2 * jumpHeight * gravity);
-                playerAnimator.SetInteger("animInt", 3);
-                jumped = true;
-                float animationTime = 0;
+                isMoving = (moveHorizontal != 0 || moveVertical != 0);
+                isNotMoving = (moveHorizontal == 0 || moveVertical == 0);
                 if (isMoving)
                 {
-                    animationTime = playerAnimator.GetCurrentAnimatorStateInfo(0).length;
+                    playerAnimator.SetBool("IsMoving", true);
                 }
                 else if (isNotMoving)
                 {
-                    animationTime = playerAnimator.GetCurrentAnimatorStateInfo(0).length - 1.8f;
+                    playerAnimator.SetBool("IsMoving", false);
                 }
-                
-                Invoke("JumpAnimation", animationTime);
-                
+
+                moveDirection = input;
+                //Checks to see if jump button was pressed
+                if (Input.GetButton("Jump") && !jumped)
+                {
+                    //sets Jump height to y component of move direction vector
+                    moveDirection.y = Mathf.Sqrt(2 * jumpHeight * gravity);
+                    playerAnimator.SetInteger("animInt", 3);
+                    jumped = true;
+                    float animationTime = 0;
+                    if (isMoving)
+                    {
+                        animationTime = playerAnimator.GetCurrentAnimatorStateInfo(0).length;
+                    }
+                    else if (isNotMoving)
+                    {
+                        animationTime = playerAnimator.GetCurrentAnimatorStateInfo(0).length - 1.8f;
+                    }
+
+                    Invoke("JumpAnimation", animationTime);
+
+                }
+                else
+                {
+                    //Makes move direction's y equal 0 if not jumping
+                    moveDirection.y = 0.0f;
+                }
             }
             else
             {
-                //Makes move direction's y equal 0 if not jumping
-                moveDirection.y = 0.0f;
+                //Allows player to move while in the air
+                input.y = moveDirection.y;
+                moveDirection = Vector3.Lerp(moveDirection, input, airControl * Time.deltaTime);
             }
-        }
-        else
-        {
-            //Allows player to move while in the air
-            input.y = moveDirection.y; 
-            moveDirection = Vector3.Lerp(moveDirection, input, airControl * Time.deltaTime);
-        }
 
-               
-       moveDirection.y -= gravity * Time.deltaTime; // applies gravtiy to vector
-       controller.Move(moveDirection * Time.deltaTime); // Moves the controller over time
-        
+
+            moveDirection.y -= gravity * Time.deltaTime; // applies gravtiy to vector
+            controller.Move(moveDirection * Time.deltaTime); // Moves the controller over time
+        }
     }
 
     void JumpAnimation()
