@@ -156,7 +156,7 @@ public class SwordAttack : MonoBehaviour
                         {
                             AudioSource.PlayClipAtPoint(eatSFX, transform.position);
 
-                            FoodGroups group = (FoodGroups) hit.gameObject.GetComponent<EnemyBehaviour>().foodGroup();
+                            FoodGroups group = (FoodGroups) hit.gameObject.GetComponent<EnemyBehavior>().foodGroup();
                             ingredientsList[i] = group;
                             break;
                         }
