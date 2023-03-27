@@ -19,6 +19,7 @@ public class CinnamonRoller : EnemyBehavior {
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position, Time.deltaTime * speed);
     }
 
+
     void OnCollisionEnter(Collision c) {
         //Check if Enemy collided with Player
         if (c.gameObject.CompareTag("Player")) {
