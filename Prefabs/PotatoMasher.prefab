@@ -12267,9 +12267,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3717350946927340871}
   - component: {fileID: 5558928214512103228}
+  - component: {fileID: -2560139305521637820}
   m_Layer: 0
   m_Name: PotatoMasher
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12305,6 +12306,18 @@ CapsuleCollider:
   m_Height: 2.1
   m_Direction: 0
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-2560139305521637820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3717350946927340864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1438c062a614fc4a94ed7bbc4881054, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3717350947037348391
 GameObject:
   m_ObjectHideFlags: 0

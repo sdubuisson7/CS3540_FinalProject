@@ -31,6 +31,8 @@ public class SwordAttack : MonoBehaviour
     private string currentRecipe;
 
     TrailRenderer trail; //The TrailRenderer at the tip of the sword
+
+    // For Gastronomicon
     private FoodGroups[] ingredientsList;
     public Image ingredient1;
     public Image ingredient2;
@@ -45,15 +47,21 @@ public class SwordAttack : MonoBehaviour
     public AudioClip eatSFX;
     // powerup SFX
     public AudioClip powerupSFX;
+    // dragonfruit SFX
+    public AudioClip dragonFruitSFX;
 
-    // for powerup SFX
+    // Booleans to see if sound has been played or not
     bool powerupPlayed;
-    
+    bool dragonFruitPlayed;
 
+    // For dragonfruit effect
+    public GameObject dragonFruitPrefab;
     public Transform attackPoint;
 
+    // timers for powerups
     private float speedBoostTimer;
     private float attackBoostTimer;
+    private float dragonFruitTimer;
     GameObject playerAnimator;
 
 
@@ -63,6 +71,7 @@ public class SwordAttack : MonoBehaviour
         // no recipe set
         currentRecipe = null;
         powerupPlayed = false;
+        dragonFruitPlayed = false;
         ingredientImages = new Image[3]{ingredient1, ingredient2, ingredient3};
         attacked = false; 
         // get reference to trail component
@@ -80,6 +89,7 @@ public class SwordAttack : MonoBehaviour
         
         speedBoostTimer = 10.0f;
         attackBoostTimer = 10.0f;
+        dragonFruitTimer = 30.0f;
         playerAnimator = GameObject.FindGameObjectWithTag("PlayerAnimator");
     }
 
@@ -274,6 +284,9 @@ public class SwordAttack : MonoBehaviour
             case "Meat Skewer":
                 ApplyProteinPunch();
                 break;
+            case "Dragon Fruit":
+                ApplyDragonFruit();
+                break;
             default:
                 // We didn't make a recipe
                 break;
@@ -283,7 +296,7 @@ public class SwordAttack : MonoBehaviour
     }
 
     void ApplyProteinPunch() {
-        if (speedBoostTimer > 0.0f)
+        if (attackBoostTimer > 0.0f)
         {
             Debug.Log("Meat Skewer created! Attack Boost for 10 seconds");
             attackBoostTimer -= Time.deltaTime;
@@ -304,6 +317,39 @@ public class SwordAttack : MonoBehaviour
 
         
     }
+
+    void ApplyDragonFruit() {
+
+        if (dragonFruitTimer > 0.0f)
+        {
+            Debug.Log("Dragon Fruit created! Attack Boost for 10 seconds");
+            dragonFruitTimer -= Time.deltaTime;
+
+            // TODO: Attack Boost for player
+            if (!dragonFruitPlayed) {
+                AudioSource.PlayClipAtPoint(dragonFruitSFX, transform.position);
+
+                Vector3 spawnPosition = player.transform.position;
+                spawnPosition.y += 0.5f;
+                // Add some dragon audio
+                GameObject dragonFruit = Instantiate(dragonFruitPrefab, spawnPosition, Quaternion.identity);
+                dragonFruitPlayed = true;
+            }
+
+            recipeEffectsText.text = "Recipe: Dragon Fruit\nEffect: Dragon\n" + dragonFruitTimer.ToString("f2");
+        }
+        else
+        {                
+            // reset the effects of the power up
+            ResetPowerUp();
+
+            // Reset our recipe loadout
+            ResetRecipeLoadout();
+            
+        }
+        
+    }
+
 
 
 
@@ -339,6 +385,55 @@ public class SwordAttack : MonoBehaviour
         else if (Array.TrueForAll(ingredientsList, element => element == FoodGroups.Meat))
         {
             currentRecipe = "Meat Skewer";
+        }
+        else if (Array.TrueForAll(ingredientsList, element => element == FoodGroups.Veggie))
+        {
+            // TODO: Supposed to be veggie bisque, changing to dragonfruit for testing purposes
+            // currentRecipe = "Veggie Bisque";
+            currentRecipe = "Dragon Fruit";
+
+        }
+        else if (Array.TrueForAll(ingredientsList, element => element == FoodGroups.Starch))
+        {
+            currentRecipe = "Bread";
+        }
+        else if (Array.TrueForAll(ingredientsList, element => element == FoodGroups.Dairy))
+        {
+            currentRecipe = "Fondue";
+        }
+        else if (Array.TrueForAll(ingredientsList, element => element == FoodGroups.Spice))
+        {
+            currentRecipe = "Cinnamon Challenge";
+        }
+        else if (Array.Exists(ingredientsList, element => element == FoodGroups.Veggie)
+        && Array.Exists(ingredientsList, element => element == FoodGroups.Meat)
+        && Array.Exists(ingredientsList, element => element == FoodGroups.Spice))
+        {
+            currentRecipe = "Chilli Con Carne";
+        }
+        else if (Array.Exists(ingredientsList, element => element == FoodGroups.Sweet)
+        && Array.Exists(ingredientsList, element => element == FoodGroups.Veggie)
+        && Array.Exists(ingredientsList, element => element == FoodGroups.Veggie))
+        {
+            currentRecipe = "Green Smoothie";
+        }
+        else if (Array.Exists(ingredientsList, element => element == FoodGroups.Starch)
+        && Array.Exists(ingredientsList, element => element == FoodGroups.Sweet)
+        && Array.Exists(ingredientsList, element => element == FoodGroups.Dairy))
+        {
+            currentRecipe = "Jelly Roll";
+        }
+        else if (Array.Exists(ingredientsList, element => element == FoodGroups.Meat)
+        && Array.Exists(ingredientsList, element => element == FoodGroups.Spice)
+        && Array.Exists(ingredientsList, element => element == FoodGroups.Starch))
+        {
+            currentRecipe = "Chicken Drumstick";
+        }
+        else if (Array.Exists(ingredientsList, element => element == FoodGroups.Veggie)
+        && Array.Exists(ingredientsList, element => element == FoodGroups.Spice)
+        && Array.Exists(ingredientsList, element => element == FoodGroups.Spice))
+        {
+            currentRecipe = "Dragon Fruit";
         }
         // TODO: More cases, based on recipe specs
     }
