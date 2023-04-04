@@ -6,10 +6,14 @@ public class FlamethrowerControlls : MonoBehaviour
 {
     public bool attacking;
     private ParticleSystem flamethrower;
+    public AudioClip flameBreathSFX;
+    public GameObject dragonFruit;
+
 
     private void Start()
     {
         flamethrower = GetComponentInChildren<ParticleSystem>();
+        dragonFruit = GameObject.FindGameObjectWithTag("DragonFruit");
         
     }
     
@@ -17,6 +21,9 @@ public class FlamethrowerControlls : MonoBehaviour
     {
         flamethrower.Play();
         attacking = true;
+        if (attacking == true) {
+            AudioSource.PlayClipAtPoint(flameBreathSFX, transform.position);
+        }
     }
 
     public void FlamethrowerOff()

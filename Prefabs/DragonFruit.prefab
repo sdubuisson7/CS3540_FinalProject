@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3106458463487288200}
   m_Layer: 0
   m_Name: DragonFruit
-  m_TagString: Untagged
+  m_TagString: DragonFruit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -138,6 +138,7 @@ MonoBehaviour:
   detectionRadius: 10
   attackingRange: 7
   dragonDuration: 30
+  dragonFruitEndSFX: {fileID: 8300000, guid: e803dbcdbd296be42b93dea6d02e832c, type: 3}
 --- !u!1001 &3106458464534342212
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1625,6 +1626,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attacking: 0
+  flameBreathSFX: {fileID: 0}
+  dragonFruit: {fileID: 0}
 --- !u!4 &3106458464534427924 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 480080, guid: 445a5c29e7f715947b713a753f242af0, type: 3}

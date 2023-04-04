@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Rhubartillery : EnemyBehavior {
     public float speed = 1.0f; // Reference to the movement speed of the enemy
@@ -12,10 +13,14 @@ public class Rhubartillery : EnemyBehavior {
     public List<ParticleSystem> fire;
     public GameObject projectile;
     private float throwingTracker;
+    public int maxHealth;
 
     // Start is called before the first frame update
     public override void EnemyStart() {
         throwingTracker = throwingInterval;
+        currentHealth = maxHealth;
+        healthSlider = GetComponentInChildren<Slider>();
+        healthSlider.gameObject.SetActive(false);
     }
 
     // Update is called once per frame

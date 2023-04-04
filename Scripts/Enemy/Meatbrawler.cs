@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Meatbrawler : EnemyBehavior {
     public float speed = 2.0f; // Reference to the movement speed of the enemy
@@ -22,7 +23,8 @@ public class Meatbrawler : EnemyBehavior {
         throwingTracker = throwingInterval + 2.0f;
         thrown = false;
         currentHealth = maxHealth;
-        
+        healthSlider = GetComponentInChildren<Slider>();
+        healthSlider.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -38,7 +40,7 @@ public class Meatbrawler : EnemyBehavior {
             transform.position = Vector3.MoveTowards(transform.position, player.transform.position, Time.deltaTime * speed);
         }
         else if (Vector3.Distance(player.transform.position, transform.position) < minDistance) {
-            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, Time.deltaTime * -1.0f * speed);
+            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, Time.deltaTime * -1.0f * (speed / 2));
         }
         //scuttlePortion.transform.rotation = Quaternion.Euler(0.0f, Mathf.Sin(Time.time) * 3.0f, 0.0f);
         throwingTracker -= Time.deltaTime;

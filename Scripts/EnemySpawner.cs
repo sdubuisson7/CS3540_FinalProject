@@ -12,6 +12,7 @@ public class EnemySpawner : MonoBehaviour
 
     private float spawnTimer = 0f; //the timer to keep track of when to spawn enemies
     private float currentSpawnInterval; //the current interval at which enemies are being spawned at
+    public int spawnLimit = 20;
 
     void Start()
     {
@@ -23,8 +24,9 @@ public class EnemySpawner : MonoBehaviour
     {
         //Increase the spawn timer over time
         spawnTimer += Time.deltaTime;
+        GameObject[] currentEnemies = GameObject.FindGameObjectsWithTag("Enemy");
         //Check to see if spawn timer has reached the spawn interval
-        if (spawnTimer >= currentSpawnInterval)
+        if (spawnTimer >= currentSpawnInterval && currentEnemies.Length < spawnLimit)
         {
 
             SpawnEnemy(); //Runs the SpawnEnemy method
@@ -40,5 +42,6 @@ public class EnemySpawner : MonoBehaviour
         //Spawn's enemy at spawnPosition
         int spawnValue = Random.Range(0, 2);
         GameObject enemy = Instantiate(enemyPrefab[spawnValue], spawnPosition, Quaternion.identity);
+        enemy.transform.parent = gameObject.transform;
     }
 }
