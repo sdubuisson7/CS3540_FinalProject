@@ -4147,7 +4147,12 @@ GameObject:
   - component: {fileID: 3138456865114500210}
   - component: {fileID: 6746725730103993757}
   - component: {fileID: -480896263334318597}
+<<<<<<< HEAD
   m_Layer: 5
+=======
+  - component: {fileID: 105232688}
+  m_Layer: 3
+>>>>>>> 7e35fdae63b905475f87603ca622823a083e1c94
   m_Name: MilkJuggernaut
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -4251,7 +4256,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDead: 0
+<<<<<<< HEAD
   healthSlider: {fileID: 0}
+=======
+>>>>>>> 7e35fdae63b905475f87603ca622823a083e1c94
   speed: 2
   damage: 15
   maxHealth: 15
@@ -4267,6 +4275,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1438c062a614fc4a94ed7bbc4881054, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!54 &105232688
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3138456865114500209}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &4101408596665766604
 GameObject:
   m_ObjectHideFlags: 0

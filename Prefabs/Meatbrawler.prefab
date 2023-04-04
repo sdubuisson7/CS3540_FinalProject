@@ -51837,7 +51837,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDead: 0
+<<<<<<< HEAD
   healthSlider: {fileID: 0}
+=======
+>>>>>>> 7e35fdae63b905475f87603ca622823a083e1c94
   speed: 4
   minDistance: 12.5
   maxDistance: 15
