@@ -12,6 +12,7 @@ public class LevelManager : MonoBehaviour
     public Text gameText;
     public static bool isGameOver = false;
     float reload = 5.0f;
+    public string nextLevel;
 
 
     GameObject spawner;
@@ -37,12 +38,7 @@ public class LevelManager : MonoBehaviour
             }
             else
             {
-                isGameOver = true;
-                gameText.text = "Congrats! You win";
-                gameText.gameObject.SetActive(true);
-                enemiesLeft.gameObject.SetActive(false);
-                FindObjectOfType<PlayerMovement>().wonAnimation();
-                Destroy(spawner);
+                LevelBeat();
             }
         }
         else if(enemiesToKillToBeatLevel > enemiesKilled)
@@ -60,6 +56,25 @@ public class LevelManager : MonoBehaviour
     {
         enemiesLeft.text = "Enemies Left: " + (enemiesToKillToBeatLevel - enemiesKilled).ToString();
     }
+
+    public void LevelBeat() 
+    {
+        isGameOver = true;
+        gameText.text = "Congrats! You win";
+        gameText.gameObject.SetActive(true);
+        enemiesLeft.gameObject.SetActive(false);
+        FindObjectOfType<PlayerMovement>().wonAnimation();
+        Destroy(spawner);
+        if (!string.IsNullOrEmpty(nextLevel)) {
+            Invoke("LoadNextLevel", 3);
+        }
+
+    }
+
+    void LoadNextLevel() {
+        SceneManager.LoadScene(nextLevel);
+    }
+    
 
     public void LevelLost()
     {
