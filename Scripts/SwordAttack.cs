@@ -11,6 +11,7 @@ public class SwordAttack : MonoBehaviour
     public Color enemyDotColorFar = Color.yellow; //Reference to the color that the dot will change when aiming at an enemy
     public float colorRange = 3f; // Reference to the range at which the sword can cause damage to enemies
     public float colorSpeed = 8; //Reference to the speed the dot color changes
+    public int damage = 5;
     
     public float attackRange;
     public static bool attacked; // Has the player attacked?
@@ -167,23 +168,24 @@ public class SwordAttack : MonoBehaviour
             {
                 if (hit.CompareTag("Enemy"))
                 {
-                    LevelManager.enemiesKilled++;
-
-                    // Update the food name in the ingredientsList array
-                    for (int i = 0; i < ingredientsList.Length; i++)
+                    hit.gameObject.GetComponent<EnemyBehavior>().Hit(damage);
+                    if (hit.gameObject.GetComponent<EnemyBehavior>().isDead)
                     {
-                        if (ingredientsList[i] == FoodGroups.None)
+                        // Update the food name in the ingredientsList array
+                        for (int i = 0; i < ingredientsList.Length; i++)
                         {
-                            AudioSource.PlayClipAtPoint(eatSFX, transform.position);
+                            if (ingredientsList[i] == FoodGroups.None)
+                            {
+                                AudioSource.PlayClipAtPoint(eatSFX, transform.position);
 
-                            FoodGroups group = (FoodGroups) hit.gameObject.GetComponent<EnemyBehavior>().foodGroup();
-                            ingredientsList[i] = group;
-                            break;
+                                FoodGroups group = (FoodGroups)hit.gameObject.GetComponent<EnemyBehavior>().foodGroup();
+                                ingredientsList[i] = group;
+                                break;
+                            }
                         }
+                        LevelManager.enemiesKilled++;
+                        Destroy(hit.gameObject);
                     }
-
-                    Destroy(hit.gameObject);
-
                 }
             }
             

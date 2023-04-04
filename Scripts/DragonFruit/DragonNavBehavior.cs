@@ -16,6 +16,7 @@ public class DragonNavBehavior : MonoBehaviour
     public float detectionRadius = 5;
     public float attackingRange = 7;
     public float dragonDuration = 30;
+    public int damage = 3;
 
     private Transform player;
     private NavMeshAgent agent;
@@ -23,8 +24,11 @@ public class DragonNavBehavior : MonoBehaviour
     private Collider[] detectedEnemies;
     private ParticleSystem flamethrower;
     private float elapsedTimeSinceSpawned;
+
+    private bool inCoolDown = false;
     public AudioClip dragonFruitEndSFX;
     bool dragonFruitEndPlayed;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -126,8 +130,9 @@ public class DragonNavBehavior : MonoBehaviour
             //For now this will only destroy the enemy, Delete this after implementing enemy health system!!!!
             //Also Remember to do LevelManager.enemiesKilled++ in the enemyDestroy function and remove it from swordattack. 
             //Currently we are counting the enemies killed in the SwordAttack script. 
-            Destroy(detectedEnemies[0].gameObject);
-            LevelManager.enemiesKilled++;
+            //animator.SetBool("Attack", false);
+            inCoolDown = true;
+            Invoke("CooldownAttack", 5.0f);
         }
         if(agent.remainingDistance > attackingRange)
         {
@@ -154,6 +159,17 @@ public class DragonNavBehavior : MonoBehaviour
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, detectionRadius);
 
+    }
+
+    void CooldownAttack()
+    {
+        detectedEnemies[0].gameObject.GetComponent<EnemyBehavior>().Hit(damage);
+        if (detectedEnemies[0].gameObject.GetComponent<EnemyBehavior>().isDead)
+        {
+            LevelManager.enemiesKilled++;
+            Destroy(detectedEnemies[0].gameObject);
+        }
+        inCoolDown = false;
     }
 
 }
