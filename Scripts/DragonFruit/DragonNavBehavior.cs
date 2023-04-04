@@ -96,7 +96,6 @@ public class DragonNavBehavior : MonoBehaviour
         agent.speed = 7.5f;
         agent.autoBraking = false;
         agent.stoppingDistance = attackingRange;
-        print(agent.remainingDistance);
         if(agent.remainingDistance <= attackingRange)
         {
             currentState = dragonState.Attack;
@@ -109,10 +108,22 @@ public class DragonNavBehavior : MonoBehaviour
         {
             currentState = dragonState.following;
             animator.SetBool("Attack", false);
-
             return;
         }
-
+        if (agent.remainingDistance > attackingRange)
+        {
+            currentState = dragonState.goingToEnemy;
+            GetComponentInChildren<FlamethrowerControlls>().attacking = false;
+            animator.SetBool("Attack", false);
+            return;
+        }
+        if(Vector3.Distance(detectedEnemies[0].transform.position, transform.position) > attackingRange)
+        {
+            currentState = dragonState.goingToEnemy;
+            GetComponentInChildren<FlamethrowerControlls>().attacking = false;
+            animator.SetBool("Attack", false);
+            return;
+        }
         Vector3 direction = detectedEnemies[0].transform.position - transform.position;
         direction.y = 0;
         Quaternion toRotation = Quaternion.LookRotation(direction, Vector3.up);
@@ -129,11 +140,7 @@ public class DragonNavBehavior : MonoBehaviour
             Destroy(detectedEnemies[0].gameObject);
             LevelManager.enemiesKilled++;
         }
-        if(agent.remainingDistance > attackingRange)
-        {
-            currentState = dragonState.goingToEnemy;
-            animator.SetBool("Attack", false);
-        }
+        
     }
 
     private bool AllEnemiesDead()
