@@ -21,14 +21,9 @@ public class FlamethrowerControlls : MonoBehaviour
     {
         flamethrower.Play();
         attacking = true;
-<<<<<<< HEAD
         if (attacking == true) {
             AudioSource.PlayClipAtPoint(flameBreathSFX, transform.position);
         }
-=======
-        AudioSource.PlayClipAtPoint(flameBreathSFX, transform.position);
-        
->>>>>>> 7e35fdae63b905475f87603ca622823a083e1c94
     }
 
     public void FlamethrowerOff()
