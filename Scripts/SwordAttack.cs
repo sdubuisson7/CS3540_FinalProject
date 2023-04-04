@@ -368,7 +368,10 @@ public class SwordAttack : MonoBehaviour
             if (sinceLastFondue >= timeBetweenFondueDrops) {
                 sinceLastFondue -= timeBetweenFondueDrops;
                 Transform target = GameObject.FindWithTag("Enemy").transform;
+                if(!(target is null))
+                {
                 Instantiate(fondueProjectile, target.transform.position + (30 * Vector3.up), Quaternion.Euler(0.0f, 0.0f, 0.0f));
+                }
             }
 
             recipeEffectsText.text = "Recipe: Fondue\nEffect: Fondue Raid\nTime: " + fondueRaidTimer.ToString("f2");
