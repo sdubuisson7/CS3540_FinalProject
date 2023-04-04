@@ -8,6 +8,8 @@ public class Meatbrawler : EnemyBehavior {
     public float maxDistance = 15.0f;
     public int damage = 20;
     public float throwingInterval = 3.0f;
+    public int maxHealth = 8;
+    
     //public GameObject scuttlePortion;
     public GameObject throwingArm;
     public GameObject meatball;
@@ -19,6 +21,8 @@ public class Meatbrawler : EnemyBehavior {
     public override void EnemyStart() {
         throwingTracker = throwingInterval + 2.0f;
         thrown = false;
+        currentHealth = maxHealth;
+        
     }
 
     // Update is called once per frame

@@ -6,10 +6,11 @@ public class CinnamonRoller : EnemyBehavior {
     public float speed = 4; // Reference to the movement speed of the enemy
     public int damage = 15;
     private bool inCooldown = false;
+    public int maxHealth = 5;
 
     // Start is called before the first frame update
     public override void EnemyStart() {
-
+        currentHealth = maxHealth;
     }
 
     // Update is called once per frame
