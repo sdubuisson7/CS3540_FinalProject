@@ -58,6 +58,11 @@ public class SwordAttack : MonoBehaviour
     public GameObject dragonFruitPrefab;
     public Transform attackPoint;
 
+    // For Fondue
+    public float timeBetweenFondueDrops = 1.5f;
+    private float sinceLastFondue;
+    public GameObject fondueProjectile;
+
     // timers for powerups
     private float speedBoostTimer;
     private float attackBoostTimer;
@@ -94,6 +99,7 @@ public class SwordAttack : MonoBehaviour
         dragonFruitTimer = 30.0f;
         shieldTimer = 5.0f;
         fondueRaidTimer = 5.0f;
+        sinceLastFondue = 0.0f;
         playerAnimator = GameObject.FindGameObjectWithTag("PlayerAnimator");
     }
 
@@ -355,10 +361,15 @@ public class SwordAttack : MonoBehaviour
     void ApplyFondue() {
         if (fondueRaidTimer > 0.0f)
         {
-            Debug.Log("Meat Skewer created! Attack Boost for 10 seconds");
+            Debug.Log("Fondue created! Rain globs of damaging Cheese on enemies for 10 seconds");
             fondueRaidTimer -= Time.deltaTime;
+            sinceLastFondue += Time.deltaTime;
 
-            // TODO: Fondue Raid stuff for player
+            if (sinceLastFondue >= timeBetweenFondueDrops) {
+                sinceLastFondue -= timeBetweenFondueDrops;
+                Transform target = GameObject.FindWithTag("Enemy").transform;
+                Instantiate(fondueProjectile, target.transform.position + (30 * Vector3.up), Quaternion.Euler(0.0f, 0.0f, 0.0f));
+            }
 
             recipeEffectsText.text = "Recipe: Fondue\nEffect: Fondue Raid\nTime: " + fondueRaidTimer.ToString("f2");
         }
@@ -379,7 +390,7 @@ public class SwordAttack : MonoBehaviour
 
         if (dragonFruitTimer > 0.0f)
         {
-            Debug.Log("Dragon Fruit created! Attack Boost for 10 seconds");
+            Debug.Log("Dragon Fruit created! Summon a helper for 10 seconds");
             dragonFruitTimer -= Time.deltaTime;
 
             // TODO: Attack Boost for player
@@ -524,6 +535,7 @@ public class SwordAttack : MonoBehaviour
             case "Fondue":
                 // TODO: Undo the Fondue stuff
                 fondueRaidTimer = 5.0f;
+                sinceLastFondue = 0.0f;
                 break;
             case "Dragon Fruit":
                 dragonFruitTimer = 30.0f;

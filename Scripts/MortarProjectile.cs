@@ -28,8 +28,9 @@ public class MortarProjectile : MonoBehaviour {
         if (c.gameObject.tag == "Player" && canHitPlayer) {
             c.gameObject.GetComponent<PlayerHealth>().Hit(damage);
         }
-        if (canHitEnemies) {
-            // TODO: Make Mortar Damage Enemies
+        if (c.gameObject.tag == "Enemy" && canHitEnemies) {
+            LevelManager.enemiesKilled++;
+            Destroy(c.gameObject);
         }
         Destroy(target);
         Destroy(gameObject);
