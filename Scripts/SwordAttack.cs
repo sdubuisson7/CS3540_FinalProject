@@ -62,6 +62,8 @@ public class SwordAttack : MonoBehaviour
     private float speedBoostTimer;
     private float attackBoostTimer;
     private float dragonFruitTimer;
+    private float shieldTimer;
+    private float fondueRaidTimer;
     GameObject playerAnimator;
 
 
@@ -90,6 +92,8 @@ public class SwordAttack : MonoBehaviour
         speedBoostTimer = 10.0f;
         attackBoostTimer = 10.0f;
         dragonFruitTimer = 30.0f;
+        shieldTimer = 5.0f;
+        fondueRaidTimer = 5.0f;
         playerAnimator = GameObject.FindGameObjectWithTag("PlayerAnimator");
     }
 
@@ -287,6 +291,12 @@ public class SwordAttack : MonoBehaviour
             case "Dragon Fruit":
                 ApplyDragonFruit();
                 break;
+            case "Green Smoothie":
+                ApplyGreenSmoothie();
+                break;
+            case "Fondue":
+                ApplyFondue();
+                break;
             default:
                 // We didn't make a recipe
                 break;
@@ -304,6 +314,53 @@ public class SwordAttack : MonoBehaviour
             // TODO: Attack Boost for player
 
             recipeEffectsText.text = "Recipe: Meat Skewer\nEffect: Protein Punch\nTime: " + attackBoostTimer.ToString("f2");
+        }
+        else
+        {
+            // reset the effects of the power up
+            ResetPowerUp();
+
+            // Reset our recipe loadout
+            ResetRecipeLoadout();
+            
+        }
+
+        
+    }
+
+    void ApplyGreenSmoothie() {
+
+        if (shieldTimer > 0.0f)
+        {
+            Debug.Log("Green Smoothie created! Shield for 5 seconds");
+            shieldTimer -= Time.deltaTime;
+
+            // TODO: Shield for player
+
+            recipeEffectsText.text = "Recipe: Green Smoothie\nEffect: Green Shield\nTime: " + shieldTimer.ToString("f2");
+        }
+        else
+        {
+            // reset the effects of the power up
+            ResetPowerUp();
+
+            // Reset our recipe loadout
+            ResetRecipeLoadout();
+            
+        }
+
+        
+    }
+
+    void ApplyFondue() {
+        if (fondueRaidTimer > 0.0f)
+        {
+            Debug.Log("Meat Skewer created! Attack Boost for 10 seconds");
+            fondueRaidTimer -= Time.deltaTime;
+
+            // TODO: Fondue Raid stuff for player
+
+            recipeEffectsText.text = "Recipe: Fondue\nEffect: Fondue Raid\nTime: " + fondueRaidTimer.ToString("f2");
         }
         else
         {
@@ -459,6 +516,17 @@ public class SwordAttack : MonoBehaviour
             case "Meat Skewer":
                 // TODO: Attack stuff
                 speedBoostTimer = 10.0f;
+                break;
+            case "Green Smoothie":
+                // TODO: Undo the shield
+                shieldTimer = 5.0f;
+                break;
+            case "Fondue":
+                // TODO: Undo the Fondue stuff
+                fondueRaidTimer = 5.0f;
+                break;
+            case "Dragon Fruit":
+                dragonFruitTimer = 30.0f;
                 break;
             default:
                 break;
