@@ -51455,11 +51455,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b20b1b4a7ce2444fb5dda9f80f30db4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDead: 0
   speed: 4
   minDistance: 12.5
   maxDistance: 15
   damage: 20
   throwingInterval: 3
+  maxHealth: 8
   throwingArm: {fileID: 8951010369780136366}
   meatball: {fileID: 6528856186270331152, guid: 01bec38d0c95c434dab53f97a9f78d24, type: 3}
   meatballSpawn: {fileID: 6064961962033309317}

@@ -41,8 +41,8 @@ public abstract class EnemyBehavior : MonoBehaviour {
         if (currentHealth <= 0)
         {
             currentHealth = 0;
-            //LevelManager.enemiesKilled++;
-            //Destroy(gameObject);
+            LevelManager.enemiesKilled++;
+            Destroy(gameObject);
             isDead = true;
         }
         //healthSlider.value = currentHealth;

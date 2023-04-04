@@ -16,7 +16,7 @@ public class DragonNavBehavior : MonoBehaviour
     public float detectionRadius = 5;
     public float attackingRange = 7;
     public float dragonDuration = 30;
-    public int damage = 3;
+    public int damage = 5;
 
     private Transform player;
     private NavMeshAgent agent;
@@ -39,16 +39,17 @@ public class DragonNavBehavior : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         flamethrower = GetComponentInChildren<ParticleSystem>();
         elapsedTimeSinceSpawned = 0;
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
         elapsedTimeSinceSpawned += Time.deltaTime;
-        if(elapsedTimeSinceSpawned >= dragonDuration)
+        if (elapsedTimeSinceSpawned >= dragonDuration)
         {
-            if (!dragonFruitEndPlayed) {
+            if (!dragonFruitEndPlayed)
+            {
                 AudioSource.PlayClipAtPoint(dragonFruitEndSFX, transform.position);
                 dragonFruitEndPlayed = true;
                 Destroy(gameObject);
@@ -70,7 +71,7 @@ public class DragonNavBehavior : MonoBehaviour
                 break;
 
         }
-        
+
     }
 
 
@@ -81,8 +82,8 @@ public class DragonNavBehavior : MonoBehaviour
         agent.autoBraking = true;
         agent.speed = 6.0f;
         animator.SetFloat("Speed", agent.velocity.magnitude);
-        
-        if(detectedEnemies.Length > 0)
+
+        if (detectedEnemies.Length > 0)
         {
             currentState = dragonState.goingToEnemy;
         }
@@ -100,7 +101,7 @@ public class DragonNavBehavior : MonoBehaviour
         agent.speed = 7.5f;
         agent.autoBraking = false;
         agent.stoppingDistance = attackingRange;
-        if(agent.remainingDistance <= attackingRange)
+        if (agent.remainingDistance <= attackingRange)
         {
             currentState = dragonState.Attack;
         }
@@ -121,7 +122,7 @@ public class DragonNavBehavior : MonoBehaviour
             animator.SetBool("Attack", false);
             return;
         }
-        if(Vector3.Distance(detectedEnemies[0].transform.position, transform.position) > attackingRange)
+        if (Vector3.Distance(detectedEnemies[0].transform.position, transform.position) > attackingRange)
         {
             currentState = dragonState.goingToEnemy;
             GetComponentInChildren<FlamethrowerControlls>().attacking = false;
@@ -131,21 +132,28 @@ public class DragonNavBehavior : MonoBehaviour
         Vector3 direction = detectedEnemies[0].transform.position - transform.position;
         direction.y = 0;
         Quaternion toRotation = Quaternion.LookRotation(direction, Vector3.up);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, 100 * Time.deltaTime);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, 180 * Time.deltaTime);
         animator.SetBool("Attack", true);
-        if (GetComponentInChildren<FlamethrowerControlls>().attacking)
+
+        if (GetComponentInChildren<FlamethrowerControlls>().attacking && !inCoolDown)
         {
             //Damage Enemy
             //detectedEnemies[0].gameObject.takeDamage()
-            print("Damaging Enemy");
             //For now this will only destroy the enemy, Delete this after implementing enemy health system!!!!
             //Also Remember to do LevelManager.enemiesKilled++ in the enemyDestroy function and remove it from swordattack. 
             //Currently we are counting the enemies killed in the SwordAttack script. 
             //animator.SetBool("Attack", false);
-            inCoolDown = true;
-            Invoke("CooldownAttack", 5.0f);
+          
+            if(detectedEnemies[0].gameObject.GetComponent<EnemyBehavior>() != null)
+            {
+
+                detectedEnemies[0].gameObject.GetComponent<EnemyBehavior>().Hit(damage);
+                Invoke("CooldownAttack", 3.0f);
+                inCoolDown = true;
+            }
+            
         }
-        
+
     }
 
     private bool AllEnemiesDead()
@@ -170,13 +178,7 @@ public class DragonNavBehavior : MonoBehaviour
 
     void CooldownAttack()
     {
-        detectedEnemies[0].gameObject.GetComponent<EnemyBehavior>().Hit(damage);
-        if (detectedEnemies[0].gameObject.GetComponent<EnemyBehavior>().isDead)
-        {
-            LevelManager.enemiesKilled++;
-            Destroy(detectedEnemies[0].gameObject);
-        }
         inCoolDown = false;
     }
-
 }
+
