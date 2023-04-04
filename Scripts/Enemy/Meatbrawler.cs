@@ -34,7 +34,7 @@ public class Meatbrawler : EnemyBehavior {
             transform.position = Vector3.MoveTowards(transform.position, player.transform.position, Time.deltaTime * speed);
         }
         else if (Vector3.Distance(player.transform.position, transform.position) < minDistance) {
-            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, Time.deltaTime * -1.0f * speed);
+            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, Time.deltaTime * -1.0f * (speed / 2));
         }
         //scuttlePortion.transform.rotation = Quaternion.Euler(0.0f, Mathf.Sin(Time.time) * 3.0f, 0.0f);
         throwingTracker -= Time.deltaTime;

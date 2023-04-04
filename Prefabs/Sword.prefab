@@ -104,14 +104,17 @@ MonoBehaviour:
   enemyDotColorFar: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   colorRange: 6
   colorSpeed: 6
-  attackRange: 1.41
-  currentRecipe: 
+  attackRange: 3
   ingredient1: {fileID: 0}
   ingredient2: {fileID: 0}
   ingredient3: {fileID: 0}
+  recipeEffectsText: {fileID: 0}
   swordSFX: {fileID: 8300000, guid: 91158d4af8099d041a9d187705432b1e, type: 3}
   eatSFX: {fileID: 8300000, guid: 64b16fae3f1f38648825399a0ddd3935, type: 3}
   powerupSFX: {fileID: 8300000, guid: 69aba51bad8d1f849a1f982cf3895852, type: 3}
+  dragonFruitSFX: {fileID: 8300000, guid: 8cbeb7225a1a7714a8138c47b2f486b4, type: 3}
+  dragonFruitEndSFX: {fileID: 8300000, guid: e803dbcdbd296be42b93dea6d02e832c, type: 3}
+  dragonFruitPrefab: {fileID: 3106458463487288199, guid: 527a2bb87cf2b5c4f917ef3d75afb193, type: 3}
   attackPoint: {fileID: 0}
 --- !u!1 &2820472680082902867
 GameObject:

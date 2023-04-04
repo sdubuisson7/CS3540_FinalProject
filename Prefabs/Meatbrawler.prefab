@@ -51352,6 +51352,7 @@ GameObject:
   - component: {fileID: 3294830418269791379}
   - component: {fileID: 2763533340159934210}
   - component: {fileID: -8655078967595613264}
+  - component: {fileID: -4541474618858446983}
   m_Layer: 3
   m_Name: Meatbrawler
   m_TagString: Enemy
@@ -51478,3 +51479,15 @@ Rigidbody:
   m_Interpolate: 2
   m_Constraints: 0
   m_CollisionDetection: 2
+--- !u!114 &-4541474618858446983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9209717975304136724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1438c062a614fc4a94ed7bbc4881054, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

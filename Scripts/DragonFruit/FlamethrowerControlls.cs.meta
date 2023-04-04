@@ -3,7 +3,9 @@ guid: cdb4776d1cb8e084cb4f5fad16beabe9
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - flameBreathSFX: {fileID: 8300000, guid: 2524b3a2fabd7374296d8ab010370ea1, type: 3}
+  - dragonFruit: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

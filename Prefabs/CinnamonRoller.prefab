@@ -12074,6 +12074,7 @@ GameObject:
   - component: {fileID: 7260805518179371177}
   - component: {fileID: 7260805518179371176}
   - component: {fileID: 4056229828992005}
+  - component: {fileID: 2678042474436421892}
   m_Layer: 3
   m_Name: CinnamonRoller
   m_TagString: Enemy
@@ -12141,6 +12142,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2678042474436421892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7260805518179371179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1438c062a614fc4a94ed7bbc4881054, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7260805518478564664
 GameObject:
   m_ObjectHideFlags: 0
