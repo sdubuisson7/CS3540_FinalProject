@@ -24,11 +24,15 @@ public class DragonNavBehavior : MonoBehaviour
     private Collider[] detectedEnemies;
     private ParticleSystem flamethrower;
     private float elapsedTimeSinceSpawned;
+
     private bool inCoolDown = false;
+    public AudioClip dragonFruitEndSFX;
+    bool dragonFruitEndPlayed;
 
     // Start is called before the first frame update
     void Start()
     {
+        dragonFruitEndPlayed = false;
         agent = GetComponent<NavMeshAgent>();
         currentState = dragonState.following;
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -44,8 +48,12 @@ public class DragonNavBehavior : MonoBehaviour
         elapsedTimeSinceSpawned += Time.deltaTime;
         if(elapsedTimeSinceSpawned >= dragonDuration)
         {
-            Destroy(gameObject);
-            return;
+            if (!dragonFruitEndPlayed) {
+                AudioSource.PlayClipAtPoint(dragonFruitEndSFX, transform.position);
+                dragonFruitEndPlayed = true;
+                Destroy(gameObject);
+                return;
+            }
         }
 
         detectedEnemies = Physics.OverlapSphere(transform.position, detectionRadius, 1 << 3); // 1 << 3 for Enemy layer only

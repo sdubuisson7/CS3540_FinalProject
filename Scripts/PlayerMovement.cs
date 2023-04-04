@@ -88,7 +88,6 @@ public class PlayerMovement : MonoBehaviour
                 moveDirection = Vector3.Lerp(moveDirection, input, airControl * Time.deltaTime);
             }
 
-
             moveDirection.y -= gravity * Time.deltaTime; // applies gravtiy to vector
             controller.Move(moveDirection * Time.deltaTime); // Moves the controller over time
 
