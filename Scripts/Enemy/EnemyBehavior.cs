@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum FoodGroups {
     None,
@@ -17,6 +18,7 @@ public abstract class EnemyBehavior : MonoBehaviour {
     //public int maxHealth;
     protected int currentHealth;
     public bool isDead;
+    public Slider healthSlider;
 
     // Start is called before the first frame update
     void Start() {
@@ -53,4 +55,16 @@ public abstract class EnemyBehavior : MonoBehaviour {
     public abstract void EnemyUpdate();
 
     public abstract FoodGroups foodGroup();
+
+    public void inAttackRange(Collider[] c)
+    {
+        bool range = false;
+        foreach (Collider co in c)
+        {
+            if (co.gameObject.Equals(gameObject)) {
+                range = true;
+            }
+        }
+        healthSlider.gameObject.SetActive(range);
+    }
 }

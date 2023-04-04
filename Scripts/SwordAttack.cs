@@ -110,7 +110,7 @@ public class SwordAttack : MonoBehaviour
         //Check to see if the player pressed the fire 1 button and has not attacked
         if (Input.GetButtonDown("Fire1") && !attacked)
         {
-            Attack(); 
+            Attack();
         }
 
         // Update the recipe loadout in the UI
@@ -120,12 +120,14 @@ public class SwordAttack : MonoBehaviour
         if (ingredientsList[ingredientsList.Length - 1] != FoodGroups.None)
         {
             UpdateCurrentRecipe();
-            if (currentRecipe != null) {
+            if (currentRecipe != null)
+            {
                 // TODO: Add some kind of noise here
                 // Reset our recipe loadout
                 ApplyPowerup();
             }
-            else {
+            else
+            {
                 ResetRecipeLoadout();
 
             }
@@ -135,6 +137,12 @@ public class SwordAttack : MonoBehaviour
             gameObject.SetActive(false);
         }
 
+        Collider[] hits = Physics.OverlapSphere(attackPoint.position, attackRange);
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in enemies)
+        {
+            enemy.GetComponent<EnemyBehavior>().inAttackRange(hits);
+        }
     }
 
     void Attack()
