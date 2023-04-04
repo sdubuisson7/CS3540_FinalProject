@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4252746240752462490}
   - component: {fileID: 5355303609618933756}
   - component: {fileID: 9114392894234363939}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pipe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3778,7 +3778,7 @@ GameObject:
   - component: {fileID: 3138456863435732042}
   - component: {fileID: 3138456863435732044}
   - component: {fileID: 3138456863435732043}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pupil
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3861,7 +3861,7 @@ GameObject:
   - component: {fileID: 3138456863671247006}
   - component: {fileID: 3138456863671246976}
   - component: {fileID: 3138456863671247007}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Eyeball (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3946,7 +3946,7 @@ GameObject:
   - component: {fileID: 3138456864765509301}
   - component: {fileID: 3138456864765509300}
   - component: {fileID: 3138456864765509299}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Milk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4045,8 +4045,7 @@ GameObject:
   - component: {fileID: 3138456865114500211}
   - component: {fileID: 3138456865114500210}
   - component: {fileID: 6746725730103993757}
-  - component: {fileID: -480896263334318597}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: MilkJuggernaut
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -4176,7 +4175,7 @@ GameObject:
   - component: {fileID: 3937072326889734100}
   - component: {fileID: 6313378034338494772}
   - component: {fileID: 8188407113721935837}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
