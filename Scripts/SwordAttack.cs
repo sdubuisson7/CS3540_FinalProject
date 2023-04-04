@@ -183,8 +183,6 @@ public class SwordAttack : MonoBehaviour
                                 break;
                             }
                         }
-                        LevelManager.enemiesKilled++;
-                        Destroy(hit.gameObject);
                     }
                 }
             }
