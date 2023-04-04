@@ -1626,7 +1626,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attacking: 0
-  flameBreathSFX: {fileID: 0}
+  flameBreathSFX: {fileID: 8300000, guid: 2524b3a2fabd7374296d8ab010370ea1, type: 3}
   dragonFruit: {fileID: 0}
 --- !u!4 &3106458464534427924 stripped
 Transform:
