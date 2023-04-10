@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CinnamonRoller : EnemyBehavior {
     public float speed = 4; // Reference to the movement speed of the enemy
@@ -11,6 +12,8 @@ public class CinnamonRoller : EnemyBehavior {
     // Start is called before the first frame update
     public override void EnemyStart() {
         currentHealth = maxHealth;
+        healthSlider = GetComponentInChildren<Slider>();
+        healthSlider.gameObject.SetActive(false);
     }
 
     // Update is called once per frame

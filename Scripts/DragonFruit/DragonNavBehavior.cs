@@ -24,11 +24,10 @@ public class DragonNavBehavior : MonoBehaviour
     private Collider[] detectedEnemies;
     private ParticleSystem flamethrower;
     private float elapsedTimeSinceSpawned;
-
     private bool inCoolDown = false;
+
     public AudioClip dragonFruitEndSFX;
     bool dragonFruitEndPlayed;
-
     // Start is called before the first frame update
     void Start()
     {

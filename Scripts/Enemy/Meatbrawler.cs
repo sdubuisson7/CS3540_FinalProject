@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Meatbrawler : EnemyBehavior {
     public float speed = 2.0f; // Reference to the movement speed of the enemy
@@ -22,7 +23,8 @@ public class Meatbrawler : EnemyBehavior {
         throwingTracker = throwingInterval + 2.0f;
         thrown = false;
         currentHealth = maxHealth;
-        
+        healthSlider = GetComponentInChildren<Slider>();
+        healthSlider.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
