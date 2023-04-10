@@ -225,7 +225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  healthSlider: {fileID: 0}
+  healthSlider: {fileID: 2022590495}
 --- !u!114 &1157499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2990,7 +2990,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.08621399, y: -0.043109268, z: 0.0037340363, w: 0.99533653}
+  m_LocalRotation: {x: 0.08621399, y: -0.04310927, z: 0.0037340363, w: 0.99533653}
   m_LocalPosition: {x: 3.5955312, y: 4.46, z: -6.619404}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3627,7 +3627,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1250934649}
-  m_LocalRotation: {x: 0.23819253, y: -0.050662123, z: 0.017444804, w: 0.9697389}
+  m_LocalRotation: {x: 0.23819251, y: -0.05066217, z: 0.017444797, w: 0.9697389}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4125,7 +4125,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1327533357}
-  m_LocalRotation: {x: 0.27805415, y: -0.04989814, z: 0.019523026, w: 0.95906985}
+  m_LocalRotation: {x: 0.27805415, y: -0.04989822, z: 0.019523017, w: 0.95906985}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5615,7 +5615,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1582665841}
-  m_LocalRotation: {x: 0.27805418, y: -0.049898118, z: 0.01952303, w: 0.95906985}
+  m_LocalRotation: {x: 0.27805415, y: -0.049898207, z: 0.01952302, w: 0.95906985}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
