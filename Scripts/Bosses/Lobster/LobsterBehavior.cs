@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using TMPro;
 
 public class LobsterBehavior : BossBehavior
 {
@@ -54,10 +55,12 @@ public class LobsterBehavior : BossBehavior
 
 public override void BossStart()
     {
-        currentHealth = maxHealth;
+        
         currentState = LobsterState.Potted;
         bossName.text = "THE LOBSTER";
+        currentHealth = maxHealth;
         healthBar.maxValue = maxHealth;
+
         agent = GetComponent<NavMeshAgent>();
         steamFast.Stop();
         steamNormal.Play();

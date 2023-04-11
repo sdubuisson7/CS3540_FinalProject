@@ -18,7 +18,13 @@ public abstract class BossBehavior : MonoBehaviour
     {
 
         player = GameObject.FindGameObjectWithTag("Player");
-        bossCanvas.SetActive(true);
+        bossCanvas = GameObject.FindGameObjectWithTag("BossCanvas");
+        for (int i = 0; i < bossCanvas.transform.childCount; i++)
+        {
+            bossCanvas.transform.GetChild(i).gameObject.SetActive(true);
+        }
+        bossName = GameObject.FindGameObjectWithTag("BossName").GetComponent<TMP_Text>();
+        healthBar = GameObject.FindGameObjectWithTag("BossHealth").GetComponent<Slider>();
         BossStart();
         healthBar.value = currentHealth;
     }
