@@ -37,7 +37,6 @@ public class MeatbrawlerProjectile : MonoBehaviour {
         damage = dmg;
         active = true;
         lifespan = 5.0f;
-        print("Activate work");
         rb = GetComponent<Rigidbody>();
         rb.AddForce(transform.forward * 10, ForceMode.VelocityChange);
     }
