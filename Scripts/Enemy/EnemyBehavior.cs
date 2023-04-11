@@ -42,6 +42,7 @@ public abstract class EnemyBehavior : MonoBehaviour {
         {
             currentHealth = 0;
             LevelManager.enemiesKilled++;
+            print("Killed");
             Destroy(gameObject);
             isDead = true;
         }

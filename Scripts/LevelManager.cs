@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class LevelManager : MonoBehaviour
 {
@@ -10,13 +11,14 @@ public class LevelManager : MonoBehaviour
     public int enemiesToKillToBeatLevel = 10;
     public Text enemiesLeft;
     public Text gameText;
-    //public GameObject bossFightCanvas;
     public GameObject boss;
+    public Slider bossHealthBar;
     public static bool isGameOver = false;
     float reload = 5.0f;
     public string nextLevel;
 
 
+    bool bossStarted = false;
     GameObject spawner;
 
     // Start is called before the first frame update
@@ -39,7 +41,7 @@ public class LevelManager : MonoBehaviour
             {
                 setEnemiesLeft();
             }
-            else
+            else if(!bossStarted)
             {
                 StartBossFight();
                 //LevelBeat();
@@ -54,16 +56,27 @@ public class LevelManager : MonoBehaviour
             
             gameText.text = "Game Over\nRestarting in " + reload.ToString("f2");
         }
+        
     }
 
     void StartBossFight()
     {
         //Play some Boss Music??
-        
+
         //Activates Boss Canvas
         //bossFightCanvas.SetActive(true);
         //Instantiate this levels boss
-        Instantiate(boss, new Vector3(0, 3, 0), Quaternion.identity);
+        bossStarted = true;
+        GameObject[] enemiesAlive = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject aliveEnemy in enemiesAlive)
+        {
+            Destroy(aliveEnemy);
+        }
+        GameObject currentBoss = Instantiate(boss, new Vector3(0, 3, 0), Quaternion.identity);
+        enemiesLeft.gameObject.SetActive(false);
+        
+        FindObjectOfType<EnemySpawner>().enabled = false;
+       
     }
 
     void setEnemiesLeft()
