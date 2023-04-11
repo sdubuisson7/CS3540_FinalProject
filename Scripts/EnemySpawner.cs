@@ -22,17 +22,21 @@ public class EnemySpawner : MonoBehaviour
 
     void Update()
     {
-        //Increase the spawn timer over time
-        spawnTimer += Time.deltaTime;
-        GameObject[] currentEnemies = GameObject.FindGameObjectsWithTag("Enemy");
-        //Check to see if spawn timer has reached the spawn interval
-        if (spawnTimer >= currentSpawnInterval && currentEnemies.Length < spawnLimit)
+        if (!LevelManager.isGameOver)
         {
+            //Increase the spawn timer over time
+            spawnTimer += Time.deltaTime;
+            GameObject[] currentEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+            //Check to see if spawn timer has reached the spawn interval
+            if (spawnTimer >= currentSpawnInterval && currentEnemies.Length < spawnLimit)
+            {
 
-            SpawnEnemy(); //Runs the SpawnEnemy method
-            spawnTimer = 0f; //Resets the spawn timer to 0
-            currentSpawnInterval = Mathf.Max(currentSpawnInterval - spawnIntervalDecreaseRate, minSpawnInterval); //Reduce the current spawn interval by the decrease rate and assign the new value
+                SpawnEnemy(); //Runs the SpawnEnemy method
+                spawnTimer = 0f; //Resets the spawn timer to 0
+                currentSpawnInterval = Mathf.Max(currentSpawnInterval - spawnIntervalDecreaseRate, minSpawnInterval); //Reduce the current spawn interval by the decrease rate and assign the new value
+            }
         }
+        
     }
 
     void SpawnEnemy()

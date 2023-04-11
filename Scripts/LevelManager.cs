@@ -12,7 +12,9 @@ public class LevelManager : MonoBehaviour
     public Text enemiesLeft;
     public Text gameText;
     public GameObject boss;
-    public Slider bossHealthBar;
+    public AudioClip gameMusic;
+    public AudioClip bossMusic;
+    public float bossMusicVolume;
     public static bool isGameOver = false;
     float reload = 5.0f;
     public string nextLevel;
@@ -29,7 +31,7 @@ public class LevelManager : MonoBehaviour
         spawner = GameObject.FindGameObjectWithTag("EnemySpawner");
         enemiesLeft.text = "Enemies Left: 10";
         gameText.gameObject.SetActive(false);
-        //bossFightCanvas.SetActive(false);
+        Camera.main.GetComponent<AudioSource>().clip = gameMusic;
     }
 
     // Update is called once per frame
@@ -62,9 +64,9 @@ public class LevelManager : MonoBehaviour
     void StartBossFight()
     {
         //Play some Boss Music??
-
-        //Activates Boss Canvas
-        //bossFightCanvas.SetActive(true);
+        Camera.main.GetComponent<AudioSource>().clip = bossMusic;
+        Camera.main.GetComponent<AudioSource>().Play();
+        Camera.main.GetComponent<AudioSource>().volume = bossMusicVolume;
         //Instantiate this levels boss
         bossStarted = true;
         GameObject[] enemiesAlive = GameObject.FindGameObjectsWithTag("Enemy");
@@ -91,7 +93,6 @@ public class LevelManager : MonoBehaviour
         gameText.gameObject.SetActive(true);
         enemiesLeft.gameObject.SetActive(false);
         FindObjectOfType<PlayerMovement>().wonAnimation();
-        Destroy(spawner);
         if (!string.IsNullOrEmpty(nextLevel)) {
             Invoke("LoadNextLevel", 3);
         }
@@ -108,7 +109,6 @@ public class LevelManager : MonoBehaviour
         isGameOver = true;
         gameText.text = "GAME OVER";
         gameText.gameObject.SetActive(true);
-        Destroy(spawner);
         Invoke("ReloadLevel", 5);
     }
 

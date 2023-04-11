@@ -23,8 +23,12 @@ public class LobsterBehavior : BossBehavior
     public GameObject lobsterWithRigidbodies;
     public GameObject lobsterPuffEffect;
 
+    public Transform lobsterAttackUpPosition;
+
     public ParticleSystem steamNormal;
     public ParticleSystem steamFast;
+
+    public AudioClip boilingSFX;
 
     public Color heatingWaterColor;
 
@@ -33,6 +37,7 @@ public class LobsterBehavior : BossBehavior
     public float stoppingDistance = 15;
     public float stunnedForce;
     public float stunnedTime;
+    public float attackForce;
 
 
     public int maxHealth;
@@ -42,7 +47,9 @@ public class LobsterBehavior : BossBehavior
     private float timeTillSpawn;
     private float timeTillAttack;
     private bool isStunned = false;
+    private bool isBeingLaunched = false;
 
+    private GameObject stunnedLobster;
 
     private Color startingButtonColor;
     private Color startingWaterColor;
@@ -52,6 +59,8 @@ public class LobsterBehavior : BossBehavior
     private Color currentWaterColor;
     private Color currentHeatingColor;
     
+
+    private bool deadEffectsFinished = false;
 
 public override void BossStart()
     {
@@ -108,14 +117,13 @@ public override void BossStart()
 
         if(timeTillAttack >= attackCooldown)
         {
-            //currentState = LobsterState.Attacking;
-            print("Attacked");
+            currentState = LobsterState.Attacking;
             timeTillAttack = 0;
         }
 
         if (agent.remainingDistance <= agent.stoppingDistance && distance >= 8)
         {
-            print("made it");
+            
             Vector3 direction = player.transform.position - transform.position;
             direction.y = 0;
             Quaternion toRotation = Quaternion.LookRotation(direction, Vector3.up);
@@ -130,11 +138,51 @@ public override void BossStart()
     private void AttackingUpdate()
     {
         //Lobster Attacks
-        print("Attacked");
+        print("AttackingUpdate");
+        if (!isBeingLaunched)
+        {
+            lobster.transform.position = Vector3.Lerp(lobster.transform.position, lobsterAttackUpPosition.transform.position, Time.deltaTime * 3);
+            lobster.transform.LookAt(player.transform.position);
+        }
+        
+        if(Vector3.Distance(lobster.transform.position, lobsterAttackUpPosition.transform.position) <= 0.2f && !isBeingLaunched)
+        {
+            isBeingLaunched = true;
+            StartCoroutine(AttackLaunch());
+        }
         currentButtonColor = startingButtonColor;
         currentHeatingColor = startingHeatingColor;
         currentWaterColor = startingWaterColor;
         UpdateColors();
+    }
+
+    private IEnumerator AttackLaunch()
+    {
+        gameObject.GetComponent<BoxCollider>().enabled = false;
+        lobster.GetComponent<Rigidbody>().isKinematic = false;
+        lobster.GetComponent<Rigidbody>().useGravity = true;
+        yield return new WaitForSeconds(0.1f);
+        lobster.GetComponent<Rigidbody>().AddForce(lobster.transform.forward * attackForce, ForceMode.Impulse);
+        yield return new WaitForSeconds(1.5f);
+        lobster.GetComponent<Rigidbody>().isKinematic = true;
+        lobster.GetComponent<Rigidbody>().useGravity = false;
+        Instantiate(lobsterPuffEffect, lobster.transform.position, Quaternion.identity);
+        MeshRenderer[] lobsterParts = lobster.GetComponentsInChildren<MeshRenderer>();
+        foreach(MeshRenderer mesh in lobsterParts)
+        {
+            mesh.enabled = false;
+        }
+        yield return new WaitForSeconds(1f);
+        lobster.transform.localPosition = new Vector3(-0.046f, 0.54f, 0.472f);
+        lobster.transform.localRotation = Quaternion.Euler(new Vector3(-4.349f, 0, 0));
+        Instantiate(lobsterPuffEffect, lobster.transform.position, Quaternion.identity);
+        foreach (MeshRenderer mesh in lobsterParts)
+        {
+            mesh.enabled = true;
+        }
+        isBeingLaunched = false;
+        gameObject.GetComponent<BoxCollider>().enabled = true;
+        currentState = LobsterState.Potted;
     }
 
     private void StunnedUpdate()
@@ -151,15 +199,16 @@ public override void BossStart()
             StartCoroutine(LobsterIsStunned());
         }
     }
+    
 
     private IEnumerator LobsterIsStunned()
-    {
-        
+    {        
         isStunned = true;
+        AudioSource.PlayClipAtPoint(boilingSFX, Camera.main.transform.position);
         yield return new WaitForSeconds(4);
-        //Vector3 lobsterOriginalPosition = lobster.transform.position;
+        
         lobster.SetActive(false);
-        GameObject stunnedLobster =  Instantiate(lobsterWithRigidbodies, lobster.transform.position, lobster.transform.rotation,gameObject.transform);
+        stunnedLobster =  Instantiate(lobsterWithRigidbodies, lobster.transform.position, lobster.transform.rotation,gameObject.transform);
         Rigidbody[] lobsterRigidbodies = stunnedLobster.GetComponentsInChildren<Rigidbody>();
 
         foreach (Rigidbody rb in lobsterRigidbodies)
@@ -173,7 +222,6 @@ public override void BossStart()
         Instantiate(lobsterPuffEffect, stunnedLobster.GetComponentInChildren<Rigidbody>().transform.position, Quaternion.identity);
         Destroy(stunnedLobster);
         yield return new WaitForSeconds(1f);
-        //Particle System poof
         Instantiate(lobsterPuffEffect, lobster.transform.position, Quaternion.identity);
         lobster.SetActive(true);
         isStunned = false;
@@ -193,15 +241,31 @@ public override void BossStart()
         heatingElement.GetComponent<MeshRenderer>().material.color = Color.Lerp(previousHeatinElementcolor, currentHeatingColor, Time.deltaTime * 2.4f);
     }
 
+    public override void BossDeadEffects()
+    {
+        if (!deadEffectsFinished)
+        {
+            deadEffectsFinished = true;
+            StopCoroutine(LobsterIsStunned());
+            Instantiate(lobsterPuffEffect, stunnedLobster.transform.position, Quaternion.identity);
+            Instantiate(lobsterPuffEffect, potWater.transform.position, Quaternion.identity);
+            Instantiate(lobsterPuffEffect, heatingElement.transform.position, Quaternion.identity);
+            Destroy(gameObject, 0.2f);
+           
+        }    
+    }
+
     public void HeatOn()
     {
-        if(currentState != LobsterState.Stunned)
+        if(currentState == LobsterState.Potted) //Can only stun lobster while potted to avoid glitches
         {
             currentState = LobsterState.Stunned;
             steamNormal.Stop();
             steamFast.Play();
         }
     }
+
+
 
     
 }

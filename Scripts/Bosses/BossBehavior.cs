@@ -8,15 +8,17 @@ public abstract class BossBehavior : MonoBehaviour
 {
     protected GameObject player;
     protected int currentHealth;
+
     public TMP_Text bossName;
     public GameObject bossCanvas;
     public Slider healthBar;
+    public bool isDead = false;
     
     
     // Start is called before the first frame update
     void Start()
     {
-
+        
         player = GameObject.FindGameObjectWithTag("Player");
         bossCanvas = GameObject.FindGameObjectWithTag("BossCanvas");
         for (int i = 0; i < bossCanvas.transform.childCount; i++)
@@ -36,6 +38,10 @@ public abstract class BossBehavior : MonoBehaviour
         {
             BossUpdate();
         }
+        else if(isDead)
+        {
+            BossDeadEffects();
+        }
     }
 
     public void takeDamage(int damage)
@@ -45,7 +51,6 @@ public abstract class BossBehavior : MonoBehaviour
         if (currentHealth <= 0)
         {
             currentHealth = 0;
-            //PlayDeathAniamtion
             BossDefeated();
             print(currentHealth);
         }
@@ -53,10 +58,13 @@ public abstract class BossBehavior : MonoBehaviour
 
     void BossDefeated()
     {
+        isDead = true;
         FindObjectOfType<LevelManager>().LevelBeat();
     }
 
     public abstract void BossStart();
 
     public abstract void BossUpdate();
+
+    public abstract void BossDeadEffects();
 }
