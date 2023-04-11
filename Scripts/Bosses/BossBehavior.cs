@@ -2,21 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public abstract class BossBehavior : MonoBehaviour
 {
     protected GameObject player;
-    public int currentHealth;
+    protected int currentHealth;
+    public TMP_Text bossName;
     public GameObject bossCanvas;
     public Slider healthBar;
-
+    
+    
     // Start is called before the first frame update
     void Start()
     {
+
         player = GameObject.FindGameObjectWithTag("Player");
         bossCanvas.SetActive(true);
-        healthBar.value = currentHealth;
         BossStart();
+        healthBar.value = currentHealth;
     }
 
     // Update is called once per frame
@@ -28,7 +32,7 @@ public abstract class BossBehavior : MonoBehaviour
         }
     }
 
-    void takeDamage(int damage)
+    public void takeDamage(int damage)
     {
         currentHealth -= damage;
         healthBar.value = currentHealth;
@@ -37,7 +41,7 @@ public abstract class BossBehavior : MonoBehaviour
             currentHealth = 0;
             //PlayDeathAniamtion
             BossDefeated();
-            
+            print(currentHealth);
         }
     }
 

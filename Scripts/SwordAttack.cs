@@ -185,6 +185,20 @@ public class SwordAttack : MonoBehaviour
                         }
                     }
                 }
+                else if (hit.CompareTag("Boss"))
+                {
+                    if(hit.transform.parent.name == "LobsterRigidbodies(Clone)")
+                    {
+                        hit.transform.parent.transform.parent.GetComponent<BossBehavior>().takeDamage(damage);
+                        break;
+                    }
+                    else
+                    {
+                        //hit.GetComponent<BossBehavior>().takeDamage(damage);
+                    }
+
+                }
+                
             }
             
         }
