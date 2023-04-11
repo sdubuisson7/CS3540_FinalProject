@@ -10,6 +10,8 @@ public class LevelManager : MonoBehaviour
     public int enemiesToKillToBeatLevel = 10;
     public Text enemiesLeft;
     public Text gameText;
+    public GameObject bossFightCanvas;
+    public GameObject boss;
     public static bool isGameOver = false;
     float reload = 5.0f;
     public string nextLevel;
@@ -25,6 +27,7 @@ public class LevelManager : MonoBehaviour
         spawner = GameObject.FindGameObjectWithTag("EnemySpawner");
         enemiesLeft.text = "Enemies Left: 10";
         gameText.gameObject.SetActive(false);
+        bossFightCanvas.SetActive(false);
     }
 
     // Update is called once per frame
@@ -38,7 +41,8 @@ public class LevelManager : MonoBehaviour
             }
             else
             {
-                LevelBeat();
+                StartBossFight();
+                //LevelBeat();
             }
         }
         else if(enemiesToKillToBeatLevel > enemiesKilled)
@@ -50,6 +54,16 @@ public class LevelManager : MonoBehaviour
             
             gameText.text = "Game Over\nRestarting in " + reload.ToString("f2");
         }
+    }
+
+    void StartBossFight()
+    {
+        //Play some Boss Music??
+        
+        //Activates Boss Canvas
+        bossFightCanvas.SetActive(true);
+        //Instantiate this levels boss
+        Instantiate(boss, new Vector3(0, 3, 0), Quaternion.identity);
     }
 
     void setEnemiesLeft()
