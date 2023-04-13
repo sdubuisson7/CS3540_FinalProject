@@ -1,0 +1,606 @@
+fileFormatVersion: 2
+guid: 28bc123f6d9d60e4e869dfb34292898b
+ModelImporter:
+  serializedVersion: 21300
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 01_mango
+    second: {fileID: 2100000, guid: 832e4bcfec46dd64aaea30c6913651e8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 02_potato
+    second: {fileID: 2100000, guid: a38737f9276b5614a88a03a8f883597b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 03_avocado
+    second: {fileID: 2100000, guid: 67db36ab5a3919c4eb3e1b9174387043, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 04_lemon
+    second: {fileID: 2100000, guid: 686b8ff1a283d07489e8d65c0dccf659, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 05_turnip
+    second: {fileID: 2100000, guid: 3df1d748f00d4584880271588e266969, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 06_custard_apple
+    second: {fileID: 2100000, guid: 4a664b69cfd8dff45b648982d2a3d819, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 07_carrot
+    second: {fileID: 2100000, guid: c1ab77c6f3cacae4a805bd0cf88209f7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 08_orange
+    second: {fileID: 2100000, guid: a527ee2945e863d4698c2914c13b9ed8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 09_pepper
+    second: {fileID: 2100000, guid: f7f13e05f5748b14f9e404b7dad57942, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 10_zucchini
+    second: {fileID: 2100000, guid: badd787f467fcb447b0e12f2b2126405, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 11_lemon
+    second: {fileID: 2100000, guid: aa58277d408963c45bd7c3d983c53943, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 12_potato
+    second: {fileID: 2100000, guid: c9f302dd6e8965a48b4ce32e0aef716b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 13_fennel
+    second: {fileID: 2100000, guid: def72e728b968e942852c5e3b50661ad, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 14_gourd
+    second: {fileID: 2100000, guid: d24008ec8c3e09c4a9fccfb57bc95b83, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 15_artichoke
+    second: {fileID: 2100000, guid: cb10f931727e21f479a8eb9cfc568503, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 17_heirloom_tomato
+    second: {fileID: 2100000, guid: eac9657b2d8267c419821e17f2f8392e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 18_kiwi
+    second: {fileID: 2100000, guid: 95e23f5b2bb18e0418bf183c5d89680a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 19_onion
+    second: {fileID: 2100000, guid: 0652d99b9b767204fa40c77ffb3ec900, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 20_orange
+    second: {fileID: 2100000, guid: 66b2dfa0d3a7d3a4aa8ac487f9c3bb0b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 21_napa_cabbage
+    second: {fileID: 2100000, guid: 769b3d763e45e4948a762ade7956f836, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 22_beetroot
+    second: {fileID: 2100000, guid: 92858fef6fbf74343ab140fc36eb16af, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 23_pomegranate
+    second: {fileID: 2100000, guid: f4d586342ff3baf4f9cd1eb7766c92c6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 24_pomegranate
+    second: {fileID: 2100000, guid: a3a9866aa9852334cb1db77a4a3a6d65, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 25_grapes
+    second: {fileID: 2100000, guid: 956d2f1276dacfa4e8e40f4fe1a446d0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 26_mango
+    second: {fileID: 2100000, guid: 9cdb32942d733e34992c696448b9e8d2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 27_lemon
+    second: {fileID: 2100000, guid: 1164baf8febfd7f46aebfd04061f9890, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 28_potato
+    second: {fileID: 2100000, guid: 477886ee7d8583a44b54634aa967228c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 29_celery
+    second: {fileID: 2100000, guid: c7283c930b0f10b449d8fbbe5d69c8c3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 30_sweet_dumpling
+    second: {fileID: 2100000, guid: 5b268978ae3a3334e931f20330157cde, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 31_pepper
+    second: {fileID: 2100000, guid: df06690b64b0de74c99ba7e910e84438, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 32_pineapple
+    second: {fileID: 2100000, guid: 7e48b3ba87c522f418af101754cc1e93, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 33_mandarin
+    second: {fileID: 2100000, guid: a081bb4ca84c3d845a2aca3230cb427b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 34_yellow_sugar_melon
+    second: {fileID: 2100000, guid: 04f47f92ba9bd3644a59fe62361f3c1d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 35_garlic
+    second: {fileID: 2100000, guid: d151a2e3eb330d54caead29c739d15bc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 36_pineapple
+    second: {fileID: 2100000, guid: f9f252d99a619434ca72adad7d63af35, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 37_garlic
+    second: {fileID: 2100000, guid: d9c41d260cd623b4cb8955ec44d821b8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 38_garlic
+    second: {fileID: 2100000, guid: 696df222d5fead24a889cc2f6dc5bda2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 39_grapefruit
+    second: {fileID: 2100000, guid: 5f2ed17156d4f1e43997eb8358a507ba, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 40_kiwano
+    second: {fileID: 2100000, guid: ed998b2d57bd14c448b8db10f623978f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 41_papaya
+    second: {fileID: 2100000, guid: 2461a330dc96888459ffb647a718d855, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 42_potato
+    second: {fileID: 2100000, guid: 539f95cd53900794f9764ae3c6cbf543, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 43_kiwi
+    second: {fileID: 2100000, guid: 998b45347f3c4e24d90f687b5ba75b39, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 44_mango
+    second: {fileID: 2100000, guid: 7cb47e751ecb5984ab75779895e6c701, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 45_radish
+    second: {fileID: 2100000, guid: ed16ec00ec73a4f4ba73fedcf0a4572a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 46_melon
+    second: {fileID: 2100000, guid: 5eaaae65a0aa1cd409672e17e12f2a99, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 47_kiwano
+    second: {fileID: 2100000, guid: efe375449024fd9439462bd250cab98d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 48_parsnip
+    second: {fileID: 2100000, guid: 23f92e03aadd99346a41fb9703cf6bb1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 49_broccoli
+    second: {fileID: 2100000, guid: 7282d0545f1bd2c4b88701ccd15b3b37, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 50_cabbage
+    second: {fileID: 2100000, guid: 5e0f58945fbbc1e4a94d937dbfbbd52d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 51_pomegranate
+    second: {fileID: 2100000, guid: c55aba80dd4b39a49baa12c1649917e3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 52_pumpkin
+    second: {fileID: 2100000, guid: 3066871c05cc4ca4f83f187dc86fe6d6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 53_potato
+    second: {fileID: 2100000, guid: 687a25e579c7bfc479f0b50e2fa2eb0e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 54_kiwano
+    second: {fileID: 2100000, guid: 5253063c87dbc2a4a8ddaea7475aca63, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 56_pineapple
+    second: {fileID: 2100000, guid: 3322c38c14c41eb47983a260f2b99b8b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 58_orange
+    second: {fileID: 2100000, guid: 4328b160bde6ec84b92bf78e3a8dfa8d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 59_hokaido_pumpkin
+    second: {fileID: 2100000, guid: 2e3133bdee190b845824f5b7feb7f5e7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 60_pumpkin
+    second: {fileID: 2100000, guid: 0703057b78fffe94e915fa4a138ecc2a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 61_kohlrabi
+    second: {fileID: 2100000, guid: 9094a622ea4852b49bc975cc6d30e957, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 63_pineapple
+    second: {fileID: 2100000, guid: 8c5062165ff1d8a4d984e129e250447d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 64_pineapple
+    second: {fileID: 2100000, guid: 38b40c5834501c7418ee1f90a30d25a6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 65_pumpkin
+    second: {fileID: 2100000, guid: 528cb2db99b598e4194209239a1a5e81, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 66_pumpkin
+    second: {fileID: 2100000, guid: 8b58c8a572ff2844e84979976101cef9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 67_pomegranate
+    second: {fileID: 2100000, guid: d0b8457d81cfca545a2337fb94aa0971, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 68_hokaido_pumpkin
+    second: {fileID: 2100000, guid: 5b0f9b4eb07fca04ea80d69f06fcdf62, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 69_broccoli
+    second: {fileID: 2100000, guid: c554bd35a88697b46b54ea67868f4f81, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 70_kiwano
+    second: {fileID: 2100000, guid: 5bcd01c2a8ea88249956c4b2905561d3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 71_peach
+    second: {fileID: 2100000, guid: d0e3f3ba7c4f8bb43b20a98debfe9877, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 72_orange
+    second: {fileID: 2100000, guid: aae5e1412076a0b49905abda02c3addb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 73_strawberry
+    second: {fileID: 2100000, guid: cc7145cf8ee407f469c3d397cae2f47b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 74_mandarine
+    second: {fileID: 2100000, guid: dfdfa89b31614e248a278f97877f3e88, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 75_radicchio
+    second: {fileID: 2100000, guid: 051b920dc13d55f4a9c0545d17fffadc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 76_fig
+    second: {fileID: 2100000, guid: 021de682e07eae04ba642b3127bf3c52, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 77_turnip
+    second: {fileID: 2100000, guid: 4c54a4bea6417f84b8253289afc1db65, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 78_calabaza
+    second: {fileID: 2100000, guid: 271cfe03513c0614e9ae3f0817130267, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 79_pepper
+    second: {fileID: 2100000, guid: 2a14cf35ebd96ac4e8d8daad126ad6eb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 80_pineapple
+    second: {fileID: 2100000, guid: 9a29b515fccfabf4cbd810b707ad5562, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: apple01_lr
+    second: {fileID: 2100000, guid: e16da33751cc2294d971a85181492442, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: apple02_lr
+    second: {fileID: 2100000, guid: f5504dbbf33f248498f59a6c2bc166e0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: apple03_lr
+    second: {fileID: 2100000, guid: 20d453d81cb297d418d3ed5fbe328fa9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: apple04_lr
+    second: {fileID: 2100000, guid: 57ec0d296a73eee47813a09f784ed58f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: apple05_lr
+    second: {fileID: 2100000, guid: b1a0c8cde93447045b1470f606761165, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: apple06_lr
+    second: {fileID: 2100000, guid: 67fccbc675793e94eb8f1eb9677e7d55, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: apple08_lr
+    second: {fileID: 2100000, guid: 4c88a512b1ba329499aabb43e31ba269, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: apple09_lr
+    second: {fileID: 2100000, guid: 64cfda2768c6581489cabfc675c27ed4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: apple10_lr
+    second: {fileID: 2100000, guid: e662859927d12584d8556c7ab6544d32, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: apple11_lr
+    second: {fileID: 2100000, guid: 953b7ac34b4a79c45aefb8f40bf97d2f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: banana01_lr
+    second: {fileID: 2100000, guid: ac889f8d542e35b4ba755701a774449b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: banana02_lr
+    second: {fileID: 2100000, guid: 4aeabcc0d440ed642b13025b74fe146a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: banana03_lr
+    second: {fileID: 2100000, guid: a242a473d6f13cb46bab5562b158cb83, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: banana04_lr
+    second: {fileID: 2100000, guid: f64f8a2fbe5b6cf4a99005ab4ceb6175, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: banana05_lr
+    second: {fileID: 2100000, guid: de01000cdc070fe4c9a01c20e78cdf02, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: banana06_lr
+    second: {fileID: 2100000, guid: fc80bce878115724f9f01ea9c4424696, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: banana07_lr
+    second: {fileID: 2100000, guid: 4128149d5cd39324384e1cc7e96abf34, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: banana09_lr
+    second: {fileID: 2100000, guid: e9315b801c4977b46815d52a6e67d103, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: banana10_lr
+    second: {fileID: 2100000, guid: 872d3189706b7e448a20ec06eb7d7e54, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: banana12_lr
+    second: {fileID: 2100000, guid: 0047d7263d52d584785901a84750cc84, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pear01_lr
+    second: {fileID: 2100000, guid: 190c6bfc34b3731459868c45f08f1300, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pear02_lr
+    second: {fileID: 2100000, guid: 472aa1524e285ed40bddbad537945305, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pear03_lr
+    second: {fileID: 2100000, guid: 6ec2838d91423d04cafce474dc607bcf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pear04_lr
+    second: {fileID: 2100000, guid: 4c5e04f887f2ece44aefb0e51861b4d0, type: 2}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 1
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
