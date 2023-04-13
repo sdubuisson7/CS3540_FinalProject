@@ -3433,7 +3433,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.086214036, y: -0.043109268, z: 0.003734038, w: 0.99533653}
+  m_LocalRotation: {x: 0.08621399, y: -0.04310927, z: 0.0037340363, w: 0.99533653}
   m_LocalPosition: {x: 3.5955312, y: 4.46, z: -6.619404}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4107,7 +4107,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1250934649}
-  m_LocalRotation: {x: 0.23819259, y: -0.050662108, z: 0.01744481, w: 0.96973884}
+  m_LocalRotation: {x: 0.23819251, y: -0.05066218, z: 0.017444795, w: 0.9697388}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4707,7 +4707,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1327533357}
-  m_LocalRotation: {x: 0.2780542, y: -0.04989814, z: 0.01952303, w: 0.95906985}
+  m_LocalRotation: {x: 0.27805415, y: -0.04989822, z: 0.019523017, w: 0.95906985}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6197,7 +6197,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1582665841}
-  m_LocalRotation: {x: 0.2780542, y: -0.049898118, z: 0.019523032, w: 0.95906985}
+  m_LocalRotation: {x: 0.27805415, y: -0.049898207, z: 0.01952302, w: 0.95906985}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -8787,10 +8787,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1373016828}
     - target: {fileID: 2658833569154686256, guid: 8464b840f21d5ac48ba597bfbcce2fbf, type: 3}
-      propertyPath: attackRange
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2658833569154686256, guid: 8464b840f21d5ac48ba597bfbcce2fbf, type: 3}
       propertyPath: ingredient1
       value: 
       objectReference: {fileID: 1307718922}
@@ -8803,32 +8799,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 691965400}
     - target: {fileID: 2658833569154686256, guid: 8464b840f21d5ac48ba597bfbcce2fbf, type: 3}
-      propertyPath: enemyDamageSFX
-      value: 
-      objectReference: {fileID: 8412102987495677544, guid: 227f7c00c29eed944a83b064492b2a4e, type: 3}
-    - target: {fileID: 2658833569154686256, guid: 8464b840f21d5ac48ba597bfbcce2fbf, type: 3}
-      propertyPath: fondueProjectile
-      value: 
-      objectReference: {fileID: 6714859283248266419, guid: 6f470d07236ff47d8aa749482b64a1d6, type: 3}
-    - target: {fileID: 2658833569154686256, guid: 8464b840f21d5ac48ba597bfbcce2fbf, type: 3}
       propertyPath: recipeEffectsText
       value: 
       objectReference: {fileID: 1009037720}
     - target: {fileID: 2658833569154686259, guid: 8464b840f21d5ac48ba597bfbcce2fbf, type: 3}
       propertyPath: m_RootOrder
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2658833569154686259, guid: 8464b840f21d5ac48ba597bfbcce2fbf, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 4.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2658833569154686259, guid: 8464b840f21d5ac48ba597bfbcce2fbf, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 4.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2658833569154686259, guid: 8464b840f21d5ac48ba597bfbcce2fbf, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 4.5
       objectReference: {fileID: 0}
     - target: {fileID: 2658833569154686259, guid: 8464b840f21d5ac48ba597bfbcce2fbf, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8874,12 +8850,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sword
       objectReference: {fileID: 0}
-    - target: {fileID: 2658833569154877253, guid: 8464b840f21d5ac48ba597bfbcce2fbf, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2658833569156825255, guid: 8464b840f21d5ac48ba597bfbcce2fbf, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8464b840f21d5ac48ba597bfbcce2fbf, type: 3}
 --- !u!4 &2828437835562908860
 Transform:
