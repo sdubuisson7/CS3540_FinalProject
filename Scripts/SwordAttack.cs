@@ -6,12 +6,14 @@ using UnityEngine.UI;
 public class SwordAttack : MonoBehaviour
 {
     public GameObject tip; // Reference to the empty GameObject located at the tip of the sword
+    public GameObject enemyDamageSFX;
     public Image dot; //Reference to the UI Image at the center of the screen
     public Color enemyDotColorNear = Color.red; //Reference to the color that the dot will change when aiming at an enemy
     public Color enemyDotColorFar = Color.yellow; //Reference to the color that the dot will change when aiming at an enemy
     public float colorRange = 3f; // Reference to the range at which the sword can cause damage to enemies
     public float colorSpeed = 8; //Reference to the speed the dot color changes
     public int damage = 5;
+    
     
     public float attackRange;
     public static bool attacked; // Has the player attacked?
@@ -168,7 +170,9 @@ public class SwordAttack : MonoBehaviour
             {
                 if (hit.CompareTag("Enemy"))
                 {
+                    Instantiate(enemyDamageSFX, hit.transform.position, Quaternion.identity);
                     hit.gameObject.GetComponent<EnemyBehavior>().Hit(damage);
+                    
                     if (hit.gameObject.GetComponent<EnemyBehavior>().isDead)
                     {
                         // Update the food name in the ingredientsList array
@@ -543,19 +547,19 @@ public class SwordAttack : MonoBehaviour
                 break;
             case "Meat Skewer":
                 // TODO: Attack stuff
-                speedBoostTimer = 10.0f;
+                speedBoostTimer = 15.0f;
                 break;
             case "Green Smoothie":
                 // TODO: Undo the shield
-                shieldTimer = 5.0f;
+                shieldTimer = 10.0f;
                 break;
             case "Fondue":
                 // TODO: Undo the Fondue stuff
-                fondueRaidTimer = 5.0f;
+                fondueRaidTimer = 15.0f;
                 sinceLastFondue = 0.0f;
                 break;
             case "Dragon Fruit":
-                dragonFruitTimer = 30.0f;
+                dragonFruitTimer = 45.0f;
                 break;
             default:
                 break;

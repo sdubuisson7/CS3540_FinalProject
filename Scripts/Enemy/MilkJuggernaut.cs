@@ -5,10 +5,13 @@ using UnityEngine;
 public class MilkJuggernaut : EnemyBehavior {
     public float speed = 2; // Reference to the movement speed of the enemy
     public int damage = 15;
+    public int maxHealth;
     private bool inCooldown = false;
 
     // Start is called before the first frame update
-    public override void EnemyStart() {
+    public override void EnemyStart()
+    {
+        currentHealth = maxHealth;
 
     }
 

@@ -17,6 +17,8 @@ public abstract class EnemyBehavior : MonoBehaviour {
     //public int maxHealth;
     protected int currentHealth;
     public bool isDead;
+    public GameObject butterDrop;
+    private int probabilityOfDrop = 20;
 
     // Start is called before the first frame update
     void Start() {
@@ -42,9 +44,14 @@ public abstract class EnemyBehavior : MonoBehaviour {
         {
             currentHealth = 0;
             LevelManager.enemiesKilled++;
-            print("Killed");
             Destroy(gameObject);
             isDead = true;
+            int chance = Random.Range(0, 101);
+            if(chance > (100 - probabilityOfDrop))
+            {
+                Instantiate(butterDrop, transform.position, Quaternion.identity);
+            }
+
         }
         //healthSlider.value = currentHealth;
     }

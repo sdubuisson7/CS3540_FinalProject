@@ -7,6 +7,7 @@ public class Rhubartillery : EnemyBehavior {
     public float minDistance = 10.0f;
     public float maxDistance = 25.0f;
     public int damage = 20;
+    public int maxHealth;
     public float throwingInterval = 3.0f;
     public int inaccuracy = 5;
     public List<ParticleSystem> fire;
@@ -16,6 +17,7 @@ public class Rhubartillery : EnemyBehavior {
     // Start is called before the first frame update
     public override void EnemyStart() {
         throwingTracker = throwingInterval;
+        currentHealth = maxHealth;
     }
 
     // Update is called once per frame

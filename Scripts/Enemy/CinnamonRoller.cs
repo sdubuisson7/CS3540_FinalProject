@@ -7,6 +7,7 @@ public class CinnamonRoller : EnemyBehavior {
     public int damage = 15;
     private bool inCooldown = false;
     public int maxHealth = 5;
+    
 
     // Start is called before the first frame update
     public override void EnemyStart() {

@@ -3764,7 +3764,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
 --- !u!1 &3138456863435732041
@@ -4150,8 +4150,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDead: 0
+  butterDrop: {fileID: 3877379890337223225, guid: 778fe712cea9f2846b3c949df94d5e89, type: 3}
   speed: 2
   damage: 15
+  maxHealth: 15
 --- !u!114 &-480896263334318597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4662,6 +4664,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}

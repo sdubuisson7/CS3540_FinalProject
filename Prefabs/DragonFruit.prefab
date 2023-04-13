@@ -135,9 +135,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
-  detectionRadius: 10
+  detectionRadius: 18
   attackingRange: 7
-  dragonDuration: 30
+  dragonDuration: 45
+  damage: 5
   dragonFruitEndSFX: {fileID: 8300000, guid: e803dbcdbd296be42b93dea6d02e832c, type: 3}
 --- !u!1001 &3106458464534342212
 PrefabInstance:
