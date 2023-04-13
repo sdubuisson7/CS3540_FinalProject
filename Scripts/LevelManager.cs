@@ -32,6 +32,7 @@ public class LevelManager : MonoBehaviour
         enemiesLeft.text = "Enemies Left: 10";
         gameText.gameObject.SetActive(false);
         Camera.main.GetComponent<AudioSource>().clip = gameMusic;
+        Camera.main.GetComponent<AudioSource>().Play();
     }
 
     // Update is called once per frame
@@ -45,8 +46,14 @@ public class LevelManager : MonoBehaviour
             }
             else if(!bossStarted)
             {
-                StartBossFight();
-                //LevelBeat();
+                if(gameObject.scene.name == "Level1")
+                {
+                    LevelBeat();
+                }
+                else
+                {
+                    StartBossFight();
+                }
             }
         }
         else if(enemiesToKillToBeatLevel > enemiesKilled)
@@ -63,20 +70,23 @@ public class LevelManager : MonoBehaviour
 
     void StartBossFight()
     {
-        //Play some Boss Music??
+        //Play Boss Music
         Camera.main.GetComponent<AudioSource>().clip = bossMusic;
         Camera.main.GetComponent<AudioSource>().Play();
         Camera.main.GetComponent<AudioSource>().volume = bossMusicVolume;
-        //Instantiate this levels boss
+        
         bossStarted = true;
+        //Destroy Current live enemies
         GameObject[] enemiesAlive = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (GameObject aliveEnemy in enemiesAlive)
         {
             Destroy(aliveEnemy);
         }
+        //Instantiate this levels boss
         GameObject currentBoss = Instantiate(boss, new Vector3(0, 3, 0), Quaternion.identity);
         enemiesLeft.gameObject.SetActive(false);
         
+        //Disable enemySpawner
         FindObjectOfType<EnemySpawner>().enabled = false;
        
     }

@@ -12111,8 +12111,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a17de4864bc34ec9a57f6acfa3f7d28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDead: 0
+  butterDrop: {fileID: 3877379890337223225, guid: 778fe712cea9f2846b3c949df94d5e89, type: 3}
+  probabilityOfDrop: 20
   speed: 4
   damage: 20
+  maxHealth: 5
 --- !u!135 &7260805518179371176
 SphereCollider:
   m_ObjectHideFlags: 0

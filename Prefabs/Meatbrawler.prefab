@@ -51456,6 +51456,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDead: 0
+  butterDrop: {fileID: 3877379890337223225, guid: 778fe712cea9f2846b3c949df94d5e89, type: 3}
+  probabilityOfDrop: 20
   speed: 4
   minDistance: 12.5
   maxDistance: 15

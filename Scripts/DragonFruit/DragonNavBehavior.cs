@@ -80,7 +80,7 @@ public class DragonNavBehavior : MonoBehaviour
         agent.SetDestination(player.position);
         agent.stoppingDistance = 3;
         agent.autoBraking = true;
-        agent.speed = 6.0f;
+        agent.speed = 7.5f;
         animator.SetFloat("Speed", agent.velocity.magnitude);
 
         if (detectedEnemies.Length > 0)
@@ -98,7 +98,7 @@ public class DragonNavBehavior : MonoBehaviour
             return;
         }
         agent.SetDestination(detectedEnemies[0].transform.position);
-        agent.speed = 7.5f;
+        agent.speed = 9f;
         agent.autoBraking = false;
         agent.stoppingDistance = attackingRange;
         if (agent.remainingDistance <= attackingRange)
