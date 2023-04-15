@@ -55,7 +55,6 @@ public abstract class EnemyBehavior : MonoBehaviour {
         }
         //healthSlider.value = currentHealth;
     }
-
     public abstract void EnemyStart();
 
     public abstract void EnemyUpdate();

@@ -136,7 +136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: 0
   detectionRadius: 18
-  attackingRange: 7
+  attackingRange: 4
   dragonDuration: 45
   damage: 5
   dragonFruitEndSFX: {fileID: 8300000, guid: e803dbcdbd296be42b93dea6d02e832c, type: 3}
@@ -1557,11 +1557,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3309831521144208647, guid: 445a5c29e7f715947b713a753f242af0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3309831521144208647, guid: 445a5c29e7f715947b713a753f242af0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 106
       objectReference: {fileID: 0}
     - target: {fileID: 3309831521144208647, guid: 445a5c29e7f715947b713a753f242af0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1591,17 +1591,61 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3313337525664966763, guid: 445a5c29e7f715947b713a753f242af0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3313353479814573429, guid: 445a5c29e7f715947b713a753f242af0, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3313353479814573429, guid: 445a5c29e7f715947b713a753f242af0, type: 3}
+      propertyPath: m_TagString
+      value: Flame
+      objectReference: {fileID: 0}
+    - target: {fileID: 3402698975594792605, guid: 445a5c29e7f715947b713a753f242af0, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -2399170343829268890, guid: 651d77a525480c84e9327ec0894c0da1, type: 3}
+    - target: {fileID: 3402698975594792605, guid: 445a5c29e7f715947b713a753f242af0, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3402698975594792605, guid: 445a5c29e7f715947b713a753f242af0, type: 3}
+      propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3403885206523484539, guid: 445a5c29e7f715947b713a753f242af0, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+    - target: {fileID: 3403885206523484539, guid: 445a5c29e7f715947b713a753f242af0, type: 3}
+      propertyPath: m_RenderMode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3404326953676177195, guid: 445a5c29e7f715947b713a753f242af0, type: 3}
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3404326953676177195, guid: 445a5c29e7f715947b713a753f242af0, type: 3}
+      propertyPath: CollisionModule.type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3404326953676177195, guid: 445a5c29e7f715947b713a753f242af0, type: 3}
+      propertyPath: CollisionModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3404474574881101623, guid: 445a5c29e7f715947b713a753f242af0, type: 3}
       propertyPath: playOnAwake
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3404474574881101623, guid: 445a5c29e7f715947b713a753f242af0, type: 3}
+      propertyPath: CollisionModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3404474574881101623, guid: 445a5c29e7f715947b713a753f242af0, type: 3}
+      propertyPath: CollisionModule.collidesWith.m_Bits
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 3404660839243678039, guid: 445a5c29e7f715947b713a753f242af0, type: 3}
       propertyPath: playOnAwake

@@ -18,6 +18,7 @@ public class DragonNavBehavior : MonoBehaviour
     public float dragonDuration = 30;
     public int damage = 5;
 
+    private bool inCoolDown = false;
     private Transform player;
     private NavMeshAgent agent;
     private Animator animator;
@@ -25,7 +26,7 @@ public class DragonNavBehavior : MonoBehaviour
     private ParticleSystem flamethrower;
     private float elapsedTimeSinceSpawned;
 
-    private bool inCoolDown = false;
+   
     public AudioClip dragonFruitEndSFX;
     bool dragonFruitEndPlayed;
 
@@ -111,22 +112,22 @@ public class DragonNavBehavior : MonoBehaviour
     {
         if (AllEnemiesDead())
         {
-            currentState = dragonState.following;
             animator.SetBool("Attack", false);
+            currentState = dragonState.following;
             return;
         }
         if (agent.remainingDistance > attackingRange)
         {
-            currentState = dragonState.goingToEnemy;
             GetComponentInChildren<FlamethrowerControlls>().attacking = false;
             animator.SetBool("Attack", false);
+            currentState = dragonState.goingToEnemy;
             return;
         }
         if (Vector3.Distance(detectedEnemies[0].transform.position, transform.position) > attackingRange)
         {
-            currentState = dragonState.goingToEnemy;
             GetComponentInChildren<FlamethrowerControlls>().attacking = false;
             animator.SetBool("Attack", false);
+            currentState = dragonState.goingToEnemy;
             return;
         }
         Vector3 direction = detectedEnemies[0].transform.position - transform.position;
@@ -134,7 +135,7 @@ public class DragonNavBehavior : MonoBehaviour
         Quaternion toRotation = Quaternion.LookRotation(direction, Vector3.up);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, 180 * Time.deltaTime);
         animator.SetBool("Attack", true);
-
+        
         if (GetComponentInChildren<FlamethrowerControlls>().attacking && !inCoolDown)
         {
             //Damage Enemy
@@ -148,14 +149,15 @@ public class DragonNavBehavior : MonoBehaviour
             {
 
                 detectedEnemies[0].gameObject.GetComponent<EnemyBehavior>().Hit(damage);
-                Invoke("CooldownAttack", 3.0f);
                 inCoolDown = true;
+                Invoke("CooldownAttack", 2.0f);
+                
             }
             
         }
 
     }
-
+    
     private bool AllEnemiesDead()
     {
         if (detectedEnemies.Length <= 0)
@@ -176,7 +178,7 @@ public class DragonNavBehavior : MonoBehaviour
 
     }
 
-    void CooldownAttack()
+    private void CooldownAttack()
     {
         inCoolDown = false;
     }
