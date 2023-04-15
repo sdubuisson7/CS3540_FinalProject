@@ -41,6 +41,7 @@ public class SwordAttack : MonoBehaviour
     public Image ingredient2;
     public Image ingredient3;
     private Image[] ingredientImages;
+    public Sprite[] ingredientSprites;
     // Used to show what recipe we have
     public Text recipeEffectsText;
 
@@ -271,22 +272,28 @@ public class SwordAttack : MonoBehaviour
                 switch (ingredientsList[i]) 
                 {
                     case FoodGroups.Sweet:
-                        ingredientImages[i].color = Color.magenta;
+                        // ingredientImages[i].color = Color.magenta;
+                        ingredientImages[i].sprite = ingredientSprites[0];
                         break;
                     case FoodGroups.Veggie:
-                        ingredientImages[i].color = Color.green;
+                        // ingredientImages[i].color = Color.green;
+                        ingredientImages[i].sprite = ingredientSprites[1];
                         break;
                     case FoodGroups.Meat:
-                        ingredientImages[i].color = new Color(1.0f, 0.6f, 0.0f, 1f);
+                        //ingredientImages[i].color = new Color(1.0f, 0.6f, 0.0f, 1f);
+                        ingredientImages[i].sprite = ingredientSprites[2];
                         break;
                     case FoodGroups.Starch:
-                        ingredientImages[i].color = Color.yellow;
+                        // ingredientImages[i].color = Color.yellow;
+                        ingredientImages[i].sprite = ingredientSprites[3];
                         break;
                     case FoodGroups.Spice:
-                        ingredientImages[i].color = Color.red;
+                        // ingredientImages[i].color = Color.red;
+                        ingredientImages[i].sprite = ingredientSprites[4];
                         break;
                     case FoodGroups.Dairy:
-                        ingredientImages[i].color = Color.white;
+                        // ingredientImages[i].color = Color.white;
+                        ingredientImages[i].sprite = ingredientSprites[5];
                         break;
                     default:
                         break;
@@ -534,6 +541,7 @@ public class SwordAttack : MonoBehaviour
         {
             ingredientsList[i] = FoodGroups.None;
             ingredientImages[i].color = Color.gray;
+            ingredientImages[i].sprite = null;
         }
     }
 
