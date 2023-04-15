@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2658833569154686259}
   - component: {fileID: 2658833569156009713}
-  - component: {fileID: 2658833569156825255}
   - component: {fileID: 2658833569154686256}
   m_Layer: 0
   m_Name: Sword
@@ -28,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 2658833569154877253}
   m_LocalRotation: {x: -0.33841422, y: 0.058629368, z: -0.07259124, w: 0.9363594}
   m_LocalPosition: {x: 0.5, y: 0.14, z: 0}
-  m_LocalScale: {x: 2.0252988, y: 2.025299, z: 2.0252993}
+  m_LocalScale: {x: 4.5, y: 4.5, z: 4.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3377200962433672192}
@@ -44,48 +43,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2658833569154877253}
   m_Mesh: {fileID: 4300000, guid: 28ede36dccb55964482c9195b4eb2a91, type: 3}
---- !u!23 &2658833569156825255
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2658833569154877253}
-  m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 31b16fd87cf33014c946e9d512d1e03c, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &2658833569154686256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,11 +56,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tip: {fileID: 2820472680082902867}
+  enemyDamageSFX: {fileID: 8412102987495677544, guid: 227f7c00c29eed944a83b064492b2a4e, type: 3}
   dot: {fileID: 0}
   enemyDotColorNear: {r: 1, g: 0, b: 0, a: 1}
   enemyDotColorFar: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   colorRange: 6
   colorSpeed: 6
+  damage: 5
   attackRange: 3
   ingredient1: {fileID: 0}
   ingredient2: {fileID: 0}
@@ -113,9 +72,10 @@ MonoBehaviour:
   eatSFX: {fileID: 8300000, guid: 64b16fae3f1f38648825399a0ddd3935, type: 3}
   powerupSFX: {fileID: 8300000, guid: 69aba51bad8d1f849a1f982cf3895852, type: 3}
   dragonFruitSFX: {fileID: 8300000, guid: 8cbeb7225a1a7714a8138c47b2f486b4, type: 3}
-  dragonFruitEndSFX: {fileID: 8300000, guid: e803dbcdbd296be42b93dea6d02e832c, type: 3}
   dragonFruitPrefab: {fileID: 3106458463487288199, guid: 527a2bb87cf2b5c4f917ef3d75afb193, type: 3}
   attackPoint: {fileID: 0}
+  timeBetweenFondueDrops: 1.5
+  fondueProjectile: {fileID: 6714859283248266419, guid: 6f470d07236ff47d8aa749482b64a1d6, type: 3}
 --- !u!1 &2820472680082902867
 GameObject:
   m_ObjectHideFlags: 0

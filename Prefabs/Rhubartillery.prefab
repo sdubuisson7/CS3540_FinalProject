@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2416489461508810042}
   m_Layer: 3
   m_Name: Pupil
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 5835947205542834201}
   m_Layer: 3
   m_Name: Eyeball (5)
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -287,7 +287,7 @@ GameObject:
   - component: {fileID: 6740831762814178997}
   m_Layer: 3
   m_Name: Prism
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -577,7 +577,7 @@ GameObject:
   - component: {fileID: 256635272394296058}
   m_Layer: 3
   m_Name: Eyeball (1)
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -661,7 +661,7 @@ GameObject:
   - component: {fileID: 285081902776860277}
   m_Layer: 3
   m_Name: Eyeball (3)
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -745,7 +745,7 @@ GameObject:
   - component: {fileID: 5583972317895369284}
   m_Layer: 3
   m_Name: Pupil
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -830,7 +830,7 @@ GameObject:
   - component: {fileID: 4485603073465765893}
   m_Layer: 3
   m_Name: Pipe (1)
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4580,7 +4580,7 @@ GameObject:
   - component: {fileID: 5017198596306478148}
   m_Layer: 3
   m_Name: Pupil
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4663,7 +4663,7 @@ GameObject:
   - component: {fileID: 1158282178290160657}
   m_Layer: 3
   m_Name: Eyeball (6)
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4749,7 +4749,7 @@ GameObject:
   - component: {fileID: 2264707848620878811}
   m_Layer: 3
   m_Name: Pipe
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8499,7 +8499,7 @@ GameObject:
   - component: {fileID: 4906574922423872038}
   m_Layer: 3
   m_Name: Cylinder (1)
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8584,7 +8584,7 @@ GameObject:
   - component: {fileID: 1327189527989930451}
   m_Layer: 3
   m_Name: Pipe (2)
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12334,7 +12334,7 @@ GameObject:
   - component: {fileID: 5765681763901047343}
   m_Layer: 3
   m_Name: Eyeball (2)
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12418,7 +12418,7 @@ GameObject:
   - component: {fileID: 4707424855163346420}
   m_Layer: 3
   m_Name: Cylinder
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12501,7 +12501,7 @@ GameObject:
   - component: {fileID: 5102635090385642375}
   m_Layer: 3
   m_Name: Cylinder (2)
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12584,7 +12584,7 @@ GameObject:
   - component: {fileID: 8567816697431114844}
   m_Layer: 3
   m_Name: Pupil
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12699,7 +12699,7 @@ GameObject:
   - component: {fileID: 6137498580432274975}
   m_Layer: 3
   m_Name: Body
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17557,7 +17557,7 @@ GameObject:
   - component: {fileID: 8627223843321704708}
   m_Layer: 3
   m_Name: Pupil
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -22452,7 +22452,7 @@ GameObject:
   - component: {fileID: 8985485737113991066}
   m_Layer: 3
   m_Name: Pupil
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -22535,7 +22535,7 @@ GameObject:
   - component: {fileID: 6250779311132270758}
   m_Layer: 3
   m_Name: Eyeball (4)
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
