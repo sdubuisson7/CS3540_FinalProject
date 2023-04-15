@@ -7,18 +7,20 @@ public class SwordAttack : MonoBehaviour
 {
     public GameObject tip; // Reference to the empty GameObject located at the tip of the sword
     public GameObject enemyDamageSFX;
-    public Image dot; //Reference to the UI Image at the center of the screen
-    public Color enemyDotColorNear = Color.red; //Reference to the color that the dot will change when aiming at an enemy
-    public Color enemyDotColorFar = Color.yellow; //Reference to the color that the dot will change when aiming at an enemy
-    public float colorRange = 3f; // Reference to the range at which the sword can cause damage to enemies
-    public float colorSpeed = 8; //Reference to the speed the dot color changes
     public int damage = 5;
-    
+
+    // dot stuff
+    // public Image dot; //Reference to the UI Image at the center of the screen
+    // public Color enemyDotColorNear = Color.red; //Reference to the color that the dot will change when aiming at an enemy
+    // public Color enemyDotColorFar = Color.yellow; //Reference to the color that the dot will change when aiming at an enemy
+    // public float colorRange = 3f; // Reference to the range at which the sword can cause damage to enemies
+    // public float colorSpeed = 8; //Reference to the speed the dot color changes
+    // Color neutralDotColor; //The neutral color of the Dot
+
     
     public float attackRange;
     public static bool attacked; // Has the player attacked?
     GameObject player; // The player game object
-    Color neutralDotColor; //The neutral color of the Dot
     
     public enum FoodGroups {
         None,
@@ -90,7 +92,7 @@ public class SwordAttack : MonoBehaviour
         // disable the trail renderer
         trail.enabled = false; 
         // assign the dot's neutral color
-        neutralDotColor = dot.color; 
+        // neutralDotColor = dot.color; 
         player = GameObject.FindGameObjectWithTag("Player");
         ingredientsList = new FoodGroups[3]{FoodGroups.None, FoodGroups.None, FoodGroups.None};
 
@@ -220,7 +222,7 @@ public class SwordAttack : MonoBehaviour
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 
-    void FixedUpdate()
+    /* void FixedUpdate()
     {
         // Update the dot reticle at screen center
         DotUpdate();
@@ -253,7 +255,7 @@ public class SwordAttack : MonoBehaviour
                 dot.color = neutralDotColor; // if it is not looking at an enemy, leave the color neutral
             }
         }
-    }
+    } */
     
     void ResetAnimation()
     {        
