@@ -27,20 +27,23 @@ public class EvilChefBehavior : BossBehavior
     public GameObject flourBomb;
     // empty game object at bombing hand
     public GameObject bombHand;
+    public GameObject pan;
 
     // time to play angry animation
-    public float angryTimer = 3.0f;
+    public float angryTimer = 7.0f;
 
     bool angryAnimationPlayed;
+    bool isAngry;
 
     // for throwing state
     float elapsedTime = 0;
     public float shootRate = 2.0f;
+    public float attackRate = 3.0f;
 
 
 
     // Swing 3 times before we go into throwing state
-    int swingingRounds = 3;
+    int rounds = 3;
     
     // spawn enemies
     public GameObject[] enemiesToSpawn;
@@ -58,6 +61,9 @@ public class EvilChefBehavior : BossBehavior
         healthBar.maxValue = maxHealth;
         angryAnimationPlayed = false;
         anim = gameObject.GetComponent<Animator>();
+        pan = GameObject.FindGameObjectWithTag("Pan");
+        pan.SetActive(false);
+        isAngry = false;
 
 
     }
@@ -73,42 +79,87 @@ public class EvilChefBehavior : BossBehavior
                 IdleUpdate();
                 break;
             case ChefState.Swinging:
+                elapsedTime += Time.deltaTime;
+
                 SwingingUpdate();
+
                 break;
             case ChefState.Throwing:
+                elapsedTime += Time.deltaTime;
+
                 ThrowingUpdate();
+
                 break;
             case ChefState.Stunned:
                 StunnedUpdate();
                 break;
         }
-        elapsedTime += Time.deltaTime;
+        /* if (currentHealth <= 50) {
+            isAngry = true;
+        }*/
 
         
     }
 
     private void EvilUpdate()
     {
+
+        print("EvilUpdate");
         anim.SetInteger("animState", 1);
 
-        print("AngryUpdate");
+        angryTimer -= Time.deltaTime;
+        if (angryTimer <= 0) {
+            currentState = ChefState.Idle;
+            angryTimer = 3.0f;
+
+        }
+        // currentState = ChefState.Idle;
     }
 
     private void IdleUpdate()
     {
+        //Chef Idle
+        print("IdleUpdate");
+        
+        pan.SetActive(true);
         anim.SetInteger("animState", 0);
 
-        //Chef Attacks
-        print("IdleUpdate");
+        
+        currentState = ChefState.Swinging;
         
     }
 
     private void SwingingUpdate()
     {
-
         //Chef Attacks
         print("SwingingUpdate");
+        Debug.Log("Angry: " + isAngry.ToString());
+
+        if (!isAngry) {
+            print("Attacking");
+            if (elapsedTime >= attackRate) {
+                // Get the length of attack animation (3)
+                var animDuration = anim.GetCurrentAnimatorStateInfo(0).length;
+
+                // delay the spellcasting to the end of the animation duration
+                Invoke("ShootPlayer", animDuration);
+                anim.SetInteger("animState", 0);
+
+                elapsedTime = 0.0f;
+            }
+            // Invoke("AttackPlayer", animDuration);
+                
+            
+        }
         
+    }
+
+    private void AttackPlayer() {
+
+        if (!isAngry) {
+            anim.SetInteger("animState", 2);
+        }
+
     }
 
     private void ThrowingUpdate()

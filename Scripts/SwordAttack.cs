@@ -201,6 +201,7 @@ public class SwordAttack : MonoBehaviour
                     }
                     else
                     {
+                        print("Taking damage!");
                         hit.GetComponent<BossBehavior>().takeDamage(damage);
                     }
 
