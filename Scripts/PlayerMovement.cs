@@ -106,5 +106,15 @@ public class PlayerMovement : MonoBehaviour
         playerAnimator.SetBool("IsMoving", false);
         playerAnimator.SetBool("Won", true);
     }
+
+    // Needed for Carolina Reaper's AOE Attack, and I didn't have a better place to put it
+    // Sorry, if y'all could just not touch this that would be great
+    //                                                                                  -J
+    void OnTriggerStay(Collider c) {
+        Debug.Log("In Blast Zone!");
+        if (c.gameObject.tag == "Explosion") {
+            FindObjectOfType<PlayerHealth>().Hit(c.GetComponent<Explosion>().dpt);
+        }
+    }
 }
 
