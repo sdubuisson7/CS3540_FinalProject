@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.7654685, g: 0.66229296, b: 0.64596283, a: 1}
+  m_IndirectSpecularColor: {r: 0.7654344, g: 0.6624, b: 0.6458706, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3647,7 +3647,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.08621403, y: -0.04310927, z: 0.003734038, w: 0.99533653}
+  m_LocalRotation: {x: 0.086214036, y: -0.0431092, z: 0.0037340324, w: 0.99533653}
   m_LocalPosition: {x: 3.5955312, y: 2.46, z: -6.619404}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3704,7 +3704,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1157496}
   cameraTarget: {fileID: 288196996}
-  rotationSpeed: 15
+  brains: {fileID: 0}
 --- !u!82 &963194232
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4585,7 +4585,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1250934649}
-  m_LocalRotation: {x: 0.23819259, y: -0.05066216, z: 0.017444802, w: 0.96973884}
+  m_LocalRotation: {x: 0.23819259, y: -0.050662145, z: 0.017444806, w: 0.96973884}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5479,7 +5479,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1327533357}
-  m_LocalRotation: {x: 0.2780542, y: -0.049898215, z: 0.019523023, w: 0.95906985}
+  m_LocalRotation: {x: 0.2780542, y: -0.049898114, z: 0.019523032, w: 0.95906985}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6653,7 +6653,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1582665841}
-  m_LocalRotation: {x: 0.2780542, y: -0.049898207, z: 0.019523023, w: 0.95906985}
+  m_LocalRotation: {x: 0.2780542, y: -0.049898155, z: 0.01952303, w: 0.95906985}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -8032,7 +8032,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb1138b750b05945b99d03a764a0dfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemiesToKillToBeatLevel: 20
+  enemiesToKillToBeatLevel: 1
   enemiesLeft: {fileID: 1475422480}
   gameText: {fileID: 369222137}
   boss: {fileID: 257085642605833208, guid: 3dd6e01ef6a0d2e4ab21712083c1f63c, type: 3}
@@ -9330,6 +9330,10 @@ PrefabInstance:
     - target: {fileID: 2658833569154877253, guid: 8464b840f21d5ac48ba597bfbcce2fbf, type: 3}
       propertyPath: m_Name
       value: Sword
+      objectReference: {fileID: 0}
+    - target: {fileID: 3351941938020058446, guid: 8464b840f21d5ac48ba597bfbcce2fbf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8464b840f21d5ac48ba597bfbcce2fbf, type: 3}

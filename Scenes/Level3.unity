@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.7654685, g: 0.66229296, b: 0.64596283, a: 1}
+  m_IndirectSpecularColor: {r: 0.7654344, g: 0.6624, b: 0.6458706, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2911,7 +2911,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1157496}
   cameraTarget: {fileID: 288196996}
-  rotationSpeed: 15
+  brains: {fileID: 0}
 --- !u!82 &963194232
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3898,7 +3898,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1250934649}
-  m_LocalRotation: {x: 0.23819256, y: -0.050662123, z: 0.017444806, w: 0.9697389}
+  m_LocalRotation: {x: 0.23819254, y: -0.050662115, z: 0.017444808, w: 0.9697389}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -9367,6 +9367,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sword
       objectReference: {fileID: 0}
+    - target: {fileID: 3351941938020058446, guid: 8464b840f21d5ac48ba597bfbcce2fbf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8464b840f21d5ac48ba597bfbcce2fbf, type: 3}
 --- !u!4 &2828437835562908860
@@ -12046,8 +12050,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2484333111157836817}
   m_LocalRotation: {x: -0.11753781, y: -0.0002107377, z: 0.0011798538, w: 0.9930677}
-  m_LocalPosition: {x: 0.33655924, y: -0.0000026130679, z: -0.0000017820299}
-  m_LocalScale: {x: 1.0000002, y: 1.0000001, z: 1.0000002}
+  m_LocalPosition: {x: 0.33655924, y: -0, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 270858087927403501}
