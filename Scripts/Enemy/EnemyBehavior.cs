@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum FoodGroups {
     None,
@@ -14,8 +15,9 @@ public enum FoodGroups {
 
 public abstract class EnemyBehavior : MonoBehaviour {
     protected GameObject player; // Referene to the player so that the enemy can follow the player.
-    //public int maxHealth;
+    // public int maxHealth;
     protected int currentHealth;
+    Slider healthSlider;
     public bool isDead;
     public GameObject butterDrop;
     private int probabilityOfDrop = 20;
@@ -25,6 +27,7 @@ public abstract class EnemyBehavior : MonoBehaviour {
         //Get player GameObject with tag
         player = GameObject.FindGameObjectWithTag("Player");
         isDead = false;
+        healthSlider = GetComponentInChildren<Slider>();
         EnemyStart();
     }
 
@@ -55,7 +58,7 @@ public abstract class EnemyBehavior : MonoBehaviour {
             }
 
         }
-        //healthSlider.value = currentHealth;
+        healthSlider.value = currentHealth;
     }
     public abstract void EnemyStart();
 

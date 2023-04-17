@@ -7,18 +7,20 @@ public class SwordAttack : MonoBehaviour
 {
     public GameObject tip; // Reference to the empty GameObject located at the tip of the sword
     public GameObject enemyDamageSFX;
-    public Image dot; //Reference to the UI Image at the center of the screen
-    public Color enemyDotColorNear = Color.red; //Reference to the color that the dot will change when aiming at an enemy
-    public Color enemyDotColorFar = Color.yellow; //Reference to the color that the dot will change when aiming at an enemy
-    public float colorRange = 3f; // Reference to the range at which the sword can cause damage to enemies
-    public float colorSpeed = 8; //Reference to the speed the dot color changes
     public int damage = 5;
-    
+
+    // dot stuff
+    // public Image dot; //Reference to the UI Image at the center of the screen
+    // public Color enemyDotColorNear = Color.red; //Reference to the color that the dot will change when aiming at an enemy
+    // public Color enemyDotColorFar = Color.yellow; //Reference to the color that the dot will change when aiming at an enemy
+    // public float colorRange = 3f; // Reference to the range at which the sword can cause damage to enemies
+    // public float colorSpeed = 8; //Reference to the speed the dot color changes
+    // Color neutralDotColor; //The neutral color of the Dot
+
     
     public float attackRange;
     public static bool attacked; // Has the player attacked?
     GameObject player; // The player game object
-    Color neutralDotColor; //The neutral color of the Dot
     
     public enum FoodGroups {
         None,
@@ -41,6 +43,7 @@ public class SwordAttack : MonoBehaviour
     public Image ingredient2;
     public Image ingredient3;
     private Image[] ingredientImages;
+    public Sprite[] ingredientSprites;
     // Used to show what recipe we have
     public Text recipeEffectsText;
 
@@ -89,7 +92,7 @@ public class SwordAttack : MonoBehaviour
         // disable the trail renderer
         trail.enabled = false; 
         // assign the dot's neutral color
-        neutralDotColor = dot.color; 
+        // neutralDotColor = dot.color; 
         player = GameObject.FindGameObjectWithTag("Player");
         ingredientsList = new FoodGroups[3]{FoodGroups.None, FoodGroups.None, FoodGroups.None};
 
@@ -198,7 +201,7 @@ public class SwordAttack : MonoBehaviour
                     }
                     else
                     {
-                        //hit.GetComponent<BossBehavior>().takeDamage(damage);
+                        hit.GetComponent<BossBehavior>().takeDamage(damage);
                     }
 
                 }
@@ -219,7 +222,7 @@ public class SwordAttack : MonoBehaviour
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 
-    void FixedUpdate()
+    /* void FixedUpdate()
     {
         // Update the dot reticle at screen center
         DotUpdate();
@@ -252,7 +255,7 @@ public class SwordAttack : MonoBehaviour
                 dot.color = neutralDotColor; // if it is not looking at an enemy, leave the color neutral
             }
         }
-    }
+    } */
     
     void ResetAnimation()
     {        
@@ -271,22 +274,28 @@ public class SwordAttack : MonoBehaviour
                 switch (ingredientsList[i]) 
                 {
                     case FoodGroups.Sweet:
-                        ingredientImages[i].color = Color.magenta;
+                        // ingredientImages[i].color = Color.magenta;
+                        ingredientImages[i].sprite = ingredientSprites[0];
                         break;
                     case FoodGroups.Veggie:
-                        ingredientImages[i].color = Color.green;
+                        // ingredientImages[i].color = Color.green;
+                        ingredientImages[i].sprite = ingredientSprites[1];
                         break;
                     case FoodGroups.Meat:
-                        ingredientImages[i].color = new Color(1.0f, 0.6f, 0.0f, 1f);
+                        //ingredientImages[i].color = new Color(1.0f, 0.6f, 0.0f, 1f);
+                        ingredientImages[i].sprite = ingredientSprites[2];
                         break;
                     case FoodGroups.Starch:
-                        ingredientImages[i].color = Color.yellow;
+                        // ingredientImages[i].color = Color.yellow;
+                        ingredientImages[i].sprite = ingredientSprites[3];
                         break;
                     case FoodGroups.Spice:
-                        ingredientImages[i].color = Color.red;
+                        // ingredientImages[i].color = Color.red;
+                        ingredientImages[i].sprite = ingredientSprites[4];
                         break;
                     case FoodGroups.Dairy:
-                        ingredientImages[i].color = Color.white;
+                        // ingredientImages[i].color = Color.white;
+                        ingredientImages[i].sprite = ingredientSprites[5];
                         break;
                     default:
                         break;
@@ -336,6 +345,7 @@ public class SwordAttack : MonoBehaviour
             attackBoostTimer -= Time.deltaTime;
 
             // TODO: Attack Boost for player
+            
 
             recipeEffectsText.text = "Recipe: Meat Skewer\nEffect: Protein Punch\nTime: " + attackBoostTimer.ToString("f2");
         }
@@ -534,6 +544,7 @@ public class SwordAttack : MonoBehaviour
         {
             ingredientsList[i] = FoodGroups.None;
             ingredientImages[i].color = Color.gray;
+            ingredientImages[i].sprite = null;
         }
     }
 

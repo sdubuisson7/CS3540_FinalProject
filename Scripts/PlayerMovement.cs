@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 10; // Reference to the players move speed
-    public float jumpHeight = 10; // Reference to the jump height of the player
+    public float jumpHeight = 5; // Reference to the jump height of the player
     public float gravity = 9.81f; //Reference to the gravity of the player
     public float airControl = 10; //Reference to how much control the player has in the air
     public bool isMoving;
