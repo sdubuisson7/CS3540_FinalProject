@@ -44,7 +44,7 @@ public class EnemySpawner : MonoBehaviour
         //New vector with random X and Z values within predetermined range
         Vector3 spawnPosition = new Vector3(Random.Range(-spawnRange.x, spawnRange.x), spawnRange.y, Random.Range(-spawnRange.z, spawnRange.z));
         //Spawn's enemy at spawnPosition
-        int spawnValue = Random.Range(0, 2);
+        int spawnValue = Random.Range(0, enemyPrefab.Length);
         GameObject enemy = Instantiate(enemyPrefab[spawnValue], spawnPosition, Quaternion.identity);
         enemy.transform.parent = gameObject.transform;
         
