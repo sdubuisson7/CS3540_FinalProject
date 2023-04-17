@@ -3297,7 +3297,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.08621403, y: -0.04310927, z: 0.003734038, w: 0.99533653}
+  m_LocalRotation: {x: 0.08621399, y: -0.04310927, z: 0.0037340363, w: 0.99533653}
   m_LocalPosition: {x: 3.5955312, y: 4.46, z: -6.619404}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3354,7 +3354,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1157496}
   cameraTarget: {fileID: 288196996}
-  rotationSpeed: 15
 --- !u!82 &963194232
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3971,7 +3970,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1250934649}
-  m_LocalRotation: {x: 0.23819259, y: -0.050662197, z: 0.017444797, w: 0.96973884}
+  m_LocalRotation: {x: 0.23819251, y: -0.05066218, z: 0.017444795, w: 0.9697388}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4571,7 +4570,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1327533357}
-  m_LocalRotation: {x: 0.2780542, y: -0.049898215, z: 0.019523023, w: 0.95906985}
+  m_LocalRotation: {x: 0.27805415, y: -0.04989822, z: 0.019523017, w: 0.95906985}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6030,7 +6029,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1582665841}
-  m_LocalRotation: {x: 0.2780542, y: -0.049898207, z: 0.019523023, w: 0.95906985}
+  m_LocalRotation: {x: 0.27805415, y: -0.049898207, z: 0.01952302, w: 0.95906985}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7643,6 +7642,10 @@ PrefabInstance:
     - target: {fileID: 6388560131074820419, guid: c363fdf256d0fcb4786966120d0bcde4, type: 3}
       propertyPath: m_Name
       value: Player(ButterKnight)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6388560131074820420, guid: c363fdf256d0fcb4786966120d0bcde4, type: 3}
+      propertyPath: jumpHeight
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6388560131074820424, guid: c363fdf256d0fcb4786966120d0bcde4, type: 3}
       propertyPath: m_RootOrder

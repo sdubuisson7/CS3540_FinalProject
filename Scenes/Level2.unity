@@ -157,7 +157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
-  jumpHeight: 2
+  jumpHeight: 5
   gravity: 30
   airControl: 10
   isMoving: 0
@@ -2858,6 +2858,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1941089565}
     m_Modifications:
+    - target: {fileID: 5941525749874311049, guid: 1aec2eadcd4e84c118470556d3139fc1, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5941525749874311049, guid: 1aec2eadcd4e84c118470556d3139fc1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7260805517942221684, guid: 1aec2eadcd4e84c118470556d3139fc1, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -3124,6 +3132,14 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1616052031}
+    - target: {fileID: 6601484740492989485, guid: 0dc11ce5dd87bfb48870d35f77fd6271, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6601484740492989485, guid: 0dc11ce5dd87bfb48870d35f77fd6271, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7934547143152665880, guid: 0dc11ce5dd87bfb48870d35f77fd6271, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -3647,7 +3663,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.08621403, y: -0.04310927, z: 0.003734038, w: 0.99533653}
+  m_LocalRotation: {x: 0.08621399, y: -0.04310927, z: 0.0037340363, w: 0.99533653}
   m_LocalPosition: {x: 3.5955312, y: 2.46, z: -6.619404}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3704,7 +3720,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1157496}
   cameraTarget: {fileID: 288196996}
-  rotationSpeed: 15
 --- !u!82 &963194232
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3808,6 +3823,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1941089565}
     m_Modifications:
+    - target: {fileID: 5941525749874311049, guid: 1aec2eadcd4e84c118470556d3139fc1, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5941525749874311049, guid: 1aec2eadcd4e84c118470556d3139fc1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7260805517942221684, guid: 1aec2eadcd4e84c118470556d3139fc1, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -4502,6 +4525,14 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 919908167}
+    - target: {fileID: 6601484740492989485, guid: 0dc11ce5dd87bfb48870d35f77fd6271, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6601484740492989485, guid: 0dc11ce5dd87bfb48870d35f77fd6271, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7934547143152665880, guid: 0dc11ce5dd87bfb48870d35f77fd6271, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -4585,7 +4616,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1250934649}
-  m_LocalRotation: {x: 0.23819259, y: -0.05066216, z: 0.017444802, w: 0.96973884}
+  m_LocalRotation: {x: 0.23819251, y: -0.05066218, z: 0.017444795, w: 0.9697388}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5479,7 +5510,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1327533357}
-  m_LocalRotation: {x: 0.2780542, y: -0.049898215, z: 0.019523023, w: 0.95906985}
+  m_LocalRotation: {x: 0.27805415, y: -0.04989822, z: 0.019523017, w: 0.95906985}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6010,6 +6041,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1941089565}
     m_Modifications:
+    - target: {fileID: 5941525749874311049, guid: 1aec2eadcd4e84c118470556d3139fc1, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5941525749874311049, guid: 1aec2eadcd4e84c118470556d3139fc1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7260805517942221684, guid: 1aec2eadcd4e84c118470556d3139fc1, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -6171,6 +6210,14 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1160571417}
+    - target: {fileID: 6601484740492989485, guid: 0dc11ce5dd87bfb48870d35f77fd6271, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6601484740492989485, guid: 0dc11ce5dd87bfb48870d35f77fd6271, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7934547143152665880, guid: 0dc11ce5dd87bfb48870d35f77fd6271, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -6653,7 +6700,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1582665841}
-  m_LocalRotation: {x: 0.2780542, y: -0.049898207, z: 0.019523023, w: 0.95906985}
+  m_LocalRotation: {x: 0.27805415, y: -0.049898207, z: 0.01952302, w: 0.95906985}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6944,6 +6991,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1941089565}
     m_Modifications:
+    - target: {fileID: 5941525749874311049, guid: 1aec2eadcd4e84c118470556d3139fc1, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5941525749874311049, guid: 1aec2eadcd4e84c118470556d3139fc1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7260805517942221684, guid: 1aec2eadcd4e84c118470556d3139fc1, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -7204,6 +7259,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1941089565}
     m_Modifications:
+    - target: {fileID: 5941525749874311049, guid: 1aec2eadcd4e84c118470556d3139fc1, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5941525749874311049, guid: 1aec2eadcd4e84c118470556d3139fc1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7260805517942221684, guid: 1aec2eadcd4e84c118470556d3139fc1, type: 3}
       propertyPath: m_Mesh
       value: 

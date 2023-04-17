@@ -201,7 +201,7 @@ public class SwordAttack : MonoBehaviour
                     }
                     else
                     {
-                        //hit.GetComponent<BossBehavior>().takeDamage(damage);
+                        hit.GetComponent<BossBehavior>().takeDamage(damage);
                     }
 
                 }
