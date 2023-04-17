@@ -48,6 +48,7 @@ public abstract class BossBehavior : MonoBehaviour
     {
         currentHealth -= damage;
         healthBar.value = currentHealth;
+        print(currentHealth);
         if (currentHealth <= 0)
         {
             currentHealth = 0;

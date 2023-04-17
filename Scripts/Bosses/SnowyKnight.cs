@@ -42,7 +42,7 @@ public class SnowyKnight : BossBehavior {
 
         switch (phase) {
             case SnowyPhase.Phase1:
-                Debug.Log("Phase 1; Walk");
+                //Debug.Log("Phase 1; Walk");
                 if (currentHealth <= maxHealth / 2) {
                     phase = SnowyPhase.Transition1;
                     break;

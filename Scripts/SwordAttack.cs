@@ -194,13 +194,17 @@ public class SwordAttack : MonoBehaviour
                 }
                 else if (hit.CompareTag("Boss"))
                 {
-                    if(hit.transform.parent.name == "LobsterRigidbodies(Clone)")
+                    if(hit.transform.parent != null)
                     {
-                        hit.transform.parent.transform.parent.GetComponent<BossBehavior>().takeDamage(damage);
-                        break;
-                    }
+                        if (hit.transform.parent.name == "LobsterRigidbodies(Clone)")
+                        {
+                            hit.transform.parent.transform.parent.GetComponent<BossBehavior>().takeDamage(damage);
+                            break;
+                        }
+                    }                    
                     else
                     {
+                        print("HitSnow");
                         hit.GetComponent<BossBehavior>().takeDamage(damage);
                     }
 
