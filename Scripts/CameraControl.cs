@@ -6,11 +6,13 @@ public class CameraControl : MonoBehaviour
 {
     public Transform player; // The player transform reference to keep the player looking forward
     public Transform cameraTarget; // The camera target transfrom reference where the camera will look at
-    public float rotationSpeed = 30;
+    float rotationSpeed;
     // Start is called before the first frame update
     void Start()
     {
         //Hide Cursor
+        rotationSpeed = PlayerPrefs.GetFloat("rotationSpeed", 30);
+        print("rotationSpeed = " + rotationSpeed);
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
