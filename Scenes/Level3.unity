@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.7654344, g: 0.6624, b: 0.6458706, a: 1}
+  m_IndirectSpecularColor: {r: 0.7654685, g: 0.66229296, b: 0.64596283, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2854,7 +2854,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.08621398, y: -0.04310927, z: 0.0037340357, w: 0.99533653}
+  m_LocalRotation: {x: 0.08621402, y: -0.0431092, z: 0.0037340315, w: 0.99533653}
   m_LocalPosition: {x: 3.965531, y: 1.9, z: -36.529404}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3898,7 +3898,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1250934649}
-  m_LocalRotation: {x: 0.23819251, y: -0.05066218, z: 0.017444797, w: 0.9697388}
+  m_LocalRotation: {x: 0.23819256, y: -0.050662123, z: 0.017444806, w: 0.9697389}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4480,7 +4480,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1327533357}
-  m_LocalRotation: {x: 0.27805415, y: -0.04989821, z: 0.019523019, w: 0.95906985}
+  m_LocalRotation: {x: 0.2780542, y: -0.04989811, z: 0.019523034, w: 0.95906985}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5706,7 +5706,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1582665841}
-  m_LocalRotation: {x: 0.27805415, y: -0.049898196, z: 0.01952302, w: 0.95906985}
+  m_LocalRotation: {x: 0.2780542, y: -0.049898095, z: 0.019523034, w: 0.95906985}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -9291,6 +9291,34 @@ PrefabInstance:
       propertyPath: recipeEffectsText
       value: 
       objectReference: {fileID: 1009037720}
+    - target: {fileID: 2658833569154686256, guid: 8464b840f21d5ac48ba597bfbcce2fbf, type: 3}
+      propertyPath: ingredientSprites.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2658833569154686256, guid: 8464b840f21d5ac48ba597bfbcce2fbf, type: 3}
+      propertyPath: ingredientSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: ecfc905a2597f014695bcc25207a2010, type: 3}
+    - target: {fileID: 2658833569154686256, guid: 8464b840f21d5ac48ba597bfbcce2fbf, type: 3}
+      propertyPath: ingredientSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 2d996a9f7524c354585e081fdf1c9ada, type: 3}
+    - target: {fileID: 2658833569154686256, guid: 8464b840f21d5ac48ba597bfbcce2fbf, type: 3}
+      propertyPath: ingredientSprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: b0851162516b6244f9ab7679cdb66512, type: 3}
+    - target: {fileID: 2658833569154686256, guid: 8464b840f21d5ac48ba597bfbcce2fbf, type: 3}
+      propertyPath: ingredientSprites.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: c728868677dfad541b6543a1f2aec055, type: 3}
+    - target: {fileID: 2658833569154686256, guid: 8464b840f21d5ac48ba597bfbcce2fbf, type: 3}
+      propertyPath: ingredientSprites.Array.data[4]
+      value: 
+      objectReference: {fileID: 21300000, guid: 0699585d82b9b5f49bee6abb309077c4, type: 3}
+    - target: {fileID: 2658833569154686256, guid: 8464b840f21d5ac48ba597bfbcce2fbf, type: 3}
+      propertyPath: ingredientSprites.Array.data[5]
+      value: 
+      objectReference: {fileID: 21300000, guid: b3cf694271bd9774480b5effa803e39c, type: 3}
     - target: {fileID: 2658833569154686259, guid: 8464b840f21d5ac48ba597bfbcce2fbf, type: 3}
       propertyPath: m_RootOrder
       value: 0
