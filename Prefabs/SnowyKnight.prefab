@@ -2475,7 +2475,7 @@ MonoBehaviour:
   maxHealth: 100
   clang: {fileID: 7600448938409539270}
   attackArea: {fileID: 8032014427169284449, guid: 384a82b78218a4e79acb2dbb2898c1bc, type: 3}
-  snowAttack: {fileID: 5418276051819824245, guid: 34bed65ae29db43b58c1e324c033661e, type: 3}
+  snowAttack: {fileID: 2590457543011982047, guid: 290dbb3f3d12d49819a1b31ab727dea9, type: 3}
   snowFrequency: 1
   trails:
   - {fileID: 5549757167865878270}
