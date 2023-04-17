@@ -221,11 +221,12 @@ public class SnowyKnight : BossBehavior {
     public override void BossDeadEffects() {
         if (!deadEffectsFinished) {
             deadEffectsFinished = true;
+            anim.SetTrigger("WowYouDied");
             //StopCoroutine(LobsterIsStunned());
             //Instantiate(lobsterPuffEffect, stunnedLobster.transform.position, Quaternion.identity);
             //Instantiate(lobsterPuffEffect, potWater.transform.position, Quaternion.identity);
             //Instantiate(lobsterPuffEffect, heatingElement.transform.position, Quaternion.identity);
-            Destroy(gameObject, 0.2f);
+            Destroy(gameObject, 2.6f);
            
         }
     }
