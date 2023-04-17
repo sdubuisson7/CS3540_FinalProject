@@ -14,7 +14,7 @@ public class SettingsMenuBehavior : MonoBehaviour
 
     private void Start()
     {
-        rotationSpeed = PlayerPrefs.GetFloat("rotationSpeed", 30);
+        rotationSpeed = PlayerPrefs.GetFloat("rotationSpeed", 300);
         cameraSensitivitySlider.value = rotationSpeed;
         sensitivity.text = rotationSpeed.ToString();
 
