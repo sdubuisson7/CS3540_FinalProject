@@ -5,12 +5,13 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 10; // Reference to the players move speed
-    public float jumpHeight = 10; // Reference to the jump height of the player
+    public float jumpHeight = 5; // Reference to the jump height of the player
     public float gravity = 9.81f; //Reference to the gravity of the player
     public float airControl = 10; //Reference to how much control the player has in the air
     public bool isMoving;
     public bool isNotMoving;
     
+    private float timeSinceHurtBySnowy;
 
     CharacterController controller; // Reference to the players character controller
     Vector3 input, moveDirection;
@@ -35,6 +36,8 @@ public class PlayerMovement : MonoBehaviour
             float moveVertical = Input.GetAxis("Vertical");
             playerAnimator.SetFloat("moveHorizontal", moveHorizontal);
             playerAnimator.SetFloat("moveVertical", moveVertical);
+
+            timeSinceHurtBySnowy += Time.deltaTime;
 
             //Create normalized vector of input and multiply it by the move speed
             input = (transform.right * moveHorizontal + transform.forward * moveVertical).normalized; // normalized to prevent faster diagonal movement
@@ -111,9 +114,11 @@ public class PlayerMovement : MonoBehaviour
     // Sorry, if y'all could just not touch this that would be great
     //                                                                                  -J
     void OnTriggerStay(Collider c) {
-        Debug.Log("In Blast Zone!");
         if (c.gameObject.tag == "Explosion") {
             FindObjectOfType<PlayerHealth>().Hit(c.GetComponent<Explosion>().dpt);
+        } else if (c.gameObject.tag == "SnowyKnightSlash" && timeSinceHurtBySnowy > 2.0f) {
+            FindObjectOfType<PlayerHealth>().Hit(10);
+            timeSinceHurtBySnowy = 0.0f;
         }
     }
 }

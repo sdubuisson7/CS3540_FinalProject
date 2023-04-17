@@ -28,8 +28,9 @@ public class LevelManager : MonoBehaviour
     {
         isGameOver = false;
         enemiesKilled = 0;
+        
         spawner = GameObject.FindGameObjectWithTag("EnemySpawner");
-        enemiesLeft.text = "Enemies Left: 10";
+        enemiesLeft.text = "Enemies Left: " + enemiesToKillToBeatLevel.ToString();
         gameText.gameObject.SetActive(false);
         Camera.main.GetComponent<AudioSource>().clip = gameMusic;
         Camera.main.GetComponent<AudioSource>().Play();

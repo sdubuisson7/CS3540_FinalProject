@@ -44,7 +44,7 @@ public abstract class BossBehavior : MonoBehaviour
         }
     }
 
-    public void takeDamage(int damage)
+    public virtual void takeDamage(int damage)
     {
         currentHealth -= damage;
         healthBar.value = currentHealth;
@@ -56,8 +56,7 @@ public abstract class BossBehavior : MonoBehaviour
         }
     }
 
-    void BossDefeated()
-    {
+    protected void BossDefeated() {
         isDead = true;
         FindObjectOfType<LevelManager>().LevelBeat();
     }
