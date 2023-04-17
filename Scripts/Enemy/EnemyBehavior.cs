@@ -47,6 +47,8 @@ public abstract class EnemyBehavior : MonoBehaviour {
             Destroy(gameObject);
             isDead = true;
             int chance = Random.Range(0, 101);
+            MainMenuBehavior.defeatedEnemies++;
+            PlayerPrefs.SetInt("defeatedEnemies", MainMenuBehavior.defeatedEnemies);
             if(chance > (100 - probabilityOfDrop))
             {
                 Instantiate(butterDrop, transform.position, Quaternion.identity);
