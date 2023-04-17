@@ -63,7 +63,7 @@ public class SnowyKnight : BossBehavior {
                 }
                 break;
             case SnowyPhase.Phase1Attacking:
-                Debug.Log("Phase 1; Attack!");
+                //Debug.Log("Phase 1; Attack!");
                 if (anim.GetCurrentAnimatorStateInfo(0).IsName("Normal")) {
                     phase = SnowyPhase.Phase1;
                     anim.ResetTrigger("Attack");
@@ -73,19 +73,24 @@ public class SnowyKnight : BossBehavior {
                 }
                 break;
             case SnowyPhase.Transition1:
+                //Debug.Log("Jump Away");
                 anim.SetTrigger("JumpAway");
                 StartCoroutine(JumpAway());
                 phase = SnowyPhase.Waiting;
                 break;
             case SnowyPhase.Phase2:
+                //Debug.Log("Hailstorm!");
                 StartCoroutine(Volley());
+                phase = SnowyPhase.Waiting;
                 break;
             case SnowyPhase.Transition2:
+                //Debug.Log("Jump Back");
                 anim.SetTrigger("JumpBack");
                 StartCoroutine(JumpBack());
                 phase = SnowyPhase.Waiting;
                 break;
             case SnowyPhase.Phase3:
+                //Debug.Log("Phase 3; Walk");
                 if (transform.Find(attackArea.name) != null) {
                     Destroy(transform.Find(attackArea.name).gameObject);
                 }
@@ -104,10 +109,11 @@ public class SnowyKnight : BossBehavior {
                     transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, 100 * Time.deltaTime);
                 } else {
                     anim.SetTrigger("Attack");
-                    phase = SnowyPhase.Phase1Attacking;
+                    phase = SnowyPhase.Phase3Attacking;
                 }
                 break;
             case SnowyPhase.Phase3Attacking:
+                //Debug.Log("Phase 3; Attack!");
                 if (hailCountdown <= 0.0f) {
                     hailCountdown = snowFrequency;
                     Instantiate(snowAttack, transform.position + (Vector3.up * 30.0f) + (Vector3.forward * Random.Range(-10.0f, 10.0f)) + (Vector3.left * Random.Range(-10.0f, 10.0f)), transform.rotation);
@@ -128,83 +134,68 @@ public class SnowyKnight : BossBehavior {
     }
 
     private IEnumerator JumpAway() {
+        agent.enabled = false;
         yield return new WaitForSeconds(0.2f);
-        transform.Translate(Vector3.up * 5.0f);
-        yield return null;
-        transform.Translate(Vector3.up * 5.0f);
-        yield return null;
-        transform.Translate(Vector3.up * 5.0f);
-        yield return null;
-        transform.Translate(Vector3.up * 5.0f);
-        yield return null;
-        transform.Translate(Vector3.up * 5.0f);
-        yield return null;
-        transform.Translate(Vector3.up * 5.0f);
-        yield return null;
+        for (int i = 0; i < 15; i++) {
+            transform.Translate(Vector3.up);
+            yield return null;
+        }
         phase = SnowyPhase.Phase2;
     }
 
     private IEnumerator JumpBack() {
         yield return new WaitForSeconds(0.2f);
-        transform.Translate(Vector3.up * 5.0f);
-        yield return null;
-        transform.Translate(Vector3.up * 5.0f);
-        yield return null;
-        transform.Translate(Vector3.up * 5.0f);
-        yield return null;
-        transform.Translate(Vector3.up * 5.0f);
-        yield return null;
-        transform.Translate(Vector3.up * 5.0f);
-        yield return null;
-        transform.Translate(Vector3.up * 5.0f);
-        yield return null;
+        for (int i = 0; i < 15; i++) {
+            transform.Translate(Vector3.down);
+            yield return null;
+        }
+        agent.enabled = true;
         phase = SnowyPhase.Phase3;
-
     }
 
     private IEnumerator Volley() {
         Instantiate(snowAttack, transform.position + (Vector3.forward * -10.0f), transform.rotation);
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.2f);
         Instantiate(snowAttack, transform.position + (Vector3.forward * -8.0f), transform.rotation);
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.2f);
         Instantiate(snowAttack, transform.position + (Vector3.forward * -6.0f), transform.rotation);
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.2f);
         Instantiate(snowAttack, transform.position + (Vector3.forward * -4.0f), transform.rotation);
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.2f);
         Instantiate(snowAttack, transform.position + (Vector3.forward * -2.0f), transform.rotation);
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.2f);
         Instantiate(snowAttack, transform.position, transform.rotation);
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.2f);
         Instantiate(snowAttack, transform.position + (Vector3.forward * 2.0f), transform.rotation);
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.2f);
         Instantiate(snowAttack, transform.position + (Vector3.forward * 4.0f), transform.rotation);
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.2f);
         Instantiate(snowAttack, transform.position + (Vector3.forward * 6.0f), transform.rotation);
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.2f);
         Instantiate(snowAttack, transform.position + (Vector3.forward * 8.0f), transform.rotation);
         Instantiate(snowAttack, transform.position + (Vector3.left * -10.0f) + Vector3.forward, transform.rotation);
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.2f);
         Instantiate(snowAttack, transform.position + (Vector3.forward * 10.0f), transform.rotation);
         Instantiate(snowAttack, transform.position + (Vector3.left * -8.0f) + Vector3.forward, transform.rotation);
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.2f);
         Instantiate(snowAttack, transform.position + (Vector3.left * -6.0f) + Vector3.forward, transform.rotation);
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.2f);
         Instantiate(snowAttack, transform.position + (Vector3.left * -4.0f) + Vector3.forward, transform.rotation);
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.2f);
         Instantiate(snowAttack, transform.position + (Vector3.left * -2.0f) + Vector3.forward, transform.rotation);
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.2f);
         Instantiate(snowAttack, transform.position + Vector3.forward, transform.rotation);
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.2f);
         Instantiate(snowAttack, transform.position + (Vector3.left * 2.0f) + Vector3.forward, transform.rotation);
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.2f);
         Instantiate(snowAttack, transform.position + (Vector3.left * 4.0f) + Vector3.forward, transform.rotation);
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.2f);
         Instantiate(snowAttack, transform.position + (Vector3.left * 6.0f) + Vector3.forward, transform.rotation);
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.2f);
         Instantiate(snowAttack, transform.position + (Vector3.left * 8.0f) + Vector3.forward, transform.rotation);
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.2f);
         Instantiate(snowAttack, transform.position + (Vector3.left * 10.0f) + Vector3.forward, transform.rotation);
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.2f);
         phase = SnowyPhase.Transition2;
     }
 
