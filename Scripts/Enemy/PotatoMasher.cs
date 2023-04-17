@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PotatoMasher : EnemyBehavior {
-    public float speed = 6.0f; // Reference to the movement speed of the enemy
-    public float minDistance = 12.5f;
-    public float maxDistance = 15.0f;
-    public int damage = 20;
-    public int maxHealth = 8;
+    public float speed = 4; // Reference to the movement speed of the enemy
+    public int damage = 15;
+    private bool inCooldown = false;
+    public int maxHealth = 5;
+    
 
     // Start is called before the first frame update
     public override void EnemyStart() {
@@ -17,21 +17,36 @@ public class PotatoMasher : EnemyBehavior {
     // Update is called once per frame
     public override void EnemyUpdate() {
         //Make enemy look at player and move towards player
-        Vector3 directionToTarget = (player.transform.position - transform.position).normalized;
-        directionToTarget.y = 0;
-        Quaternion lookRotation = Quaternion.LookRotation(directionToTarget);
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, 100 * Time.deltaTime);
-        
-        if (Vector3.Distance(this.player.transform.position, transform.position) > maxDistance)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, Time.deltaTime * speed);
-        }
-        else if (Vector3.Distance(player.transform.position, transform.position) < minDistance) {
-            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, Time.deltaTime * -1.0f * (speed / 2));
+        transform.LookAt(player.transform);
+        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, Time.deltaTime * speed);
+    }
+
+
+    void OnCollisionEnter(Collision c) {
+        //Check if Enemy collided with Player
+        if (c.gameObject.CompareTag("Player")) {
+            if(!inCooldown)
+            player.GetComponent<PlayerHealth>().Hit(damage);
+            inCooldown = true;
+            Invoke("CooldownAttack", 1.5f);
+            Debug.Log("PlayerHit");
         }
     }
 
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            inCooldown = false;
+        }
+    }
+
+    void CooldownAttack()
+    {
+        inCooldown = false;
+    }
+
     public override FoodGroups foodGroup() {
-        return FoodGroups.Starch;
+        return FoodGroups.Sweet;
     }
 }

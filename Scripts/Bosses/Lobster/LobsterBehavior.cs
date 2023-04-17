@@ -62,7 +62,7 @@ public class LobsterBehavior : BossBehavior
 
     private bool deadEffectsFinished = false;
 
-public override void BossStart()
+    public override void BossStart()
     {
         
         currentState = LobsterState.Potted;
