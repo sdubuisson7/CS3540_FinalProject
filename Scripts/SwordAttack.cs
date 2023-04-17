@@ -345,6 +345,7 @@ public class SwordAttack : MonoBehaviour
             attackBoostTimer -= Time.deltaTime;
 
             // TODO: Attack Boost for player
+            
 
             recipeEffectsText.text = "Recipe: Meat Skewer\nEffect: Protein Punch\nTime: " + attackBoostTimer.ToString("f2");
         }
