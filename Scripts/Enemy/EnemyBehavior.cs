@@ -21,12 +21,14 @@ public abstract class EnemyBehavior : MonoBehaviour {
     public bool isDead;
     public GameObject butterDrop;
     private int probabilityOfDrop = 20;
+    protected bool stunned;
 
     // Start is called before the first frame update
     void Start() {
         //Get player GameObject with tag
         player = GameObject.FindGameObjectWithTag("Player");
         isDead = false;
+        stunned = false;
         healthSlider = GetComponentInChildren<Slider>();
         EnemyStart();
     }
@@ -35,9 +37,26 @@ public abstract class EnemyBehavior : MonoBehaviour {
     void Update() {
         if (!LevelManager.isGameOver)
         {
-            EnemyUpdate();
+            if (!stunned)
+            {
+                EnemyUpdate();
+            }
         }
         
+    }
+
+    public void Stun()
+    {
+        if(!stunned)
+        {
+            stunned = true;
+            Invoke("cooldownStun", 3.0f);
+        }
+    }
+
+    void cooldownStun()
+    {
+        stunned = false;
     }
 
     public void Hit(int damage)
