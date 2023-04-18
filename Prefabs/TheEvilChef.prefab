@@ -1996,15 +1996,18 @@ MonoBehaviour:
   evilLaughSFX: {fileID: 0}
   angrySFX: {fileID: 0}
   idleTimer: 3
+  spawnTimer: 5
   stunnedTimer: 5
   flourBomb: {fileID: 0}
   bombHand: {fileID: 8606992737856787601}
   pan: {fileID: 0}
-  angryTimer: 0
+  attackTimer: 10
+  isAngry: 0
   shootRate: 2
   attackRate: 3
   enemiesToSpawn: []
   currentState: 0
+  damage: 0
 --- !u!95 &717631302499069291
 Animator:
   serializedVersion: 5
@@ -4029,8 +4032,21 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.9646335, y: 5.093383, z: 0.42377132}
-  m_Center: {x: -0.00045846117, y: -0.90791744, z: -0.0000004802242}
+  m_Size: {x: 3, y: 3, z: 2}
+  m_Center: {x: -0.00045846117, y: -2, z: -0.0000004802242}
+--- !u!114 &5801230831612285119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5840292079903794080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e1d6683b97560a40be96351d25017eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
 --- !u!4 &6505223267794630938 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4451467024336542060, guid: c9bfe1a547043004cb7fadee9aae85b4, type: 3}

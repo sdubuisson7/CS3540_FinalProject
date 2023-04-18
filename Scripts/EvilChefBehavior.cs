@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EvilChefBehavior : BossBehavior
 {
@@ -13,26 +14,34 @@ public class EvilChefBehavior : BossBehavior
         Spawn,
         Idle,
         Swinging,
-        Throwing,
-        Stunned,
     }
 
     // cooldown between swinging attacks
     public float idleTimer = 3.0f;
+    private float timeTillSpawn;
+
 
     // cooldown for when enemy is stunned
-    public float stunnedTimer = 5.0f;
+    public float spawnTimer = 5.0f;
+    public float spawnCooldown;
+    public GameObject enemySpawnPoint;
+
+
+    // public float stunnedTimer = 5.0f;
+    public float survivalTimer = 60.0f;
+    public Text enemiesLeft;
 
     // flourbomb prefab
-    public GameObject flourBomb;
+    // public GameObject flourBomb;
     // empty game object at bombing hand
-    public GameObject bombHand;
+    // public GameObject bombHand;
     public GameObject pan;
 
     // time to play angry animation
-    public float angryTimer = 7.0f;
+    // public float attackTimer = 10.0f;
 
     bool angryAnimationPlayed;
+    bool tauntAnimationPlayed;
     public bool isAngry;
 
     // for throwing state
@@ -51,85 +60,95 @@ public class EvilChefBehavior : BossBehavior
     Animator anim;
 
     public ChefState currentState;
+    public int damage;
 
 
     public override void BossStart()
     {
+        spawnTimer = 5.0f;
+        // attackTimer = 10.0f;
+        // stunnedTimer = 5.0f;
         currentState = ChefState.Spawn;
         bossName.text = "THE EVIL CHEF";
         currentHealth = maxHealth;
         healthBar.maxValue = maxHealth;
         angryAnimationPlayed = false;
+        tauntAnimationPlayed = false;
         anim = gameObject.GetComponent<Animator>();
         pan = GameObject.FindGameObjectWithTag("Pan");
         pan.SetActive(false);
         isAngry = false;
+        Invoke("spawnEnemies", 10.0f);
 
 
+    }
+
+    private void spawnEnemies() {
+        foreach(GameObject enemy in enemiesToSpawn)
+        {
+            Instantiate(enemy, enemySpawnPoint.transform.position * Random.Range(1.0f, 10.0f), Quaternion.identity);
+        }
     }
 
     public override void BossUpdate()
     {
-        /* Vector3 directionToTarget = (gameObject.transform.position - player.transform.position).normalized;
+        
+        survivalTimer -= Time.deltaTime;
+        enemiesLeft.text = "Survival Time: " + survivalTimer.ToString("f2");
 
-        Quaternion lookRotation = Quaternion.LookRotation(directionToTarget);
+        if (survivalTimer > 0) {
+            switch (currentState)
+            {
+                case ChefState.Spawn:
+                    TauntUpdate();
+                    break;
+                case ChefState.Idle:
+                    IdleUpdate();
+                    break;
+                case ChefState.Swinging:
+                    elapsedTime += Time.deltaTime;
 
-        transform.rotation = Quaternion.Slerp(gameObject.transform.rotation, lookRotation, 10 * Time.deltaTime); */
+                    SwingingUpdate();
 
-        switch (currentState)
-        {
-            case ChefState.Spawn:
-                EvilUpdate();
-                break;
-            case ChefState.Idle:
-                IdleUpdate();
-                break;
-            case ChefState.Swinging:
-                elapsedTime += Time.deltaTime;
-
-                SwingingUpdate();
-
-                break;
-            case ChefState.Throwing:
-                elapsedTime += Time.deltaTime;
-
-                ThrowingUpdate();
-
-                break;
-            case ChefState.Stunned:
-                StunnedUpdate();
-                break;
+                    break;
+                
+            }
+            if (survivalTimer <= 30.0f) {
+                isAngry = true;
+            }
         }
-        /* if (currentHealth <= 50) {
-            isAngry = true;
-        }*/
+        else {
+            takeDamage(100);
+        }
 
         
     }
 
-    private void EvilUpdate()
+    private void TauntUpdate()
     {
 
-        print("EvilUpdate");
-        anim.SetInteger("animState", 1);
+        print("TauntUpdate");
+        if (!tauntAnimationPlayed) {
+            AudioSource.PlayClipAtPoint(evilLaughSFX, transform.position);
+            anim.SetInteger("animState", 1);
+            tauntAnimationPlayed = true;
+        }
 
-        angryTimer -= Time.deltaTime;
-        if (angryTimer <= 0) {
+        spawnTimer -= Time.deltaTime;
+        if (spawnTimer <= 0) {
             currentState = ChefState.Idle;
-            angryTimer = 3.0f;
+            spawnTimer = 3.0f;
 
         }
-        // currentState = ChefState.Idle;
     }
 
     private void IdleUpdate()
     {
         //Chef Idle
         print("IdleUpdate");
-        
+        timeTillSpawn += Time.deltaTime;
         pan.SetActive(true);
         anim.SetInteger("animState", 0);
-
         
         currentState = ChefState.Swinging;
         
@@ -137,90 +156,37 @@ public class EvilChefBehavior : BossBehavior
 
     private void SwingingUpdate()
     {
+        
         //Chef Attacks
         print("SwingingUpdate");
-        Debug.Log("Angry: " + isAngry.ToString());
+        // Debug.Log("Angry: " + isAngry.ToString());
 
+        // attackTimer -= Time.deltaTime;
         if (!isAngry) {
             print("Phase 1");
+            damage = 20;
             anim.SetInteger("animState", 2);
-            /* if (elapsedTime >= attackRate) {
-                // Get the length of attack animation (3)
-                var animDuration = anim.GetCurrentAnimatorStateInfo(0).length;
-
-                // delay the spellcasting to the end of the animation duration
-                Invoke("ShootPlayer", animDuration);
-                anim.SetInteger("animState", 0);
-
-                elapsedTime = 0.0f;
-            } */
-            // Invoke("AttackPlayer", animDuration);
-                
             
         }
         else {
             print("Phase 2");
+            damage = 20;
             anim.SetInteger("animState", 3);
 
         }
         
     }
 
-    private void AttackPlayer() {
-
-        if (!isAngry) {
-            anim.SetInteger("animState", 2);
-        }
-
-    }
-
-    private void ThrowingUpdate()
-    {
-        //Chef Throws Flour Bomb
-        anim.SetInteger("animState", 3);
-
-        print("ThrowingUpdate");
-        
-        if (elapsedTime >= shootRate) {
-            // Get the length of attack animation (3)
-            var animDuration = anim.GetCurrentAnimatorStateInfo(0).length;
-
-            // delay the spellcasting to the end of the animation duration
-            Invoke("ThrowBombs", animDuration);
-            elapsedTime = 0.0f;
-
-        }
-        
-        
-    }
-
-    private void ThrowBombs() {
-        print("Throwing Flour Bombs");
-        Instantiate(flourBomb, bombHand.transform.position, bombHand.transform.rotation);
-        
-        Vector3 directionToTarget = (flourBomb.transform.position - player.transform.position).normalized;
-
-        Quaternion lookRotation = Quaternion.LookRotation(directionToTarget);
-
-        transform.rotation = Quaternion.Slerp(flourBomb.transform.rotation, lookRotation, 10 * Time.deltaTime);
-
-        // TODO: Add MoveTowards script w/ particle effects to flourBomb prefab
-
-    }
-
-    private void StunnedUpdate()
-    {
-        //Chef Stunned
-        print("StunnedUpdate");
-        
-        
-    }
-
     public override void BossDeadEffects()
     {
-        anim.SetInteger("animState", 4);
-        print("Evil Chef Defeated!");
-        Destroy(gameObject, 2.0f);
+        if (!angryAnimationPlayed) {
+            AudioSource.PlayClipAtPoint(angrySFX, transform.position);
+            anim.SetInteger("animState", 6);
+            print("Evil Chef Defeated!");
+            angryAnimationPlayed = true;
+
+            Destroy(gameObject, 2.0f);
+        }
         
     }
 
