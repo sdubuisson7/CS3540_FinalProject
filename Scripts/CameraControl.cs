@@ -15,7 +15,6 @@ public class CameraControl : MonoBehaviour
         //Hide Cursor
         rotationSpeed = PlayerPrefs.GetFloat("rotationSpeed", 300);
         brains = GetComponentInChildren<CinemachineFreeLook>();
-        print("rotationSpeed = " + rotationSpeed);
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }

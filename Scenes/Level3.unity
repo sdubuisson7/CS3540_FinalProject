@@ -697,7 +697,7 @@ MonoBehaviour:
   initialSpawnInterval: 4
   spawnIntervalDecreaseRate: 0.2
   minSpawnInterval: 0.4
-  spawnLimit: 20
+  spawnLimit: 15
 --- !u!1001 &122240873
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3644,7 +3644,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.08621398, y: -0.043109268, z: 0.0037340357, w: 0.99533653}
+  m_LocalRotation: {x: 0.08621402, y: -0.0431092, z: 0.0037340315, w: 0.99533653}
   m_LocalPosition: {x: 3.965531, y: 1.9, z: -36.529404}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4789,7 +4789,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1250934649}
-  m_LocalRotation: {x: 0.23819259, y: -0.05066212, z: 0.01744481, w: 0.96973884}
+  m_LocalRotation: {x: 0.23819254, y: -0.050662115, z: 0.017444808, w: 0.9697389}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5371,7 +5371,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1327533357}
-  m_LocalRotation: {x: 0.27805418, y: -0.049898136, z: 0.019523028, w: 0.95906985}
+  m_LocalRotation: {x: 0.2780542, y: -0.04989811, z: 0.019523034, w: 0.95906985}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6925,7 +6925,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1582665841}
-  m_LocalRotation: {x: 0.27805418, y: -0.049898114, z: 0.019523032, w: 0.95906985}
+  m_LocalRotation: {x: 0.2780542, y: -0.049898095, z: 0.019523034, w: 0.95906985}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -8889,6 +8889,7 @@ MonoBehaviour:
   bossMusic: {fileID: 8300000, guid: 0b7d432ca6d27b54cb20442121bb3152, type: 3}
   bossMusicVolume: 0.15
   nextLevel: level4
+  bossOrigin: {x: 0, y: 3, z: 0}
 --- !u!4 &5018023685207218
 Transform:
   m_ObjectHideFlags: 0
