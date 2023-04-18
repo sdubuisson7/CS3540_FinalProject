@@ -21,6 +21,8 @@ public class SwordAttack : MonoBehaviour
     public float attackRange;
     public static bool attacked; // Has the player attacked?
     GameObject player; // The player game object
+    float initialPlayerSpeed;
+    int initialDamage;
     
     public enum FoodGroups {
         None,
@@ -101,6 +103,8 @@ public class SwordAttack : MonoBehaviour
         }
         
         speedBoostTimer = 10.0f;
+        initialPlayerSpeed = player.GetComponent<PlayerMovement>().moveSpeed;
+        initialDamage = damage;
         attackBoostTimer = 10.0f;
         dragonFruitTimer = 30.0f;
         shieldTimer = 5.0f;
@@ -194,14 +198,17 @@ public class SwordAttack : MonoBehaviour
                 }
                 else if (hit.CompareTag("Boss"))
                 {
-                    if(hit.transform.parent.name == "LobsterRigidbodies(Clone)")
+                    if(hit.transform.parent != null)
                     {
-                        hit.transform.parent.transform.parent.GetComponent<BossBehavior>().takeDamage(damage);
-                        break;
-                    }
+                        if (hit.transform.parent.name == "LobsterRigidbodies(Clone)")
+                        {
+                            hit.transform.parent.transform.parent.GetComponent<BossBehavior>().takeDamage(damage);
+                            break;
+                        }
+                    }                    
                     else
                     {
-                        print("Taking damage!");
+                        print("HitSnow");
                         hit.GetComponent<BossBehavior>().takeDamage(damage);
                     }
 
@@ -331,6 +338,10 @@ public class SwordAttack : MonoBehaviour
             case "Fondue":
                 ApplyFondue();
                 break;
+            case "Veggie Bisque":
+                ApplyVeggieBisque();
+                break;
+
             default:
                 // We didn't make a recipe
                 break;
@@ -342,8 +353,9 @@ public class SwordAttack : MonoBehaviour
     void ApplyProteinPunch() {
         if (attackBoostTimer > 0.0f)
         {
-            Debug.Log("Meat Skewer created! Attack Boost for 10 seconds");
+            damage = initialDamage + 2;
             attackBoostTimer -= Time.deltaTime;
+            Debug.Log("Meat Skewer created! Attack Boost for 10 seconds");
 
             // TODO: Attack Boost for player
             
@@ -367,6 +379,7 @@ public class SwordAttack : MonoBehaviour
 
         if (shieldTimer > 0.0f)
         {
+
             Debug.Log("Green Smoothie created! Shield for 5 seconds");
             shieldTimer -= Time.deltaTime;
 
@@ -458,7 +471,7 @@ public class SwordAttack : MonoBehaviour
         if (speedBoostTimer > 0.0f)
         {
 
-            player.GetComponent<PlayerMovement>().moveSpeed = 20;
+            player.GetComponent<PlayerMovement>().moveSpeed = initialPlayerSpeed * 2;
             speedBoostTimer -= Time.deltaTime;
             Debug.Log("Sugar Cube created! Speed Boost for 10 seconds");
             recipeEffectsText.text = "Recipe: Sugar Cube\nEffect: Sugar Rush\nTime: " + speedBoostTimer.ToString("f2");
@@ -473,6 +486,15 @@ public class SwordAttack : MonoBehaviour
             ResetRecipeLoadout();
             
         }
+    }
+
+    void ApplyVeggieBisque()
+    {
+        player.GetComponent<PlayerHealth>().Heal(player.GetComponent<PlayerHealth>().maxHealth / 2);
+        Debug.Log("Veggie Bisque created! Healed half health");
+        ResetPowerUp();
+        ResetRecipeLoadout();
+        recipeEffectsText.text = "Recipe: Veggie Bisque\nEffect: Health Boost\nBy: " + (player.GetComponent<PlayerHealth>().maxHealth / 2);
     }
 
     // return the recipe that 
@@ -490,7 +512,7 @@ public class SwordAttack : MonoBehaviour
         {
             // TODO: Supposed to be veggie bisque, changing to dragonfruit for testing purposes
             // currentRecipe = "Veggie Bisque";
-            currentRecipe = "Dragon Fruit";
+            currentRecipe = "Veggie Bisque";
 
         }
         else if (Array.TrueForAll(ingredientsList, element => element == FoodGroups.Starch))
@@ -554,11 +576,12 @@ public class SwordAttack : MonoBehaviour
 
         switch (currentRecipe) {
             case "Sugar Cube":
-                player.GetComponent<PlayerMovement>().moveSpeed = 10;
+                player.GetComponent<PlayerMovement>().moveSpeed = initialPlayerSpeed;
                 speedBoostTimer = 10.0f;
                 break;
             case "Meat Skewer":
                 // TODO: Attack stuff
+                damage = initialDamage;
                 speedBoostTimer = 15.0f;
                 break;
             case "Green Smoothie":

@@ -12524,6 +12524,7 @@ GameObject:
   - component: {fileID: 5558928214512103228}
   - component: {fileID: -2560139305521637820}
   - component: {fileID: 828483704608848060}
+  - component: {fileID: 5131010138815873876}
   m_Layer: 3
   m_Name: PotatoMasher
   m_TagString: Enemy
@@ -12591,6 +12592,23 @@ MonoBehaviour:
   distance: 5
   fov: 100
   enemyEyes: {fileID: 4281368431424090375}
+--- !u!114 &5131010138815873876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3717350946927340864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f8c27bcc19804b48a4b2feb63f7f27d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDead: 0
+  butterDrop: {fileID: 3877379890337223225, guid: 778fe712cea9f2846b3c949df94d5e89, type: 3}
+  speed: 4
+  damage: 15
+  maxHealth: 5
 --- !u!1 &3717350947037348391
 GameObject:
   m_ObjectHideFlags: 0

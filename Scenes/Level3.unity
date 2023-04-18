@@ -157,7 +157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
-  jumpHeight: 5
+  jumpHeight: 3
   gravity: 30
   airControl: 10
   isMoving: 0
@@ -2854,7 +2854,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.08621398, y: -0.043109268, z: 0.0037340357, w: 0.99533653}
+  m_LocalRotation: {x: 0.08621398, y: -0.04310927, z: 0.0037340357, w: 0.99533653}
   m_LocalPosition: {x: 3.965531, y: 1.9, z: -36.529404}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2911,6 +2911,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1157496}
   cameraTarget: {fileID: 288196996}
+  brains: {fileID: 0}
 --- !u!82 &963194232
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3897,7 +3898,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1250934649}
-  m_LocalRotation: {x: 0.23819256, y: -0.05066212, z: 0.017444808, w: 0.9697389}
+  m_LocalRotation: {x: 0.23819251, y: -0.050662175, z: 0.017444795, w: 0.9697388}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4479,7 +4480,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1327533357}
-  m_LocalRotation: {x: 0.27805418, y: -0.049898136, z: 0.019523028, w: 0.95906985}
+  m_LocalRotation: {x: 0.27805415, y: -0.04989821, z: 0.019523019, w: 0.95906985}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5705,7 +5706,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1582665841}
-  m_LocalRotation: {x: 0.27805418, y: -0.049898114, z: 0.019523032, w: 0.95906985}
+  m_LocalRotation: {x: 0.27805415, y: -0.049898196, z: 0.01952302, w: 0.95906985}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7230,12 +7231,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb1138b750b05945b99d03a764a0dfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemiesToKillToBeatLevel: 30
+  enemiesToKillToBeatLevel: 1
   enemiesLeft: {fileID: 1475422480}
   gameText: {fileID: 369222137}
-  boss: {fileID: 0}
+  boss: {fileID: 7330542823660501078, guid: 139a6874b99bd488a9eb5faa4debf446, type: 3}
   gameMusic: {fileID: 8300000, guid: 991f6c9ec798fce4b99273ca05e03488, type: 3}
-  bossMusic: {fileID: 0}
+  bossMusic: {fileID: 8300000, guid: 0b7d432ca6d27b54cb20442121bb3152, type: 3}
   bossMusicVolume: 1
   nextLevel: level4
 --- !u!4 &5018023685207218
