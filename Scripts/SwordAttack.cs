@@ -21,6 +21,7 @@ public class SwordAttack : MonoBehaviour
     public float attackRange;
     public static bool attacked; // Has the player attacked?
     GameObject player; // The player game object
+    float initialPlayerSpeed;
     
     public enum FoodGroups {
         None,
@@ -101,6 +102,7 @@ public class SwordAttack : MonoBehaviour
         }
         
         speedBoostTimer = 10.0f;
+        initialPlayerSpeed = player.GetComponent<PlayerMovement>().moveSpeed;
         attackBoostTimer = 10.0f;
         dragonFruitTimer = 30.0f;
         shieldTimer = 5.0f;
@@ -465,7 +467,7 @@ public class SwordAttack : MonoBehaviour
         if (speedBoostTimer > 0.0f)
         {
 
-            player.GetComponent<PlayerMovement>().moveSpeed = 20;
+            player.GetComponent<PlayerMovement>().moveSpeed = initialPlayerSpeed * 2;
             speedBoostTimer -= Time.deltaTime;
             Debug.Log("Sugar Cube created! Speed Boost for 10 seconds");
             recipeEffectsText.text = "Recipe: Sugar Cube\nEffect: Sugar Rush\nTime: " + speedBoostTimer.ToString("f2");
@@ -570,7 +572,7 @@ public class SwordAttack : MonoBehaviour
 
         switch (currentRecipe) {
             case "Sugar Cube":
-                player.GetComponent<PlayerMovement>().moveSpeed = 10;
+                player.GetComponent<PlayerMovement>().moveSpeed = initialPlayerSpeed;
                 speedBoostTimer = 10.0f;
                 break;
             case "Meat Skewer":
