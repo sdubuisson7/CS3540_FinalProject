@@ -19,6 +19,8 @@ public class LevelManager : MonoBehaviour
     float reload = 5.0f;
     public string nextLevel;
 
+    public Vector3 bossOrigin = new Vector3(0, 3, 0);
+
 
     bool bossStarted = false;
     GameObject spawner;
@@ -84,7 +86,7 @@ public class LevelManager : MonoBehaviour
             Destroy(aliveEnemy);
         }
         //Instantiate this levels boss
-        GameObject currentBoss = Instantiate(boss, new Vector3(0, 3, 0), Quaternion.identity);
+        GameObject currentBoss = Instantiate(boss, bossOrigin, Quaternion.identity);
         enemiesLeft.gameObject.SetActive(false);
         
         //Disable enemySpawner
