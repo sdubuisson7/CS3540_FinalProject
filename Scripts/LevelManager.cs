@@ -87,7 +87,11 @@ public class LevelManager : MonoBehaviour
         }
         //Instantiate this levels boss
         GameObject currentBoss = Instantiate(boss, bossOrigin, Quaternion.identity);
-        enemiesLeft.gameObject.SetActive(false);
+        if(gameObject.scene.name != "Level4")
+        {
+            enemiesLeft.gameObject.SetActive(false);
+        }
+        
         
         //Disable enemySpawner
         FindObjectOfType<EnemySpawner>().enabled = false;

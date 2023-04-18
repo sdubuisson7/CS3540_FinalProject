@@ -68,6 +68,8 @@ public class EvilChefBehavior : BossBehavior
         spawnTimer = 5.0f;
         // attackTimer = 10.0f;
         // stunnedTimer = 5.0f;
+        enemiesLeft = GameObject.FindGameObjectWithTag("EnemiesLeft").GetComponent<Text>();
+        enemySpawnPoint = GameObject.FindGameObjectWithTag("BossSpawn");
         currentState = ChefState.Spawn;
         bossName.text = "THE EVIL CHEF";
         currentHealth = maxHealth;

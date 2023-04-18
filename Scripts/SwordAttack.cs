@@ -232,40 +232,7 @@ public class SwordAttack : MonoBehaviour
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 
-    /* void FixedUpdate()
-    {
-        // Update the dot reticle at screen center
-        DotUpdate();
-    }
-
-    void DotUpdate()
-    {
-        RaycastHit hit;
-
-        //Check to see if Raycast hit a collider
-        if (Physics.Raycast(player.transform.position, player.transform.forward, out hit, Mathf.Infinity))
-        {
-            //Check to see if Raycast hit an enemy
-            if (hit.collider.gameObject.CompareTag("Enemy"))
-            {
-                float distance = Vector3.Distance(player.transform.position, hit.transform.position);//The distance between the enemy and the player
-                //Check to see if the enemy is within close range
-                if (distance <= colorRange)
-                {
-                    dot.color = Color.Lerp(dot.color, enemyDotColorNear, Time.deltaTime * colorSpeed); // If raycast is looking at a nearby enemy change the dot color
-                }
-                else
-                {
-                    dot.color = Color.Lerp(dot.color, enemyDotColorFar, Time.deltaTime * colorSpeed); // If raycast is looking at a far enemy change the dot color
-                }
-                
-            }
-            else
-            {
-                dot.color = neutralDotColor; // if it is not looking at an enemy, leave the color neutral
-            }
-        }
-    } */
+   
     
     void ResetAnimation()
     {        

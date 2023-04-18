@@ -1962,7 +1962,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5159912755856233232}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -0.3, y: -100.1, z: 51.6}
+  m_LocalPosition: {x: -0.3, y: -100.1, z: -86}
   m_LocalScale: {x: 80, y: 80, z: 80}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1993,15 +1993,15 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   isDead: 0
   maxHealth: 100
-  evilLaughSFX: {fileID: 0}
-  angrySFX: {fileID: 0}
+  evilLaughSFX: {fileID: 8300000, guid: d996a7498f7bf044198dbd4454edc0b0, type: 3}
+  angrySFX: {fileID: 8300000, guid: c5d855fd293ccbb4698ae49777192628, type: 3}
   idleTimer: 3
   spawnTimer: 5
-  stunnedTimer: 5
-  flourBomb: {fileID: 0}
-  bombHand: {fileID: 8606992737856787601}
-  pan: {fileID: 0}
-  attackTimer: 10
+  spawnCooldown: 0
+  enemySpawnPoint: {fileID: 0}
+  survivalTimer: 60
+  enemiesLeft: {fileID: 0}
+  pan: {fileID: 5840292079903794080}
   isAngry: 0
   shootRate: 2
   attackRate: 3
