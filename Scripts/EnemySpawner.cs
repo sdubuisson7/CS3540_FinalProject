@@ -27,6 +27,7 @@ public class EnemySpawner : MonoBehaviour
             //Increase the spawn timer over time
             spawnTimer += Time.deltaTime;
             GameObject[] currentEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+            print(currentEnemies.Length);
             //Check to see if spawn timer has reached the spawn interval
             if (spawnTimer >= currentSpawnInterval && currentEnemies.Length < spawnLimit)
             {
