@@ -116,7 +116,7 @@ public class PlayerMovement : MonoBehaviour
     void OnTriggerStay(Collider c) {
         if (c.gameObject.tag == "Explosion") {
             FindObjectOfType<PlayerHealth>().Hit(c.GetComponent<Explosion>().dpt);
-        } else if (c.gameObject.tag == "SnowyKnightSlash" && timeSinceHurtBySnowy > 2.0f) {
+        } else if (c.gameObject.tag == "SnowyKnightSlash" && timeSinceHurtBySnowy > 5.0f) {
             FindObjectOfType<PlayerHealth>().Hit(10);
             timeSinceHurtBySnowy = 0.0f;
         }

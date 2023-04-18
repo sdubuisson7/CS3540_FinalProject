@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8506419466628410439}
   - component: {fileID: 2857443508618489889}
   - component: {fileID: 4617362758573428262}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4826,7 +4826,7 @@ GameObject:
   - component: {fileID: 2954196709821148332}
   - component: {fileID: 9129034990698618415}
   - component: {fileID: 129772446770456259}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Arch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6223,7 +6223,7 @@ GameObject:
   - component: {fileID: 3631361717494275920}
   - component: {fileID: 3631361717494275926}
   - component: {fileID: 3631361717494275921}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Eyeball (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6308,7 +6308,7 @@ GameObject:
   - component: {fileID: 3631361717665118001}
   - component: {fileID: 3631361717665118006}
   - component: {fileID: 3035876568503683433}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: CarolinaReaper
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -6379,7 +6379,7 @@ GameObject:
   - component: {fileID: 3631361718158053680}
   - component: {fileID: 3631361718158053683}
   - component: {fileID: 3631361718158053682}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6475,7 +6475,7 @@ GameObject:
   - component: {fileID: 3631361718219903751}
   - component: {fileID: 3631361718219903749}
   - component: {fileID: 3631361718219903748}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pupil
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6558,7 +6558,7 @@ GameObject:
   - component: {fileID: 3631361718418815716}
   - component: {fileID: 3631361718418815722}
   - component: {fileID: 3631361718418815717}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pupil
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6641,7 +6641,7 @@ GameObject:
   - component: {fileID: 3631361718708724202}
   - component: {fileID: 3631361718708724197}
   - component: {fileID: 3631361718708724196}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6724,7 +6724,7 @@ GameObject:
   - component: {fileID: 3631361719296193061}
   - component: {fileID: 3631361719296193067}
   - component: {fileID: 3631361719296193066}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Eyeball (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6811,7 +6811,7 @@ GameObject:
   - component: {fileID: 3631361719311564662}
   - component: {fileID: 3631361719311564657}
   - component: {fileID: 3631361719311564656}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10566,7 +10566,7 @@ GameObject:
   - component: {fileID: 3631361719355746372}
   - component: {fileID: 3631361719355746375}
   - component: {fileID: 3631361719355746374}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
