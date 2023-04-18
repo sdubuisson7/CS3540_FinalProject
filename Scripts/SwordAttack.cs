@@ -334,6 +334,10 @@ public class SwordAttack : MonoBehaviour
             case "Fondue":
                 ApplyFondue();
                 break;
+            case "Veggie Bisque":
+                ApplyVeggieBisque();
+                break;
+
             default:
                 // We didn't make a recipe
                 break;
@@ -478,6 +482,15 @@ public class SwordAttack : MonoBehaviour
         }
     }
 
+    void ApplyVeggieBisque()
+    {
+        player.GetComponent<PlayerHealth>().Heal(player.GetComponent<PlayerHealth>().maxHealth / 2);
+        Debug.Log("Veggie Bisque created! Healed half health");
+        ResetPowerUp();
+        ResetRecipeLoadout();
+        recipeEffectsText.text = "Recipe: Veggie Bisque\nEffect: Health Boost\nBy: " + (player.GetComponent<PlayerHealth>().maxHealth / 2);
+    }
+
     // return the recipe that 
     void UpdateCurrentRecipe() 
     {
@@ -493,7 +506,7 @@ public class SwordAttack : MonoBehaviour
         {
             // TODO: Supposed to be veggie bisque, changing to dragonfruit for testing purposes
             // currentRecipe = "Veggie Bisque";
-            currentRecipe = "Dragon Fruit";
+            currentRecipe = "Veggie Bisque";
 
         }
         else if (Array.TrueForAll(ingredientsList, element => element == FoodGroups.Starch))
