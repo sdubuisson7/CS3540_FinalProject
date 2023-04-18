@@ -26,10 +26,12 @@ public class CinnamonRoller : EnemyBehavior {
         //Check if Enemy collided with Player
         if (c.gameObject.CompareTag("Player")) {
             if(!inCooldown)
-            player.GetComponent<PlayerHealth>().Hit(damage);
-            inCooldown = true;
-            Invoke("CooldownAttack", 1.5f);
-            Debug.Log("PlayerHit");
+            {
+                player.GetComponent<PlayerHealth>().Hit(damage);
+                inCooldown = true;
+                Invoke("CooldownAttack", 1.5f);
+                Debug.Log("PlayerHit");
+            }
         }
     }
 
