@@ -1999,8 +1999,10 @@ MonoBehaviour:
   stunnedTimer: 5
   flourBomb: {fileID: 0}
   bombHand: {fileID: 8606992737856787601}
+  pan: {fileID: 0}
   angryTimer: 0
   shootRate: 2
+  attackRate: 3
   enemiesToSpawn: []
   currentState: 0
 --- !u!95 &717631302499069291
@@ -2016,7 +2018,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 34fe5f01636309a429425fd7de3e48e4, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 

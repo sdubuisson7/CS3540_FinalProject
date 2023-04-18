@@ -33,7 +33,7 @@ public class EvilChefBehavior : BossBehavior
     public float angryTimer = 7.0f;
 
     bool angryAnimationPlayed;
-    bool isAngry;
+    public bool isAngry;
 
     // for throwing state
     float elapsedTime = 0;
@@ -70,6 +70,12 @@ public class EvilChefBehavior : BossBehavior
 
     public override void BossUpdate()
     {
+        /* Vector3 directionToTarget = (gameObject.transform.position - player.transform.position).normalized;
+
+        Quaternion lookRotation = Quaternion.LookRotation(directionToTarget);
+
+        transform.rotation = Quaternion.Slerp(gameObject.transform.rotation, lookRotation, 10 * Time.deltaTime); */
+
         switch (currentState)
         {
             case ChefState.Spawn:
@@ -136,8 +142,9 @@ public class EvilChefBehavior : BossBehavior
         Debug.Log("Angry: " + isAngry.ToString());
 
         if (!isAngry) {
-            print("Attacking");
-            if (elapsedTime >= attackRate) {
+            print("Phase 1");
+            anim.SetInteger("animState", 2);
+            /* if (elapsedTime >= attackRate) {
                 // Get the length of attack animation (3)
                 var animDuration = anim.GetCurrentAnimatorStateInfo(0).length;
 
@@ -146,10 +153,15 @@ public class EvilChefBehavior : BossBehavior
                 anim.SetInteger("animState", 0);
 
                 elapsedTime = 0.0f;
-            }
+            } */
             // Invoke("AttackPlayer", animDuration);
                 
             
+        }
+        else {
+            print("Phase 2");
+            anim.SetInteger("animState", 3);
+
         }
         
     }
