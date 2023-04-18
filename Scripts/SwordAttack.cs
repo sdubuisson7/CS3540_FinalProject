@@ -346,6 +346,9 @@ public class SwordAttack : MonoBehaviour
             case "Cinnamon Challenge":
                 ApplyCinnamonChallenge();
                 break;
+            case "Bread":
+                ApplyBread();
+                break;
             default:
                 // We didn't make a recipe
                 break;
@@ -507,6 +510,15 @@ public class SwordAttack : MonoBehaviour
         Debug.Log("Cinnamon Challenge created! Enemies on screen stunned for 3 seconds");
         recipeEffectsText.text = "Recipe: Cinnamon Challenge\nEffect: Cinnamon Challenge";
         Invoke("ResetPowerUp", 3.0f);
+        ResetRecipeLoadout();
+    }
+
+    void ApplyBread()
+    {
+        player.GetComponent<PlayerHealth>().DefenseBoost();
+        Debug.Log("Bread created! Defense boost for 10 seconds");
+        recipeEffectsText.text = "Recipe: Bread\nEffect: defense boost";
+        Invoke("ResetPowerUp", 10.0f);
         ResetRecipeLoadout();
     }
 
