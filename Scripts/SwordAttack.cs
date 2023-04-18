@@ -22,6 +22,7 @@ public class SwordAttack : MonoBehaviour
     public static bool attacked; // Has the player attacked?
     GameObject player; // The player game object
     float initialPlayerSpeed;
+    int initialDamage;
     
     public enum FoodGroups {
         None,
@@ -103,6 +104,7 @@ public class SwordAttack : MonoBehaviour
         
         speedBoostTimer = 10.0f;
         initialPlayerSpeed = player.GetComponent<PlayerMovement>().moveSpeed;
+        initialDamage = damage;
         attackBoostTimer = 10.0f;
         dragonFruitTimer = 30.0f;
         shieldTimer = 5.0f;
@@ -351,8 +353,9 @@ public class SwordAttack : MonoBehaviour
     void ApplyProteinPunch() {
         if (attackBoostTimer > 0.0f)
         {
-            Debug.Log("Meat Skewer created! Attack Boost for 10 seconds");
+            damage = initialDamage + 2;
             attackBoostTimer -= Time.deltaTime;
+            Debug.Log("Meat Skewer created! Attack Boost for 10 seconds");
 
             // TODO: Attack Boost for player
             
@@ -376,6 +379,7 @@ public class SwordAttack : MonoBehaviour
 
         if (shieldTimer > 0.0f)
         {
+
             Debug.Log("Green Smoothie created! Shield for 5 seconds");
             shieldTimer -= Time.deltaTime;
 
@@ -577,6 +581,7 @@ public class SwordAttack : MonoBehaviour
                 break;
             case "Meat Skewer":
                 // TODO: Attack stuff
+                damage = initialDamage;
                 speedBoostTimer = 15.0f;
                 break;
             case "Green Smoothie":
