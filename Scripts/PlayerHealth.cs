@@ -8,12 +8,14 @@ public class PlayerHealth : MonoBehaviour {
     int currentHealth;
     public Slider healthSlider;
     Animator animator;
+    bool defenseBoost;
 
     // Start is called before the first frame update
     void Start() {
         currentHealth = maxHealth;
         healthSlider.value = currentHealth;
         animator = GetComponentInChildren<Animator>();
+        defenseBoost = false;
     }
 
     // Update is called once per frame
@@ -22,13 +24,34 @@ public class PlayerHealth : MonoBehaviour {
     }
 
     public void Hit(int damage) {
-        currentHealth -= damage;
+        if (!defenseBoost)
+        {
+            currentHealth -= damage;
+        }
+        else
+        {
+            currentHealth -= (damage / 2);
+        }
         if (currentHealth <= 0) {
             currentHealth = 0;
             animator.SetBool("isDead", true);
             FindObjectOfType<LevelManager>().LevelLost();
         }
         healthSlider.value = currentHealth;
+    }
+
+    public void DefenseBoost()
+    {
+        if(!defenseBoost)
+        {
+            defenseBoost = true;
+            Invoke("DefenseCooldown", 10.0f);
+        }
+    }
+
+    void DefenseCooldown()
+    {
+        defenseBoost = false;
     }
 
     public void Heal(int amount) {

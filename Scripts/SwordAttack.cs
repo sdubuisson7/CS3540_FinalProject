@@ -77,6 +77,7 @@ public class SwordAttack : MonoBehaviour
     private float dragonFruitTimer;
     private float shieldTimer;
     private float fondueRaidTimer;
+    //private float stunTimer;
     GameObject playerAnimator;
 
 
@@ -109,6 +110,7 @@ public class SwordAttack : MonoBehaviour
         dragonFruitTimer = 30.0f;
         shieldTimer = 5.0f;
         fondueRaidTimer = 5.0f;
+        //stunTimer = 3.0f;
         sinceLastFondue = 0.0f;
         playerAnimator = GameObject.FindGameObjectWithTag("PlayerAnimator");
     }
@@ -341,7 +343,12 @@ public class SwordAttack : MonoBehaviour
             case "Veggie Bisque":
                 ApplyVeggieBisque();
                 break;
-
+            case "Cinnamon Challenge":
+                ApplyCinnamonChallenge();
+                break;
+            case "Bread":
+                ApplyBread();
+                break;
             default:
                 // We didn't make a recipe
                 break;
@@ -356,10 +363,6 @@ public class SwordAttack : MonoBehaviour
             damage = initialDamage + 2;
             attackBoostTimer -= Time.deltaTime;
             Debug.Log("Meat Skewer created! Attack Boost for 10 seconds");
-
-            // TODO: Attack Boost for player
-            
-
             recipeEffectsText.text = "Recipe: Meat Skewer\nEffect: Protein Punch\nTime: " + attackBoostTimer.ToString("f2");
         }
         else
@@ -497,6 +500,28 @@ public class SwordAttack : MonoBehaviour
         recipeEffectsText.text = "Recipe: Veggie Bisque\nEffect: Health Boost\nBy: " + (player.GetComponent<PlayerHealth>().maxHealth / 2);
     }
 
+    void ApplyCinnamonChallenge()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach(GameObject i in enemies)
+        {
+            i.GetComponent<EnemyBehavior>().Stun();
+        }
+        Debug.Log("Cinnamon Challenge created! Enemies on screen stunned for 3 seconds");
+        recipeEffectsText.text = "Recipe: Cinnamon Challenge\nEffect: Cinnamon Challenge";
+        Invoke("ResetPowerUp", 3.0f);
+        ResetRecipeLoadout();
+    }
+
+    void ApplyBread()
+    {
+        player.GetComponent<PlayerHealth>().DefenseBoost();
+        Debug.Log("Bread created! Defense boost for 10 seconds");
+        recipeEffectsText.text = "Recipe: Bread\nEffect: defense boost";
+        Invoke("ResetPowerUp", 10.0f);
+        ResetRecipeLoadout();
+    }
+
     // return the recipe that 
     void UpdateCurrentRecipe() 
     {
@@ -582,7 +607,7 @@ public class SwordAttack : MonoBehaviour
             case "Meat Skewer":
                 // TODO: Attack stuff
                 damage = initialDamage;
-                speedBoostTimer = 15.0f;
+                attackBoostTimer = 10.0f;
                 break;
             case "Green Smoothie":
                 // TODO: Undo the shield
